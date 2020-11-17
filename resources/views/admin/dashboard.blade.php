@@ -1,5 +1,6 @@
 @extends('master.adminmaster')
 @section('content')
+
 	<div class="row">
 		<div class="container-flexible bnb-border mb-2 p-5 form-description-raleway">
 			<div class="row">
