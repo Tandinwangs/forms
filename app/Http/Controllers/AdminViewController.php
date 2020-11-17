@@ -1,0 +1,175 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use App\PrematureWithdrawal;
+use App\INRRemittance;
+use App\RoleAndForm;
+use App\User;
+use App\Gift;
+use App\Form;
+use App\Role;
+use App\Notifier;
+use Auth;
+
+class AdminViewController extends Controller
+{
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
+	public function authUser(){
+		return Auth::user();
+	} 
+
+    public function getDashboard(){
+    	$active = 'db';
+        $gifts = Gift::where('status','pending')->orderBy('id','desc')->take('5')->get();
+        $premature = PrematureWithdrawal::where('status','pending')->orderBy('id','desc')->take('5')->get();
+        $remittance = INRRemittance::where('status','pending')->orderBy('id','desc')->take('5')->get();
+    	$user = $this->authUser();
+        if($user->role->role == 'Administrator')
+        {
+            $form_id = Form::pluck('id');
+        }
+        else{
+            $form_id = $user->role->forms->pluck('form_id');               
+        }
+        $forms = Form::whereIn('id',$form_id)->get();
+    	return view('admin.dashboard',compact('user','active','forms','gifts','premature','remittance'));
+    }
+
+    public function getForms(){
+        $active = 'f';
+        $user = $this->authUser();
+        if($user->role->role == 'Administrator')
+        {
+            $forms = Form::all();
+        }
+        else{
+            $forms = $user->role->forms;               
+        }
+        return view('admin.forms',compact('user','active','forms'));
+    }
+
+    public function getGiftForms(){
+        $active = 'f';
+        $user = $this->authUser();
+        $forms = Gift::where('status','pending')->orderBy('id','desc')->simplePaginate(25);
+        $pforms = Gift::where('status','<>','pending')->Paginate(25);
+        $form = Form::where('model','Gift')->first();
+        return view('admin.forms.gifts',compact('user','active','forms','pforms','form'));
+    }
+
+    public function viewGiftForm(Request $request){
+        $code = $request->code;
+        $cname = $request->cname;
+        $cmobile =$request->cmobile;
+        $caccount = $request->caccount;
+        $bname = $request->bname;
+        $baccount = $request->baccount;
+        $bank = $request->bank;
+        $active = 'f';
+        $user = $this->authUser();
+        $gift = Gift::find($request->id);
+        $form = Form::where('model','Gift')->first();
+        $action = $request->action;
+        return view('admin.forms.giftshow',compact('active','user','gift','form','action','cname','caccount','cmobile','bname','baccount','bank','code'));
+    }
+
+    public function getGiftSearchForm(){
+        $active = 'f';
+        $user = $this->authUser();
+        $form = Form::where('model','Gift')->first();
+        return view('admin.forms.giftsearch',compact('active','user','form'));
+    }
+
+    public function getRolesAndForms(){
+    	$active = 'raf';
+    	$user = $this->authUser();
+        $rafs = Role::all();
+        $lfs = RoleAndForm::distinct('form_id')->pluck('form_id');
+        $forms = Form::whereNotIn('id',$lfs)->get();
+    	return view('admin.rolesandforms',compact('user','active','rafs','forms'));
+    }
+
+    public function getUsers(){
+    	$active = 'u';
+    	$user = $this->authUser();
+    	$users = User::all();
+    	return view('admin.users',compact('user','users','active'));
+    }
+
+    public function getAddUserForm(){
+    	$active = 's';
+    	$user = $this->authUser();
+        $roles = Role::all();
+        $key = 'view';
+    	return view('admin.adduser',compact('user','active','roles','key'));
+    }
+
+    public function getEditUserForm(Request $request){
+        $usr = User::find($request->user_id);
+        $key = 'edit';
+        $roles = Role::all();
+        $active = 'u';
+        $user = $this->authUser();
+        return view('admin.adduser',compact('key','roles','active','user','usr'));
+    }
+
+    public function getAddRoleForm(){
+    	$active = 's';
+        $key = 'view';
+    	$user = $this->authUser();
+    	$roles = Role::all();
+    	return view('admin.addrole',compact('user','active','roles','key'));
+    }
+
+    public function getEditRoleForm(Request $request){
+        $role = Role::find($request->role_id);
+        $key = 'edit';
+        $active = 's';
+        $user = $this->authUser();
+        return view('admin.addrole',compact('key','role','active','user'));
+    }
+
+    public function getAddFormForm(){
+    	$active = 's';
+        $key = 'view';
+    	$user = $this->authUser();
+        $forms = Form::all();
+    	return view('admin.addform',compact('user','active','forms','key'));
+    }
+
+    public function getEditFormForm(Request $request){
+        $form = Form::find($request->form_id);
+        $key = 'edit';
+        $active = 's';
+        $user = $this->authUser();
+        return view('admin.addform',compact('key','form','active','user'));
+    }
+
+    public function getChangePasswordForm(Request $request){
+    	$active = "0";
+    	$user = $this->authUser();
+    	return view('admin.changepassword',compact('user','active'));
+    }
+
+    public function getNotifiers(){
+        $key = 'view';
+        $notifiers = Notifier::all();
+        $active = 's';
+        $user = $this->authUser();
+        return view('admin.notifiers',compact('notifiers','active','user','key'));
+    }
+
+    public function getEditNotifiers(){
+        $key = 'edit';
+        $notifiers = Notifier::first();
+        $active = 's';
+        $user = $this->authUser();
+        return view('admin.notifiers',compact('notifiers','active','user','key'));
+    }
+}

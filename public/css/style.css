@@ -1,0 +1,225 @@
+@font-face{
+	font-family: rw;
+	src:url('../fonts/Raleway-Regular.ttf');
+}
+@font-face{
+	font-family: cg;
+	src:url('../fonts/Century Gothic Regular.TTF');
+}
+@font-face{
+	font-family: ananda;
+	src:url('../fonts/Ananda Black Personal Use.ttf');
+}
+
+.reed{
+	background: #0D1321;
+	background-image: url('../images/BNB-Pattern3.jpg');
+	background-size: cover;
+	background-attachment: fixed;
+}
+
+.container-flexible{
+	height: 100%;
+	width: 100%;
+	background: #fff;
+	overflow: hidden;
+	margin-right: 10px;
+	margin-left: 10px;
+}
+.flex-center {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+.bnb-border-header{
+	border:0px;
+	border-top:12px solid #26578c;
+	border-radius: 10px;
+}
+.bnb-border-footer{
+	border:0px;
+	border-bottom:5px solid #f9b233;
+	border-radius: 10px;
+}
+.bnb-border{
+	border:0px;
+	border-radius: 10px;
+}
+.form-title{
+	font-family: cg;
+	font-weight: bold;
+}
+.form-description{
+	font-family: cg;
+}
+.form-description-raleway{
+	font-family: rw;
+}
+.form-footer{
+	font-family: ananda;
+}
+.btn-primary{
+	background-color: #26578c !important;
+}
+.text-bnb-y{
+	color: #f9b233;
+}
+
+.text-bnb-b{
+	color: #26578c;
+}
+
+.navdesign{
+	background-color: #26578c !important;
+	border-radius: 10px;
+	color: #fff;
+}
+
+.navdesign a{
+	color: #fff;
+	font-family: rw;
+	font-weight: bold;
+	transition-duration: 1s;
+
+}
+
+.navdesign a:hover{
+	color:#f9b233; 
+	transition-duration: 1s;
+}
+
+.active{
+	color:#f9b233 !important; 
+	border: 2px solid #f9b233;
+	border-radius: 10px;
+}
+
+.dropdown-menu{
+	background-color: #26578c !important;
+}
+.dropdown-menu a:hover{
+	background-color: #26578c;
+}
+
+.dropdown-menu p,.dropdown-menu p:hover{
+	background-color: #26578c;
+	color: #f9b233;
+	font-family: cg;
+	font-weight: bold;
+	font-size: 13px;
+}
+
+.bg-bnb{
+	background-color: #26578c;
+	color: #f9b233;
+}
+.bnb-b{
+  	background-color: #26578c;
+	color: #f9b233;
+}
+.bnb-y{
+  	background-color: #f9b233;
+	color: #26578c;
+}
+.bnb-error{
+	background-color: #f9b233;
+	color: #26578c;
+	padding: 2px;
+	border-radius: 3px;
+}
+.bnb-b-span{
+	background-color: #26578c;
+	color: #f9b233;
+	padding: 2px;
+	border-radius: 3px;
+}	
+.modal-header{
+	background: #26578c;
+	color: white;
+	font-family: rw;
+}
+.modal-body{
+	font-family: rw;
+	text-align: center;
+	border-bottom:5px solid #f9b233;
+}
+.inner-container{
+	margin: 20px;
+	border:2px solid #26578c;
+	padding: 15px;
+	border-radius: 10px;
+}
+
+.bnb-btn-b, .bnb-btn-b:hover{
+	background-color: #26578c;
+	color: #000;
+	padding: 5px;
+	border-radius: 5px;
+	text-decoration: none;
+}
+
+.bnb-btn-y, .bnb-btn-y:hover{
+	background-color: #f9b233;
+	color: #000;
+	padding: 5px;
+	border-radius: 5px;
+	text-decoration: none;
+}	
+
+.input-description{
+	/*font-weight: bold;*/
+	/*color: #BDBDBD;*/
+	font-family: cg; 
+	/*font-size: 10px;*/
+}
+
+.form-container{
+	border:none;
+	background: #E0E0E0;
+	border-radius: 10px;
+	text-align: center;
+	padding: 15px;
+}
+
+.form-container h1{
+	font-family: cg;
+	font-size: 1.5rem;
+	color: black;
+}
+
+.form-container h4{
+	font-family: rw;
+	font-size: 1rem;
+}
+
+.no-decoration, .no-decoration:hover{
+	text-decoration: none;
+}
+
+.inner-footer{
+	font-family: rw;
+	border-top:2px solid #f9b233;
+	padding: 5px;
+}
+.form-control-custom{
+	border: 1px solid #BDBDBD;
+	padding: 10px;
+	border-radius: 5px;
+}
+
+.file-container{
+	display:inline-flex;
+	width: 100%;
+}
+.file-container .icon{
+	height: 35px;
+	width: 35px;
+	background: url('../images/file.png');
+	background-size: contain;
+	border-radius: 50%;
+	border:1px solid #26578c;
+}
+.file-container .label{
+	font-family: cg;
+	padding: 5px;
+}
