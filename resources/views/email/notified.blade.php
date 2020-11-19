@@ -21,6 +21,7 @@
       }
       .box .body{
         padding: 5px;
+        
       }
       .box .footer{
         background-color: #E0E0E0;
