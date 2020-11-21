@@ -13,9 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('master');
-});
+Route::get('/', 'FormsController@getForms');
 
 Route::get('/forms', 'FormsController@getForms')->name('forms');
 // Route::get('/TPIN-reset-form', 'FormController@getTPinForm')->name('tpin_path');
