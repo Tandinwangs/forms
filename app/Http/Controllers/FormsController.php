@@ -95,9 +95,9 @@ class FormsController extends Controller
             'BeneficiaryAccountNumber'=>'required',
             'IfscCode'=>'required',
             'Agreement'=>'regex:/^agree$/',
-            'Document'=>'file|required_without_all:Document2,Document3|mimes:pdf,png,jpg,jpeg,docx,doc',
-            'Document2'=>'file|required_without_all:Document,Document3|mimes:pdf,png,jpg,jpeg,docx,doc',
-            'Document3'=>'file|required_without_all:Document,Document2|mimes:pdf,png,jpg,jpeg,docx,doc'
+            'Document'=>'file|required_without_all:Document2,Document3|mimes:pdf,png,jpg,jpeg,docx,doc|max:10240',
+            'Document2'=>'file|required_without_all:Document,Document3|mimes:pdf,png,jpg,jpeg,docx,doc|max:10240',
+            'Document3'=>'file|required_without_all:Document,Document2|mimes:pdf,png,jpg,jpeg,docx,doc|max:10240'
         ]);
         $status = '0';
         $code = null;
