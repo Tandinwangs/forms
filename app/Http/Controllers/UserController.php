@@ -32,6 +32,7 @@ class UserController extends Controller
     	$user->mobile=$request->mobile;
     	$user->password=bcrypt($request->password);
     	$user->role_id=$request->role;
+        $user->branch_id=$request->branch;
     	if($user->save())
     	{
     		$status='1';
@@ -56,6 +57,7 @@ class UserController extends Controller
         $user->username =$request->username;
         $user->email=$request->email;
         $user->mobile=$request->mobile;
+        $user->branch_id=$request->branch;
         if(!blank($request->password))
         {
             $user->password=bcrypt($request->password);

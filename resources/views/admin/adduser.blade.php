@@ -84,6 +84,21 @@
 		                            </span>
 		                        @enderror
 							</div>
+
+							<div class="col-md-6">
+								<label for="branch">Branch</label>
+								<select name="branch" id="branch" class="form-control">
+									<option value="">Select User Branch</option>
+									@foreach($branches as $r)
+										<option value="{{$r->id}}" {{ $r->id == $usr->branch_id ? "selected" : "" }}>{{$r->branch_name}}</option>
+									@endforeach
+								</select>
+								@error('branch')
+		                            <span class="bnb-error">
+		                                <small><strong>{{ $message }}</strong></small>
+		                            </span>
+		                        @enderror
+							</div>
 						</div>
 					@endif
 					<div class="row">
@@ -164,6 +179,21 @@
 								@endforeach
 							</select>
 							@error('role')
+	                            <span class="bnb-error">
+	                                <small><strong>{{ $message }}</strong></small>
+	                            </span>
+	                        @enderror
+						</div>
+
+						<div class="col-md-6">
+							<label for="branch">Branch</label>
+							<select name="branch" id="branch" class="form-control">
+								<option value="">Select User Branch</option>
+								@foreach($branches as $r)
+									<option value="{{$r->id}}" {{ $r->id == old("branch") ? "selected" : "" }}>{{$r->branch_name}}</option>
+								@endforeach
+							</select>
+							@error('branch')
 	                            <span class="bnb-error">
 	                                <small><strong>{{ $message }}</strong></small>
 	                            </span>

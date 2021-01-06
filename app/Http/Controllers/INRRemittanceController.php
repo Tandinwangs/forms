@@ -21,8 +21,15 @@ class INRRemittanceController extends Controller
     public function getForms(){
         $active = 'f';
         $user = $this->authUser();
-        $forms = INRRemittance::where('status','pending')->orderBy('id','desc')->simplePaginate(25);
-        $pforms = INRRemittance::where('status','<>','pending')->Paginate(25);
+        if($user->role->role == 'Administrator'){
+            $forms = INRRemittance::where('status','pending')->orderBy('id','desc')->simplePaginate(25);
+            $pforms = INRRemittance::where('status','<>','pending')->Paginate(25);
+        }
+        else
+        {
+            $forms = INRRemittance::where('status','pending')->where('homebranch',$user->branch->branch_name)->orderBy('id','desc')->simplePaginate(25);
+            $pforms = INRRemittance::where('status','<>','pending')->where('homebranch',$user->branch->branch_name)->Paginate(25);
+        }
         $form = Form::where('model','INRRemittance')->first();
         return view('admin.forms.inr_remittance_forms',compact('user','active','forms','pforms','form'));
     }
@@ -40,6 +47,12 @@ class INRRemittanceController extends Controller
         $sform = INRRemittance::find($request->id);
         $form = Form::where('model','INRRemittance')->first();
         $action = $request->action;
+        if($user->role->role != 'Administrator'){
+            if($sform->homebranch != $user->branch->branch_name)
+            {
+                return redirect()->route('dashboard_path')->with(['status'=>'1', 'msg'=>'You do not have Permission to view the requested application.']);
+            }
+        }
         return view('admin.forms.inr_remittance_show',compact('active','user','sform','form','action','name','account','mobile','bname','idnumber','code','bmobile'));
     }
 
@@ -83,6 +96,12 @@ class INRRemittanceController extends Controller
                 })
                 ->when($bmobile, function ($query, $bmobile) {
                     return $query->where('beneficiarymobilenumber','like','%'.$bmobile.'%');
+                })
+                ->when($user, function ($query, $user) {
+                    if($user->role->role != 'Administrator'){
+                        $query->where('homebranch',$user->branch->branch_name);
+                    }
+                    return $query;
                 })
                 ->orderBy('id','desc')->get();
         return view('admin.forms.inr_remittance_search', compact('forms','form','active','user','action','code','name','account','mobile','bname','idnumber','bmobile'));

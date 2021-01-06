@@ -10,6 +10,7 @@ use App\User;
 use App\Gift;
 use App\Form;
 use App\Role;
+use App\Branch;
 use App\Notifier;
 use Auth;
 
@@ -25,11 +26,17 @@ class AdminViewController extends Controller
 	} 
 
     public function getDashboard(){
-    	$active = 'db';
+        $user = $this->authUser();
+        $active = 'db';
         $gifts = Gift::where('status','pending')->orderBy('id','desc')->take('5')->get();
         $premature = PrematureWithdrawal::where('status','pending')->orderBy('id','desc')->take('5')->get();
-        $remittance = INRRemittance::where('status','pending')->orderBy('id','desc')->take('5')->get();
-    	$user = $this->authUser();
+        $remittance = INRRemittance::when($user, function($query, $user){
+                                if($user->role->role !="Administrator"){
+                                    $query->where('homebranch',$user->branch->branch_name);
+                                }
+                                return $query;
+                            })
+                        ->where('status','pending')->orderBy('id','desc')->take('5')->get();
         if($user->role->role == 'Administrator')
         {
             $form_id = Form::pluck('id');
@@ -107,7 +114,8 @@ class AdminViewController extends Controller
     	$user = $this->authUser();
         $roles = Role::all();
         $key = 'view';
-    	return view('admin.adduser',compact('user','active','roles','key'));
+        $branches = Branch::all();
+    	return view('admin.adduser',compact('user','active','roles','key','branches'));
     }
 
     public function getEditUserForm(Request $request){
@@ -116,7 +124,8 @@ class AdminViewController extends Controller
         $roles = Role::all();
         $active = 'u';
         $user = $this->authUser();
-        return view('admin.adduser',compact('key','roles','active','user','usr'));
+        $branches = Branch::all();
+        return view('admin.adduser',compact('key','roles','active','user','usr','branches'));
     }
 
     public function getAddRoleForm(){

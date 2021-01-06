@@ -11,6 +11,7 @@
 			        <th>Email</th>
 			        <th>Mobile Number</th>
 			        <th>Assigned Role(s)</th>
+			        <th>Branch</th>
 			        <th>Action</th>
 			      </tr>
 			    </thead>
@@ -26,6 +27,7 @@
 				        		<!-- <span class="badge bg-success">Administrator</span>
 				        		<span class="badge bg-danger">Operation User</span> -->
 				        	</td>
+				        	<td><small>{{!blank($u->branch_id) ? $u->branch->branch_name : 'Not Available'}}</small></td>
 				        	<td class="text-center">
 				        		<div class="btn-group">
 				        			<a href="{{ route('edit_user_path',$u->id) }}" class="btn btn-primary btn-sm">Edit</a>

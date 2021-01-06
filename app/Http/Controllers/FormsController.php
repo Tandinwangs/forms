@@ -145,18 +145,23 @@ class FormsController extends Controller
         $form->document3 = $d3;
         $form->status = 'pending';
 
-        if($form->amount <= 14000){
-            $charges = 35;
+        if($form->amount <= 99999){
+            $charges = 55;
         }
-        elseif($form->amount > 14000 && $form->amount <= 100000 ){
-            $charges = ($form->amount / 1000) * 2.5; 
-        }
-        elseif($form->amount > 100000 && $form->amount <= 1000000){
-            $charges = ($form->amount / 1000) * 2;
+        elseif($form->amount > 99999 && $form->amount <= 1000000 ){
+            $charges = ($form->amount * 0.002) + 20; 
         }
         else{
-            $charge = ($form->amount / 1000) * 1.75;
-            $charges = ($charge < 2000 ? 2000 : $charge);  
+            $charge = ($form->amount * 0.00175) + 20;
+            if($charge < 2000){
+                $charges = 2000;
+            }  
+            elseif($charges > 15000){
+                $charges = 15000;
+            }
+            else{
+                $charges = $charge;
+            }
         }
         $form->charges = $charges;
         
@@ -164,7 +169,7 @@ class FormsController extends Controller
             $status = '1';
             $msg = 'INR Remittance Request Form has been submitted successfully to the bank.';
             $code_short = $form->code;
-            $code = "Form: $form->code has been submitted to the bank for processing. Total charges for the Remittance has amounted to Nu.$charges.The form status will be notified via SMS & email.";
+            $code = "Form: $form->code has been submitted to the bank for processing. Total charges for the Remittance has amounted to Nu.$charges. Additional RTGS Charge(Nu.100) may or may not be applicable depending upon corresponding bank(s).The form status will be notified via SMS & email.";
             $mobile = $form->mobile_no;
             
             $this->sendEmail($form->email,$code_short);
