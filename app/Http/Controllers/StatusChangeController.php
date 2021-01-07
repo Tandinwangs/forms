@@ -51,13 +51,13 @@ class StatusChangeController extends Controller
     	$route = 'dashboard_path';
     	$params = null;
     	if($request->category == 'gift' || $request->category == 'gift-search' ){
-    		$form = Gift::find($request->id);
+    		$form = Gift::findorfail($request->id);
     	}
         elseif($request->category == 'premature-withdrawal' || $request->category == 'premature-withdrawal-search'){
-            $form = PrematureWithdrawal::find($request->id);
+            $form = PrematureWithdrawal::findorfail($request->id);
         }
         elseif ($request->category == 'inr-remittance'||$request->category == 'inr-remittance-search') {
-            $form = INRRemittance::find($request->id);
+            $form = INRRemittance::findorfail($request->id);
         }
         
         if($request->action == 'approve')

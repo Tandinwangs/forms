@@ -9,10 +9,6 @@
 			<p class="form-description-raleway mb-3">
 				This funds transfer transaction is solely affected based on the account number of the beneficiary and amounts furnished by you on this form. The bank shall not be held liable for any incorrect details that you have provided on the form, and the transaction shall be affected at your sole risk & responsibility.
 			</p>
-			<!-- <p class="form-description-raleway">
-				Transfer charges for the transaction, if any, may be debited from account.
-				Terms of Transfer :a)Remitter shall be responsible for the accuracy of the details given in the form.b)Remitter shall ensure availability of funds in the Account.c)Remittance instruction shall become irrevocable once it is executed by the Bank.d)Remittance request received after cut-off time will not be accepted/entertained.
-			</p> -->
 		</div>		
 	</div>
 	<form action="{{route('submit_gift_form')}}" method="POST">
@@ -23,7 +19,7 @@
 				<div class="row">	
 					<div class="col-md-4 mb-3">
 						<label for="Name">Your Full Name :</label>
-						<input type="text" name="Name" id="Name" class="form-control" autocomplete="off" placeholder="Your Full Name" value="{{old('Name')}}">
+						<input type="text" name="Name" id="Name" class="form-control" autocomplete="off" placeholder="Your Full Name" value="{{old('Name')}}" required="required">
 						@error('Name')
                             <span class="bnb-error">
                                 <small><strong>{{ $message }}</strong></small>
@@ -34,7 +30,7 @@
 					</div>
 					<div class="col-md-4 mb-3">
 						<label for="AccountNumber">Your Account Number :</label>
-						<input type="text" name="AccountNumber" id="AccountNumber" class="form-control" autocomplete="off" placeholder="Your Account Number" value="{{old('AccountNumber')}}">
+						<input type="text" name="AccountNumber" id="AccountNumber" class="form-control" autocomplete="off" placeholder="Your Account Number" value="{{old('AccountNumber')}}" required="required">
 						@error('AccountNumber')
                             <span class="bnb-error">
                                 <small><strong>{{ $message }}</strong></small>
@@ -46,7 +42,7 @@
 					</div>
 					<div class="col-md-4 mb-3">
 						<label for="Amount">Amount to be Transferred (in Nu.) :</label>
-						<input type="text" name="Amount" id="Amount" class="form-control" autocomplete="off" placeholder="Amount to be Transferred" value="{{old('Amount')}}">
+						<input type="text" name="Amount" id="Amount" class="form-control" autocomplete="off" placeholder="Amount to be Transferred" value="{{old('Amount')}}" required="required">
 						@error('Amount')
                             <span class="bnb-error">
                                 <small><strong>{{ $message }}</strong></small>
@@ -57,7 +53,7 @@
 					</div>
 					<div class="col-md-4 mb-3">
 						<label for="MobileNumber">Your Mobile Number :</label>
-						<input type="text" name="MobileNumber" id="MobileNumber" class="form-control" autocomplete="off" placeholder="Your Mobile Number." value="{{old('MobileNumber')}}">
+						<input type="text" name="MobileNumber" id="MobileNumber" class="form-control" autocomplete="off" placeholder="Your Mobile Number." value="{{old('MobileNumber')}}" required="required">
 						@error('MobileNumber')
                             <span class="bnb-error">
                                 <small><strong>{{ $message }}</strong></small>
@@ -76,7 +72,7 @@
 					</div>	
 					<div class="col-md-4 mb-3">
 						<label for="BeneficiaryName">Beneficiary Name :</label>
-						<input type="text" name="BeneficiaryName" id="BeneficiaryName" class="form-control" autocomplete="off" placeholder="Beneficiary Name" value="{{old('BeneficiaryName')}}">
+						<input type="text" name="BeneficiaryName" id="BeneficiaryName" class="form-control" autocomplete="off" placeholder="Beneficiary Name" value="{{old('BeneficiaryName')}}" required="required">
 						@error('BeneficiaryName')
                             <span class="bnb-error">
                                 <small><strong>{{ $message }}</strong></small>
@@ -86,7 +82,7 @@
 					</div>
 					<div class="col-md-4 mb-3">
 						<label for="BeneficiaryAccountNumber">Beneficiary Account Number :</label>
-						<input type="text" name="BeneficiaryAccountNumber" id="BeneficiaryAccountNumber" class="form-control" autocomplete="off" placeholder="Beneficiary Account Number" value="{{old('BeneficiaryAccountNumber')}}">
+						<input type="text" name="BeneficiaryAccountNumber" id="BeneficiaryAccountNumber" class="form-control" autocomplete="off" placeholder="Beneficiary Account Number" value="{{old('BeneficiaryAccountNumber')}}" required="required">
 						@error('BeneficiaryAccountNumber')
                             <span class="bnb-error">
                                 <small><strong>{{ $message }}</strong></small>
@@ -96,7 +92,7 @@
 					</div>
 					<div class="col-md-4 mb-3">
 						<label for="AccountType">Account Type :</label>
-						<input type="text" name="AccountType" id="AccountType" class="form-control" autocomplete="off" placeholder="Account Type" value="{{old('AccountType')}}">
+						<input type="text" name="AccountType" id="AccountType" class="form-control" autocomplete="off" placeholder="Account Type" value="{{old('AccountType')}}" required="required">
 						@error('AccountType')
                             <span class="bnb-error">
                                 <small><strong>{{ $message }}</strong></small>
@@ -107,7 +103,7 @@
 					</div>
 					<div class="col-md-4 mb-3">
 						<label for="BeneficiaryBankName">Beneficiary Bank Name :</label>
-						<select class="form-control" name="BeneficiaryBankName" id="BeneficiaryBankName">
+						<select class="form-control" name="BeneficiaryBankName" id="BeneficiaryBankName" required="required">
 							<option value="">Choose</option>
 							<option {{old('BeneficiaryBankName') == 'BOBL' ? 'selected': ''}}>BOBL</option>
 							<option {{old('BeneficiaryBankName') == 'BDBL' ? 'selected': ''}}>BDBL</option>
@@ -122,11 +118,16 @@
                         @enderror
 					</div>
 					<div class="col-md-4 mb-3">
-						<label for="Branch">Branch :</label>
-						<input type="text" name="Branch" id="Branch" class="form-control" autocomplete="off" placeholder="Branch Location" value="{{old('Branch')}}">
+						<label for="Branch">Home Branch :</label>
+                        <select class="form-control" name="Branch" id="Branch" required="required">
+							<option value="">Choose</option>
+							@foreach($branches as $b)
+								<option {{$b->branch_name == old('Branch') ? 'selected' : ''}}>{{$b->branch_name}}</option>
+							@endforeach
+						</select>
 						@error('Branch')
-                            <span class="bnb-error">
-                                <small><strong>{{ $message }}</strong></small>
+                            <span class="bnb-error m-auto">
+                                <small><strong>{{$message}}</strong></small>
                             </span>
                             <br>
                         @enderror

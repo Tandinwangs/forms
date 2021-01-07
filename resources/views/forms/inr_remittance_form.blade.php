@@ -383,7 +383,13 @@
 						@error('Document')
 							<br>
                             <span class="bnb-error m-auto">
-                                <small><strong>Supporting Document is required to be uploaded and has to be in format: .pdf | .doc | .docx | .jpeg | .jpg | .png</strong></small>
+                                <small>
+                                	<strong>
+                                		Supporting Document is required to be uploaded and has to be in format: .pdf | .doc | .docx | .jpeg | .jpg | .png.
+                                		<br>
+                                		File Size is restricted to 10 MB. 
+                                	</strong>
+                            	</small>
                             </span>
                             <br>
                         @enderror

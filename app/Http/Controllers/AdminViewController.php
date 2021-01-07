@@ -28,8 +28,23 @@ class AdminViewController extends Controller
     public function getDashboard(){
         $user = $this->authUser();
         $active = 'db';
-        $gifts = Gift::where('status','pending')->orderBy('id','desc')->take('5')->get();
-        $premature = PrematureWithdrawal::where('status','pending')->orderBy('id','desc')->take('5')->get();
+        $gifts = Gift::when($user, function($query, $user){
+                                if($user->role->role !="Administrator"){
+                                    $query->where('branch',$user->branch->branch_name);
+                                }
+                                return $query;
+                            })
+                            ->where('status','pending')->orderBy('id','desc')->take('5')->get();
+
+        $premature = PrematureWithdrawal::when($user, function($query, $user)
+                                {
+                                    if($user->role->role !="Administrator"){
+                                        $query->where('branch',$user->branch->branch_name);
+                                    }
+                                    return $query;
+                                })
+                                ->where('status','pending')->orderBy('id','desc')->take('5')->get();
+
         $remittance = INRRemittance::when($user, function($query, $user){
                                 if($user->role->role !="Administrator"){
                                     $query->where('homebranch',$user->branch->branch_name);
@@ -61,44 +76,13 @@ class AdminViewController extends Controller
         return view('admin.forms',compact('user','active','forms'));
     }
 
-    public function getGiftForms(){
-        $active = 'f';
-        $user = $this->authUser();
-        $forms = Gift::where('status','pending')->orderBy('id','desc')->simplePaginate(25);
-        $pforms = Gift::where('status','<>','pending')->Paginate(25);
-        $form = Form::where('model','Gift')->first();
-        return view('admin.forms.gifts',compact('user','active','forms','pforms','form'));
-    }
-
-    public function viewGiftForm(Request $request){
-        $code = $request->code;
-        $cname = $request->cname;
-        $cmobile =$request->cmobile;
-        $caccount = $request->caccount;
-        $bname = $request->bname;
-        $baccount = $request->baccount;
-        $bank = $request->bank;
-        $active = 'f';
-        $user = $this->authUser();
-        $gift = Gift::find($request->id);
-        $form = Form::where('model','Gift')->first();
-        $action = $request->action;
-        return view('admin.forms.giftshow',compact('active','user','gift','form','action','cname','caccount','cmobile','bname','baccount','bank','code'));
-    }
-
-    public function getGiftSearchForm(){
-        $active = 'f';
-        $user = $this->authUser();
-        $form = Form::where('model','Gift')->first();
-        return view('admin.forms.giftsearch',compact('active','user','form'));
-    }
-
     public function getRolesAndForms(){
     	$active = 'raf';
     	$user = $this->authUser();
         $rafs = Role::all();
         $lfs = RoleAndForm::distinct('form_id')->pluck('form_id');
-        $forms = Form::whereNotIn('id',$lfs)->get();
+        // $forms = Form::whereNotIn('id',$lfs)->get();
+        $forms = Form::all();
     	return view('admin.rolesandforms',compact('user','active','rafs','forms'));
     }
 
@@ -119,7 +103,7 @@ class AdminViewController extends Controller
     }
 
     public function getEditUserForm(Request $request){
-        $usr = User::find($request->user_id);
+        $usr = User::findorfail($request->user_id);
         $key = 'edit';
         $roles = Role::all();
         $active = 'u';
@@ -137,7 +121,7 @@ class AdminViewController extends Controller
     }
 
     public function getEditRoleForm(Request $request){
-        $role = Role::find($request->role_id);
+        $role = Role::findorfail($request->role_id);
         $key = 'edit';
         $active = 's';
         $user = $this->authUser();
@@ -153,7 +137,7 @@ class AdminViewController extends Controller
     }
 
     public function getEditFormForm(Request $request){
-        $form = Form::find($request->form_id);
+        $form = Form::findorfail($request->form_id);
         $key = 'edit';
         $active = 's';
         $user = $this->authUser();

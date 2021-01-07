@@ -44,14 +44,12 @@ class INRRemittanceController extends Controller
         $bmobile = $request->bmobile;
         $active = 'f';
         $user = $this->authUser();
-        $sform = INRRemittance::find($request->id);
+        $sform = INRRemittance::findorfail($request->id);
         $form = Form::where('model','INRRemittance')->first();
         $action = $request->action;
-        if($user->role->role != 'Administrator'){
-            if($sform->homebranch != $user->branch->branch_name)
-            {
-                return redirect()->route('dashboard_path')->with(['status'=>'1', 'msg'=>'You do not have Permission to view the requested application.']);
-            }
+        if($user->role->role != 'Administrator' && $sform->homebranch != $user->branch->branch_name)
+        {
+            return redirect()->route('dashboard_path')->with(['status'=>'1', 'msg'=>'You do not have Permission to view the requested application.']);
         }
         return view('admin.forms.inr_remittance_show',compact('active','user','sform','form','action','name','account','mobile','bname','idnumber','code','bmobile'));
     }

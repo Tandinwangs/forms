@@ -52,7 +52,7 @@ class UserController extends Controller
         ]);
         $status = '0';
         $msg = "User could not be updated. Please try again";
-        $user = User::find($request->user_id);
+        $user = User::findorfail($request->user_id);
         $user->name = $request->name;
         $user->username =$request->username;
         $user->email=$request->email;
@@ -83,7 +83,7 @@ class UserController extends Controller
         $msg = 'Current Password did not match the correct password. Please try again.';
         $route = 'change_password_path';
         if(Hash::check($request->currentpassword,Auth::user()->password)){
-            $user = User::find(Auth::id());
+            $user = User::findorfail(Auth::id());
             $user->password = bcrypt($request->password);
             if($user->save()){
                 $status = '1';

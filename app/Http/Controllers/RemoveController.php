@@ -20,7 +20,7 @@ class RemoveController extends Controller
     	$route = 'dashboard_path';
     	if($request->category == 'role')
     	{
-    		$result = Role::find($request->id);
+    		$result = Role::findorfail($request->id);
     		if($result->delete()){
     			$status = '1';
     			$msg = 'Role has been deleted successfully.';
@@ -28,7 +28,7 @@ class RemoveController extends Controller
     		}
     	}
     	elseif ($request->category == 'user') {
-    		$result = User::find($request->id);
+    		$result = User::findorfail($request->id);
     		if($result->delete()){
     			$status = '1';
     			$msg = 'User has been deleted successfully.';
@@ -36,7 +36,7 @@ class RemoveController extends Controller
     		}	
     	}
     	elseif ($request->category == 'form') {
-    		$result = Form::find($request->id);
+    		$result = Form::findorfail($request->id);
     		if($result->delete()){
     			$status = '1';
     			$msg = 'Form has been deleted successfully.';

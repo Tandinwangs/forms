@@ -28,7 +28,7 @@ class RolesAndFormsController extends Controller
     public function unlinkForm(Request $request){
     	$status = '0';
     	$msg = 'Role and Form could not be unlinked.';
-    	$link = RoleAndForm::find($request->link_id);
+    	$link = RoleAndForm::findorfail($request->link_id);
     	if(!blank($link)){
     		if($link->delete()){
 	    		$status = '1';

@@ -48,9 +48,9 @@ Route::get('/BNBL-forms/premature-withdrawal-forms/search-results/', 'PrematureW
 
 
 // Gift Routes
-Route::get('/BNBL-forms/gift-forms', 'AdminViewController@getGiftForms')->name('gift_forms_path');
-Route::get('/BNBL-forms/gift-forms/{id}/{action}', 'AdminViewController@viewGiftForm')->name('show_gift_form_path');
-Route::get('/BNBL-forms/gift-forms/search', 'AdminViewController@getGiftSearchForm')->name('search_gift_form_path');
+Route::get('/BNBL-forms/gift-forms', 'GiftController@getGiftForms')->name('gift_forms_path');
+Route::get('/BNBL-forms/gift-forms/{id}/{action}', 'GiftController@viewGiftForm')->name('show_gift_form_path');
+Route::get('/BNBL-forms/gift-forms/search', 'GiftController@getGiftSearchForm')->name('search_gift_form_path');
 Route::get('/BNBL-forms/gift-forms/search-results/', 'GiftController@searchGift')->name('search_gift_forms_path');
 
 

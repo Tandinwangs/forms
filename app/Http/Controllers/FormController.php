@@ -45,7 +45,7 @@ class FormController extends Controller
     	]);
     	$status = '0';
     	$msg = 'Form could not be updated. Please try again.';
-    	$form = Form::find($request->form_id);
+    	$form = Form::findorfail($request->form_id);
     	if(!blank($form)){
 	    	$form->form = $request->form;
 	    	$form->description = $request->description;

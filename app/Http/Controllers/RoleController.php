@@ -28,7 +28,7 @@ class RoleController extends Controller
     public function updateRole(Request $request){
         $status = '0';
         $msg = 'Role could not be updated. Please try again.';
-        $role = Role::find($request->role_id);
+        $role = Role::findorfail($request->role_id);
         if(!blank($role)){
             $role->role = $request->role;
             $role->description = $request->role_description;
