@@ -40,8 +40,9 @@ class FormsController extends Controller
         Mail::to($email)->send(new FormSubmitted($code_short));
     }
 
-    public function sendNotification($details,$role){
-        $users = User::where('role_id',$role)->get();
+    public function sendNotification($details,$role,$branch){
+        $branch_id = Branch::where('branch_name',$branch)->pluck('id');
+        $users = User::where('role_id',$role)->where('branch_id',$branch_id)->get();
         Mail::to($users)->send(new Notified($details));
     }
 
@@ -176,8 +177,11 @@ class FormsController extends Controller
             $this->sendSMS($mobile,$code);
 
             $f = Form::where('model','INRRemittance')->first();
-            $role = $f->roles->role_id;
-            $this->sendNotification($form,$role);
+            $rids = RoleAndForm::where('form_id',$f->id)->pluck('role_id');
+            
+            foreach ($rids as $rid) {
+                $this->sendNotification($form,$rid,$form->homebranch);
+            }
         }
         return redirect()->route('inr_remittance_form')->with(['status'=>$status, 'msg'=>$msg, 'code'=>$code]);
     }
@@ -222,8 +226,11 @@ class FormsController extends Controller
             $this->sendSMS($mobile,$code);
 
             $f = Form::where('model','PrematureWithdrawal')->first();
-            $role = $f->roles->role_id;
-            $this->sendNotification($form,$role);
+            $rids = RoleAndForm::where('form_id',$f->id)->pluck('role_id');
+            
+            foreach ($rids as $rid) {
+                $this->sendNotification($form,$rid,$form->branch);
+            }
         }
         return redirect()->route('gift_form')->with(['status'=>$status, 'msg'=>$msg, 'code'=>$code]);
         
@@ -240,6 +247,7 @@ class FormsController extends Controller
     		'AccountType' => 'required',
     		'BeneficiaryBankName' => 'required',
     		'Branch' => 'required',
+            'BeneficiaryBranch'=>'required',
     	]);
 
     	$status = '0';
@@ -256,6 +264,8 @@ class FormsController extends Controller
     	$gift->account_type = $request->AccountType;
     	$gift->beneficiary_bank = $request->BeneficiaryBankName;
     	$gift->branch = $request->Branch;
+        $gift->beneficiary_branch = $request->BeneficiaryBranch;
+        
         $gift->status = 'pending';
     	if($gift->save()){
     		$status = '1';
@@ -268,8 +278,11 @@ class FormsController extends Controller
             $this->sendSMS($mobile,$code);
 
             $f = Form::where('model','Gift')->first();
-            $role = $f->roles->role_id;
-            $this->sendNotification($gift,$role);
+            $rids = RoleAndForm::where('form_id',$f->id)->pluck('role_id');
+            
+            foreach ($rids as $rid) {
+                $this->sendNotification($gift,$rid,$gift->branch);
+            }
     	}
     	return redirect()->route('gift_form')->with(['status'=>$status, 'msg'=>$msg, 'code'=>$code]);
     }

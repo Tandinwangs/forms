@@ -61,6 +61,21 @@
                             <br>
                         @enderror
 					</div>
+					<div class="col-md-4 mb-3">
+						<label for="Branch">Home Branch :</label>
+                        <select class="form-control" name="Branch" id="Branch" required="required">
+							<option value="">Choose</option>
+							@foreach($branches as $b)
+								<option {{$b->branch_name == old('Branch') ? 'selected' : ''}}>{{$b->branch_name}}</option>
+							@endforeach
+						</select>
+						@error('Branch')
+                            <span class="bnb-error m-auto">
+                                <small><strong>{{$message}}</strong></small>
+                            </span>
+                            <br>
+                        @enderror
+					</div>
 				</div>
 			</div>		
 		</div>
@@ -118,14 +133,9 @@
                         @enderror
 					</div>
 					<div class="col-md-4 mb-3">
-						<label for="Branch">Home Branch :</label>
-                        <select class="form-control" name="Branch" id="Branch" required="required">
-							<option value="">Choose</option>
-							@foreach($branches as $b)
-								<option {{$b->branch_name == old('Branch') ? 'selected' : ''}}>{{$b->branch_name}}</option>
-							@endforeach
-						</select>
-						@error('Branch')
+						<label for="BeneficiaryBranch">Beneficiary Branch :</label>
+                        <input type="text" name="BeneficiaryBranch" id="BeneficiaryBranch" class="form-control">
+						@error('BeneficiaryBranch')
                             <span class="bnb-error m-auto">
                                 <small><strong>{{$message}}</strong></small>
                             </span>

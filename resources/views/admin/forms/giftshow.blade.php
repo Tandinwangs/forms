@@ -31,6 +31,10 @@
 					<label for="MobileNumber">Mobile Number :</label>
 					<div class="form-control">{{$gift->mobile_no}}</div>
 				</div>
+				<div class="col-md-4 mb-3">
+					<label>Home Branch :</label>
+					<div class="form-control">{{$gift->branch}}</div>
+				</div>
 			</div>
 		</div>		
 	</div>
@@ -57,8 +61,8 @@
 					<div class="form-control">{{$gift->beneficiary_bank}}</div>
 				</div>
 				<div class="col-md-4 mb-3">
-					<label for="Branch">Branch :</label>
-					<div class="form-control">{{$gift->branch}}</div>
+					<label for="BeneficiaryBranch">Beneficiary Branch :</label>
+					<div class="form-control">{{$gift->beneficiary_branch}}</div>
 				</div>
 				<div class="col-md-4 mb-3">
 					<label>Submitted On</label>

@@ -47,23 +47,25 @@
 					<table class="table table-bordered table-hover table-striped">
 						<tr class="table-primary">
 							<th>Amount</th>
-							<th>Charges</th>
+							<th>TT Charges</th>
+							<th>RTGS Charges</th>
 						</tr>
 						<tr>
-							<td>Up to 14000</td>
-							<td>35</td>
+							<td>Less than Nu.100,000</td>
+							<td>Nu.55</td>
+							<td rowspan="3">TT Charges + Nu.100</td>
 						</tr>
 						<tr>
-							<td>Above 14,000 up to  100,000</td>
-							<td>2.5 per 1000</td>
+							<td>Upto  Nu.1,000,000</td>
+							<td>0.20% of TT amount + Nu.20</td>
 						</tr>
 						<tr>
-							<td>Above 100,000 up to 1,000,000</td>
-							<td>2 per 1000</td>
-						</tr>
-						<tr>
-							<td>Above 1,000,000</td>
-							<td>1.75 per (Min 2000)</td>
+							<td>More than Nu.1,000,000</td>
+							<td>
+								0.175% of TT amount + Nu.20
+								<br>
+								(Minimum Nu.2,000 and Maximum Nu.15,000)
+							</td>
 						</tr>
 					</table>
 				</div>
