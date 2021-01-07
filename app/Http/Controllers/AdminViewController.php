@@ -81,8 +81,8 @@ class AdminViewController extends Controller
     	$user = $this->authUser();
         $rafs = Role::all();
         $lfs = RoleAndForm::distinct('form_id')->pluck('form_id');
-        $forms = Form::whereNotIn('id',$lfs)->get();
-        // $forms = Form::all();
+        //$forms = Form::whereNotIn('id',$lfs)->get();
+        $forms = Form::all();
     	return view('admin.rolesandforms',compact('user','active','rafs','forms'));
     }
 
