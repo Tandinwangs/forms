@@ -9,8 +9,6 @@
 	<link href="{{asset('/css/style.css')}}" rel="stylesheet" />
 	<link href="{{asset('/css/bootstrap.min.css')}}" rel="stylesheet" />
 	<link href="{{asset('/css/all.min.css')}}" rel="stylesheet" />
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script> 
 </head>
 <body class="reed">
 	<div class="container p-2">
@@ -41,6 +39,8 @@
 			</div>		
 		</div>
 	</div>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script> 
 	<script src="{{ asset('js/bootstrap.min.js') }}"></script>
 	<script src="{{ asset('js/alert.js') }}"></script>
 	<script src="{{ asset('js/jq.js') }}"></script>
