@@ -21,7 +21,7 @@ class PrematureWithdrawalController extends Controller
     public function getForms(){
         $active = 'f';
         $user = $this->authUser();
-        if($user->role->role == 'Administrator'){
+        if($user->role->role == 'Administrator' || $user->role->role == 'Monitor'){
             $forms = PrematureWithdrawal::where('status','pending')->orderBy('id','desc')->simplePaginate(25);
             $pforms = PrematureWithdrawal::where('status','<>','pending')->Paginate(25);
         }
@@ -45,7 +45,7 @@ class PrematureWithdrawalController extends Controller
         $sform = PrematureWithdrawal::findorfail($request->id);
         $form = Form::where('model','PrematureWithdrawal')->first();
         $action = $request->action;
-        if($user->role->role != 'Administrator' && $sform->branch != $user->branch->branch_name){
+        if($user->role->role != 'Administrator' && $user->role->role != 'Monitor' && $sform->branch != $user->branch->branch_name){
             return redirect()->route('dashboard_path')->with(['status'=>'1', 'msg'=>'You do not have Permission to view the requested application.']);
         }
         return view('admin.forms.premature_withdrawal_show',compact('active','user','sform','form','action','name','account','mobile','fdrdaccount','idnumber','code'));
@@ -90,7 +90,7 @@ class PrematureWithdrawalController extends Controller
                     return $query->where('code', $code);
                 })
                 ->when($user, function ($query, $user) {
-                    if($user->role->role != 'Administrator'){
+                    if($user->role->role != 'Administrator' && $user->role->role != 'Monitor'){
                         $query->where('branch',$user->branch->branch_name);
                     }
                     return $query;

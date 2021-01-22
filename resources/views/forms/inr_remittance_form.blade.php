@@ -87,7 +87,7 @@
                         @enderror
 					</div>
 					<div class="col-md-4 mb-3">
-						<label for="HomeBranch">Your Home Branch:</label>
+						<label for="HomeBranch">In which branch did you open your account?</label>
 						<select class="form-control" name="HomeBranch" id="HomeBranch" required="required">
 							<option value="">Choose</option>
 							@foreach($branches as $b)
@@ -101,6 +101,7 @@
                             </span>
                             <br>
                         @enderror
+                        <small class="input-description">Please select the branch where your account is maintained.</small>
 					</div>
 					<div class="col-md-4 mb-3">
 						<label for="AccountNumber">Your Account Number:</label>

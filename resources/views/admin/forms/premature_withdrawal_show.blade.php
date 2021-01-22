@@ -53,7 +53,7 @@
 				</div>
 				<div class="col-md-6 mb-3">
 					<label for="MobileNumber">Your Feedback :</label>
-					<div class="form-control-custom">{{$sform->feedback}}</div>
+					<div class="form-control-custom">{{!blank($sform->feedback) ? $sform->feedback : 'Feedback was not provided by the customer'}}</div>
 				</div>
 			</div>
 			@if($sform->status != 'pending')
@@ -90,32 +90,37 @@
 			
 			<div class="row">
 				@if($sform->status == 'pending')
-					<div class="col-sm-4 mb-3">
+					<div class="col-sm-3 mb-3">
 						<a href="#" class="btn btn-block btn-success" data-toggle="modal" data-target="#statusModal" data-id="{{ $sform->id }}" data-name="{{ $form->form }}" data-category="premature-withdrawal{{$action != 'show'?'-search':''}}" data-action="approve">
 							Approve Request
 						</a>
 					</div>
-					<div class="col-sm-4 mb-3">
+					<div class="col-sm-3 mb-3">
 						<a href="#" class="btn btn-block btn-danger" data-toggle="modal" data-target="#statusModal" data-id="{{ $sform->id }}" data-name="{{ $form->form }}" data-category="premature-withdrawal{{$action != 'show'?'-search':''}}" data-action="reject">
 							Decline Request
 						</a>
 					</div>
+					<div class="col-sm-3 mb-3">
+						<a href="#" class="btn btn-block btn-info" data-toggle="modal" data-target="#statusModal" data-id="{{ $sform->id }}" data-name="{{ $form->form }}" data-category="premature-withdrawal" data-action="change">
+							Transfer Branch
+						</a>
+					</div>
 				@else
-					<div class="col-sm-4 mb-3">
+					<div class="col-sm-3 mb-3">
 						<a href="#" class="btn btn-block btn-danger" data-toggle="modal" data-target="#statusModal" data-id="{{ $sform->id }}" data-name="{{ $form->form }}" data-category="premature-withdrawal{{$action != 'show'?'-search':''}}" data-action="pending">
 							Mark as Pending
 						</a>
 					</div>
 				@endif
 						
-				<div class="col-sm-4 {{$sform->status != 'pending' ? 'offset-sm-4' : ''}}">
+				<div class="col-sm-3 {{$sform->status != 'pending' ? 'offset-sm-6' : ''}}">
 					@if($action == 'show')
 						<a href="{{route('premature_withdrawal_forms_path')}}" class="btn btn-primary btn-block">
-							Back to Premature Withdrawal Forms
+							Back
 						</a>
 					@else
 						<a href="{{route('search_premature_withdrawal_forms_path',['Name'=>$name,'SavingAccountNumber'=>$account,'MobileNumber'=>$mobile,'FdRdAccountNumber'=>$fdrdaccount,'IdNumber'=>$idnumber,'Code'=>$code])}}" class="btn btn-primary btn-block">
-							Back to Search Results
+							Back
 						</a>
 					@endif
 				</div>

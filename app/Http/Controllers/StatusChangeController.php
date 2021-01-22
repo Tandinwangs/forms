@@ -89,6 +89,14 @@ class StatusChangeController extends Controller
                 }
             }
         }
+        elseif ($request->action == 'change') {
+            if($request->category == 'inr-remittance'){
+                $form->homebranch = $request->branch;
+            }
+            else{
+                $form->branch = $request->branch;
+            }
+        }
         else{
             $form->status = 'pending';
             $form->action_date = Carbon::now();

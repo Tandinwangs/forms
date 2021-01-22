@@ -21,7 +21,7 @@ class INRRemittanceController extends Controller
     public function getForms(){
         $active = 'f';
         $user = $this->authUser();
-        if($user->role->role == 'Administrator'){
+        if($user->role->role == 'Administrator' || $user->role->role == 'Monitor'){
             $forms = INRRemittance::where('status','pending')->orderBy('id','desc')->simplePaginate(25);
             $pforms = INRRemittance::where('status','<>','pending')->Paginate(25);
         }
@@ -47,7 +47,7 @@ class INRRemittanceController extends Controller
         $sform = INRRemittance::findorfail($request->id);
         $form = Form::where('model','INRRemittance')->first();
         $action = $request->action;
-        if($user->role->role != 'Administrator' && $sform->homebranch != $user->branch->branch_name)
+        if($user->role->role != 'Administrator' && $user->role->role != 'Monitor' && $sform->homebranch != $user->branch->branch_name)
         {
             return redirect()->route('dashboard_path')->with(['status'=>'1', 'msg'=>'You do not have Permission to view the requested application.']);
         }
@@ -96,7 +96,7 @@ class INRRemittanceController extends Controller
                     return $query->where('beneficiarymobilenumber','like','%'.$bmobile.'%');
                 })
                 ->when($user, function ($query, $user) {
-                    if($user->role->role != 'Administrator'){
+                    if($user->role->role != 'Administrator' && $user->role->role != 'Monitor'){
                         $query->where('homebranch',$user->branch->branch_name);
                     }
                     return $query;

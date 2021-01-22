@@ -17,6 +17,7 @@
 				<table class="table table-striped table-bordered table-hover table-responsive-md table-sm">
 				    <thead class="bg-bnb">
 				      	<tr>
+				      		<th>#</th>
 				        	<th>Code</th>
 				        	<th>Customer Name</th>
 				        	<th>Account Number</th>
@@ -27,8 +28,12 @@
 				      	</tr>
 				    </thead>
 				    <tbody>
+				    	@php
+				    	 	$i=0
+				    	@endphp
 				    	@foreach($forms as $f)
 						    <tr>
+						    	<td><small>{{++$i}}</small></td>
 						       	<td><small>{{$f->code}}</small></td>
 						       	<td>{{$f->name}}</td>
 						       	<td>{{$f->account_number}}</td>
@@ -60,6 +65,7 @@
 				<table class="table table-striped table-bordered table-hover table-responsive-md table-sm">
 				    <thead class="bnb-y">
 				      	<tr>
+				      		<th>#</th>
 				        	<th>Code</th>
 				        	<th>Customer Name</th>
 				        	<th>Mobile Number</th>
@@ -71,8 +77,12 @@
 				      	</tr>
 				    </thead>
 				    <tbody>
+				    	@php
+				    	 	$i=0
+				    	@endphp
 				    	@foreach($pforms as $f)
 						    <tr>
+						    	<td><small>{{++$i}}</small></td>
 						       	<td><small>{{$f->code}}</small></td>
 						       	<td>{{$f->name}}</td>
 						       	<td>{{$f->mobile_no}}</td>

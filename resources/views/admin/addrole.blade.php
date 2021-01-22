@@ -67,7 +67,7 @@
 				        </td>
 			        	<td>{{$r->description}}</td>
 			        	<td class="text-center">
-			        		@if($r->role != 'Administrator')
+			        		@if($r->role != 'Administrator' && $r->role != 'Monitor')
 			        		<div class="btn-group">
 			        			<a href="{{ route('edit_role_path',$r->id) }}" class="btn btn-primary btn-sm">Edit</a>
 			        			<a href="" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deleteModal" data-id="{{ $r->id }}" data-name="{{ $r->role }}" data-category="role">Delete</a>

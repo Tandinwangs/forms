@@ -21,7 +21,7 @@ class GiftController extends Controller
     public function getGiftForms(){
         $active = 'f';
         $user = $this->authUser();
-        if($user->role->role == 'Administrator'){
+        if($user->role->role == 'Administrator' || $user->role->role == 'Monitor'){
             $forms = Gift::where('status','pending')->orderBy('id','desc')->simplePaginate(25);
             $pforms = Gift::where('status','<>','pending')->Paginate(25);
         }
@@ -46,7 +46,7 @@ class GiftController extends Controller
         $gift = Gift::findorfail($request->id);
         $form = Form::where('model','Gift')->first();
         $action = $request->action;
-        if($user->role->role != 'Administrator' && $gift->branch != $user->branch->branch_name)
+        if($user->role->role != 'Administrator' && $user->role->role != 'Monitor' && $gift->branch != $user->branch->branch_name)
         {
             return redirect()->route('dashboard_path')->with(['status'=>'1', 'msg'=>'You do not have Permission to view the requested application.']);
         }
@@ -94,7 +94,7 @@ class GiftController extends Controller
                     return $query->where('code', $code);
                 })
                 ->when($user, function ($query, $user) {
-                    if($user->role->role != 'Administrator'){
+                    if($user->role->role != 'Administrator' && $user->role->role != 'Monitor'){
                         $query->where('branch',$user->branch->branch_name);
                     }
                     return $query;

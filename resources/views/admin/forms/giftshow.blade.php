@@ -104,31 +104,36 @@
 			@endif
 			<div class="row">
 				@if($gift->status == 'pending')
-					<div class="col-sm-4 mb-3">
+					<div class="col-sm-3 mb-3">
 						<a href="#" class="btn btn-block btn-success" data-toggle="modal" data-target="#statusModal" data-id="{{ $gift->id }}" data-name="{{ $form->form }}" data-category="gift{{$action != 'show'?'-search':''}}" data-action="approve">
 							Approve Request
 						</a>
 					</div>
-					<div class="col-sm-4 mb-3">
+					<div class="col-sm-3 mb-3">
 						<a href="#" class="btn btn-block btn-danger" data-toggle="modal" data-target="#statusModal" data-id="{{ $gift->id }}" data-name="{{ $form->form }}" data-category="gift{{$action != 'show'?'-search':''}}" data-action="reject">
 							Decline Request
 						</a>
 					</div>
+					<div class="col-sm-3 mb-3">
+						<a href="#" class="btn btn-block btn-info" data-toggle="modal" data-target="#statusModal" data-id="{{ $gift->id }}" data-name="{{ $form->form }}" data-category="gift" data-action="change">
+							Transfer Branch
+						</a>
+					</div>
 				@else
-					<div class="col-sm-4 mb-3">
+					<div class="col-sm-3 mb-3">
 						<a href="#" class="btn btn-block btn-danger" data-toggle="modal" data-target="#statusModal" data-id="{{ $gift->id }}" data-name="{{ $form->form }}" data-category="gift{{$action != 'show'?'-search':''}}" data-action="pending">
 							Mark as Pending
 						</a>
 					</div>
 				@endif
-				<div class="col-sm-4 {{$gift->status != 'pending' ? 'offset-sm-4' : ''}} mb-3">
+				<div class="col-sm-3 {{$gift->status != 'pending' ? 'offset-sm-6' : ''}} mb-3">
 					@if($action == 'show')
 						<a href="{{route('gift_forms_path')}}" class="btn btn-primary btn-block">
-							Back to Gift Forms
+							Back
 						</a>
 					@else
 						<a href="{{route('search_gift_forms_path',['Code'=>$code,'Name'=>$cname,'AccountNumber'=>$caccount,'MobileNumber'=>$cmobile,'BeneficiaryName'=>$bname,'BeneficiaryAccountNumber'=>$baccount,'BeneficiaryBankName'=>$bank])}}" class="btn btn-primary btn-block">
-							Back to Search Results
+							Back
 						</a>
 					@endif
 				</div>

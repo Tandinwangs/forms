@@ -12,6 +12,8 @@
 				Your request shall be processed only after it is validated by our operations team, by cross-checking in our systems the combination of your name, account number, mobile number, ID number and email ID. If required, you may be contacted to validate the request. Upon validation, your request will be processed and the proceeds of your deposit, along with the applicable interest if any, shall be credited to your savings account. 
 				<br><br>
 				You must note that the interest payable for premature closures is re-calculated , and the rate used is 1% less that the rate applicable for the period the deposit has been maintained at the bank. Example: If you opened a deposit account for 5 years at 8% per annum, but you want to close it after 1 year, the interest you get will be calculated at 5% pa (rate for 1 year being 6% per annum).
+				<br><br>
+				The request shall be processed only after validating your request, by verifying in our systems the combination of your name, account number, mobile number, ID number and email ID. If required, you may be contacted to validate the request. 
 			</p>
 		</div>		
 	</div>
@@ -102,8 +104,8 @@
                             <br>
                         @enderror
 					</div>
-					<div class="col-md-4 mb-3">
-						<label for="Branch">Branch :</label>
+					<div class="col-md-5 mb-3">
+						<label for="Branch">In which branch did you open your account?</label>
 						<select class="form-control" name="Branch" id="Branch">
 							<option value="">Choose</option>
 							@foreach($branches as $b)

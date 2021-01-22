@@ -59,6 +59,7 @@
 				<table class="table table-striped table-bordered table-hover table-responsive-md table-sm">
 				    <thead class="bg-bnb">
 				      	<tr>
+				      		<th>#</th>
 				        	<th>Code</th>
 				        	<th>Customer Name</th>
 				        	<th>FD/FD+/RD Account</th>
@@ -71,8 +72,12 @@
 				      	</tr>
 				    </thead>
 				    <tbody>
+				    	@php
+							$i=0
+						@endphp
 				    	@foreach($forms as $f)
 						    <tr>
+						    	<td><small>{{++$i}}</small></td>
 						       	<td><small>{{$f->code}}</small></td>
 						       	<td>{{$f->name}}</td>
 						       	<td>{{$f->tdrd_account_number}}</td>

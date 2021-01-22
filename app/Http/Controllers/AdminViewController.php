@@ -29,7 +29,7 @@ class AdminViewController extends Controller
         $user = $this->authUser();
         $active = 'db';
         $gifts = Gift::when($user, function($query, $user){
-                                if($user->role->role !="Administrator"){
+                                if($user->role->role !="Administrator" && $user->role->role !="Monitor"){
                                     $query->where('branch',$user->branch->branch_name);
                                 }
                                 return $query;
@@ -38,7 +38,7 @@ class AdminViewController extends Controller
 
         $premature = PrematureWithdrawal::when($user, function($query, $user)
                                 {
-                                    if($user->role->role !="Administrator"){
+                                    if($user->role->role !="Administrator" && $user->role->role !="Monitor"){
                                         $query->where('branch',$user->branch->branch_name);
                                     }
                                     return $query;
@@ -46,13 +46,13 @@ class AdminViewController extends Controller
                                 ->where('status','pending')->orderBy('id','desc')->take('5')->get();
 
         $remittance = INRRemittance::when($user, function($query, $user){
-                                if($user->role->role !="Administrator"){
+                                if($user->role->role !="Administrator" && $user->role->role !="Monitor"){
                                     $query->where('homebranch',$user->branch->branch_name);
                                 }
                                 return $query;
                             })
                         ->where('status','pending')->orderBy('id','desc')->take('5')->get();
-        if($user->role->role == 'Administrator')
+        if($user->role->role == 'Administrator' || $user->role->role == 'Monitor')
         {
             $form_id = Form::pluck('id');
         }
@@ -66,7 +66,7 @@ class AdminViewController extends Controller
     public function getForms(){
         $active = 'f';
         $user = $this->authUser();
-        if($user->role->role == 'Administrator')
+        if($user->role->role == 'Administrator' || $user->role->role == 'Monitor')
         {
             $forms = Form::all();
         }

@@ -8,6 +8,8 @@
 	        @endif
 			<p class="form-description-raleway mb-3">
 				This funds transfer transaction is solely affected based on the account number of the beneficiary and amounts furnished by you on this form. The bank shall not be held liable for any incorrect details that you have provided on the form, and the transaction shall be affected at your sole risk & responsibility.
+				<br><br>
+				The request shall be processed only after validating your request, by verifying in our systems the combination of your name, account number, mobile number, ID number and email ID. If required, you may be contacted to validate the request. 
 			</p>
 		</div>		
 	</div>
@@ -61,8 +63,8 @@
                             <br>
                         @enderror
 					</div>
-					<div class="col-md-4 mb-3">
-						<label for="Branch">Home Branch :</label>
+					<div class="col-md-5 mb-3">
+						<label for="Branch">In which branch did you open your account?</label>
                         <select class="form-control" name="Branch" id="Branch" required="required">
 							<option value="">Choose</option>
 							@foreach($branches as $b)

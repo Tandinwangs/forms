@@ -3,7 +3,7 @@
 	<div class="row">
 		<div class="container-flexible bnb-border mb-2 p-5 form-description-raleway">
 			<div class="row">
-				@if($user->role->role == 'Administrator')
+				@if($user->role->role == 'Administrator' || $user->role->role == 'Monitor')
 					@foreach($forms as $f)
 						<div class="col-md-6 mb-3">
 							<a href="{{route($f->form_path)}}" class="no-decoration">
