@@ -88,7 +88,7 @@ Route::get('/otp', 'AdminViewBeforeLoginController@getOTPForm')->name('otp_path'
 Route::post('/otp/verify-user-name', 'AdminViewBeforeLoginController@verifyUserName')->name('verify_username_path');
 Route::post('/otp/verify-otp', 'AdminViewBeforeLoginController@verifyOTP')->name('verify_otp_path');
 
-Auth::routes();
+Auth::routes(['register'=>false,'reset'=>false,'verify'=>false]);
 
 // Route::get('/home', 'HomeController@index')->name('home');
 Route::delete('/remove-components', 'RemoveController@removeComponents')->name('remove_components_path')->middleware('role');
