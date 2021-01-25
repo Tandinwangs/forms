@@ -103,28 +103,30 @@
 				</div>
 			@endif
 			<div class="row">
-				@if($gift->status == 'pending')
-					<div class="col-sm-3 mb-3">
-						<a href="#" class="btn btn-block btn-success" data-toggle="modal" data-target="#statusModal" data-id="{{ $gift->id }}" data-name="{{ $form->form }}" data-category="gift{{$action != 'show'?'-search':''}}" data-action="approve">
-							Approve Request
-						</a>
-					</div>
-					<div class="col-sm-3 mb-3">
-						<a href="#" class="btn btn-block btn-danger" data-toggle="modal" data-target="#statusModal" data-id="{{ $gift->id }}" data-name="{{ $form->form }}" data-category="gift{{$action != 'show'?'-search':''}}" data-action="reject">
-							Decline Request
-						</a>
-					</div>
-					<div class="col-sm-3 mb-3">
-						<a href="#" class="btn btn-block btn-info" data-toggle="modal" data-target="#statusModal" data-id="{{ $gift->id }}" data-name="{{ $form->form }}" data-category="gift" data-action="change">
-							Transfer Branch
-						</a>
-					</div>
-				@else
-					<div class="col-sm-3 mb-3">
-						<a href="#" class="btn btn-block btn-danger" data-toggle="modal" data-target="#statusModal" data-id="{{ $gift->id }}" data-name="{{ $form->form }}" data-category="gift{{$action != 'show'?'-search':''}}" data-action="pending">
-							Mark as Pending
-						</a>
-					</div>
+				@if($user->role->role != 'Monitor')
+					@if($gift->status == 'pending')
+						<div class="col-sm-3 mb-3">
+							<a href="#" class="btn btn-block btn-success" data-toggle="modal" data-target="#statusModal" data-id="{{ $gift->id }}" data-name="{{ $form->form }}" data-category="gift{{$action != 'show'?'-search':''}}" data-action="approve">
+								Approve Request
+							</a>
+						</div>
+						<div class="col-sm-3 mb-3">
+							<a href="#" class="btn btn-block btn-danger" data-toggle="modal" data-target="#statusModal" data-id="{{ $gift->id }}" data-name="{{ $form->form }}" data-category="gift{{$action != 'show'?'-search':''}}" data-action="reject">
+								Decline Request
+							</a>
+						</div>
+						<div class="col-sm-3 mb-3">
+							<a href="#" class="btn btn-block btn-info" data-toggle="modal" data-target="#statusModal" data-id="{{ $gift->id }}" data-name="{{ $form->form }}" data-category="gift" data-action="change">
+								Transfer Branch
+							</a>
+						</div>
+					@else
+						<div class="col-sm-3 mb-3">
+							<a href="#" class="btn btn-block btn-danger" data-toggle="modal" data-target="#statusModal" data-id="{{ $gift->id }}" data-name="{{ $form->form }}" data-category="gift{{$action != 'show'?'-search':''}}" data-action="pending">
+								Mark as Pending
+							</a>
+						</div>
+					@endif
 				@endif
 				<div class="col-sm-3 {{$gift->status != 'pending' ? 'offset-sm-6' : ''}} mb-3">
 					@if($action == 'show')
