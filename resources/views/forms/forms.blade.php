@@ -37,7 +37,7 @@
 				</div>
 
 				<div class="col-md-6 mb-3">
-					<a href="https://www.bnb.bt/new-atm-debit-card/" class="no-decoration">
+					<a href="https://www.bnb.bt/duplicate-debit-card/" class="no-decoration">
 						<div class="form-container">
 							<h1>Duplicate ATM/Debit Card Online Application</h1>
 							<hr>
