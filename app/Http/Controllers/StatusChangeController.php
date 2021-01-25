@@ -6,13 +6,19 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Http;
 
+use App\Form;
 use App\Gift;
+use App\Branch;
+use App\User;
+use App\RoleAndForm;
 use App\PrematureWithdrawal;
 use App\Mail\FormStatusChanged;
 use App\INRRemittance;
 use App\Notifier;
 use Carbon\Carbon;
 use Auth;
+
+use App\Mail\Notified;
 
 class StatusChangeController extends Controller
 {
@@ -43,6 +49,12 @@ class StatusChangeController extends Controller
     // function to send email
     public function sendEmail($email,$code,$status,$reason = null){
         Mail::to($email)->send(new FormStatusChanged($code,$status,$reason));
+    }
+
+    public function sendNotification($details,$role,$branch){
+        $branch_id = Branch::where('branch_name',$branch)->pluck('id');
+        $users = User::where('role_id',$role)->where('branch_id',$branch_id)->get();
+        Mail::to($users)->send(new Notified($details));
     }
     
     public function changeStatus(Request $request){
@@ -92,9 +104,23 @@ class StatusChangeController extends Controller
         elseif ($request->action == 'change') {
             if($request->category == 'inr-remittance'){
                 $form->homebranch = $request->branch;
+                $f = Form::where('model','INRRemittance')->first();
             }
-            else{
+            elseif($request->category == 'gift')
+            {
                 $form->branch = $request->branch;
+                $f = Form::where('model','Gift')->first();
+            }
+            elseif($request->category == 'premature-withdrawal')
+            {
+                $form->branch = $request->branch;
+                $f = Form::where('model','PrematureWithdrawal')->first();
+            }
+
+            $rids = RoleAndForm::where('form_id',$f->id)->pluck('role_id');
+                
+            foreach ($rids as $rid) {
+                $this->sendNotification($form,$rid,$request->branch);
             }
         }
         else{
