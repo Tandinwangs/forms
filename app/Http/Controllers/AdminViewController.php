@@ -56,7 +56,7 @@ class AdminViewController extends Controller
 
         $debitcards = DebitCardRequest::when($user, function($query, $user){
                                 if($user->role->role !="Administrator" && $user->role->role !="Monitor"){
-                                    $query->where('homebranch',$user->branch->branch_name);
+                                    $query->where('branch',$user->branch->branch_name);
                                 }
                                 return $query;
                             })
