@@ -11,7 +11,7 @@
   	margin: 0;
 }
 @media print{
-	.navbar,.modal,.bnb-border-footer,.btn{
+	.navbar,.modal,.bnb-border-footer,.btn,.inner-container{
 		display: none;
 	}	
 	.text-bnb-b{

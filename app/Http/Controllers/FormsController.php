@@ -349,6 +349,6 @@ class FormsController extends Controller
                 $this->sendNotification($form,$rid,$form->branch);
             }
         }
-        return redirect()->route('gift_form')->with(['status'=>$status, 'msg'=>$msg, 'code'=>$code]);
+        return redirect()->route('debit_card_form')->with(['status'=>$status, 'msg'=>$msg, 'code'=>$code]);
     }
 }

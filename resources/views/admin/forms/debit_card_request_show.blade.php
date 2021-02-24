@@ -141,7 +141,7 @@
 						Print Form
 					</button>
 				</div>	
-				<div class="col-sm-3 {{$sform->status != 'pending' ? 'offset-sm-6' : ''}}">
+				<div class="col-sm-3 {{$sform->status != 'pending' ? 'offset-sm-3' : ''}}">
 					@if($action == 'show')
 						<a href="{{route('debit_card_request_forms_path')}}" class="btn btn-primary btn-block">
 							Back
