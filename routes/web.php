@@ -29,6 +29,9 @@ Route::post('/forms/gift_form', 'FormsController@submitGiftForm')->name('submit_
 Route::get('/forms/premature-withdrawal-form', 'FormsController@getPrematureWithdrawalForm')->name('premature_withdrawal_form');
 Route::post('/forms/premature-withdrawal-form', 'FormsController@submitPrematureWithdrawalForm')->name('submit_premature_withdrawal_form');
 
+Route::get('/forms/debit-card-form', 'FormsController@getDebitCardForm')->name('debit_card_form');
+Route::post('/forms/debit-card-form', 'FormsController@submitDebitCardForm');
+
 // admin routes
 Route::get('/dashboard', 'AdminViewController@getDashboard')->name('dashboard_path');
 Route::get('/BNBL-forms', 'AdminViewController@getForms')->name('forms_path');
@@ -52,6 +55,12 @@ Route::get('/BNBL-forms/gift-forms', 'GiftController@getGiftForms')->name('gift_
 Route::get('/BNBL-forms/gift-forms/{id}/{action}', 'GiftController@viewGiftForm')->name('show_gift_form_path');
 Route::get('/BNBL-forms/gift-forms/search', 'GiftController@getGiftSearchForm')->name('search_gift_form_path');
 Route::get('/BNBL-forms/gift-forms/search-results/', 'GiftController@searchGift')->name('search_gift_forms_path');
+
+// Debit Card Request Route
+Route::get('/BNBL-forms/debit-card-forms', 'DebitCardRequestController@getForms')->name('debit_card_request_forms_path');
+Route::get('/BNBL-forms/debit-card-forms/{id}/{action}', 'DebitCardRequestController@viewForm')->name('show_debit_card_request_form_path');
+Route::get('/BNBL-forms/debit-card-forms/search', 'DebitCardRequestController@getSearchForm')->name('search_debit_card_request_form_path');
+Route::get('/BNBL-forms/debit-card-forms/search-results', 'DebitCardRequestController@searchForm')->name('search_debit_card_request_forms_path');
 
 
 // Other Admin Routes

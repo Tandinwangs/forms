@@ -11,6 +11,7 @@ use App\Gift;
 use App\Form;
 use App\PrematureWithdrawal;
 use App\INRRemittance;
+use App\DebitCardRequest;
 use App\RoleAndForm;
 use App\Notifier;
 use App\User;
@@ -53,12 +54,12 @@ class FormsController extends Controller
     }
 
     public function getPrematureWithdrawalForm(){
-        $branches = Branch::all();
+        $branches = Branch::where('category','branch')->get();
         return view('forms.premature_withdrawal_form',compact('branches'));
     }
 
     public function getINRRemittanceForm(){
-    	$branches = Branch::all();
+    	$branches = Branch::where('category','branch')->get();
     	return view('forms.inr_remittance_form',compact('branches'));
     }
 
@@ -67,8 +68,13 @@ class FormsController extends Controller
     }
 
     public function getGiftForm(){
-    	$branches = Branch::all();
+    	$branches = Branch::where('category','branch')->get();
     	return view('forms.gift',compact('branches'));
+    }
+
+    public function getDebitCardForm(){
+        $branches = Branch::all();
+        return view('forms.debit_card_form',compact('branches'));
     }
 
 
@@ -285,5 +291,64 @@ class FormsController extends Controller
             }
     	}
     	return redirect()->route('gift_form')->with(['status'=>$status, 'msg'=>$msg, 'code'=>$code]);
+    }
+
+    public function submitDebitCardForm(Request $request){
+        $request->validate([
+            'Name'=>'required',
+            'CID'=>'required',
+            'Nationality'=>'required',
+            'MobileNumber'=>'required|digits:8',
+            'Email'=>'required',
+            'DoB'=>'required',
+            'PresentAddress'=>'required',
+            'CardType'=>'required',
+            'RequestFor'=>'required',
+            'Branch'=>'required',
+            'NameOnCard'=>'required|regex:/^[A-Za-z ]+$/|max:20',
+            'AccountNumber'=>'required',
+            'AccountType'=>'required',
+            'ReasonForReplacement'=>'required_if:RequestFor,Replacement',
+            'Agreement'=>'regex:/^agree$/',
+        ]);
+        $status = '0';
+        $code = null;
+        $msg = 'Debit Card Request Form could not be submitted. Please try again.';
+        $form = new DebitCardRequest;
+        $form->code = 'DCR/'.date_format(Carbon::now(),'Y/m/d/His');
+        $form->name = $request->Name;
+        $form->mobile_no = '975'.$request->MobileNumber;
+        $form->email = $request->Email;
+        $form->cid = $request->CID;
+        $form->branch = $request->Branch;
+        $form->account_number = $request->AccountNumber;
+        $form->reason = $request->Reason;
+        $form->account_type = $request->AccountType;
+        $form->nationality = $request->Nationality;
+        $form->dob = $request->DoB;
+        $form->address = $request->PresentAddress;
+        $form->debit_card_type = $request->CardType;
+        $form->request_for = $request->RequestFor;
+        $form->name_on_card = $request->NameOnCard;
+        $form->reason = $request->ReasonForReplacement;
+        $form->status = 'pending';
+        if($form->save()){
+            $status = '1';
+            $msg = 'Debit Card Request Form has been submitted successfully to the bank.';
+            $code_short = $form->code;
+            $code = "Form: $form->code has been submitted to the bank for processing. The form status will be notified via SMS & email.";
+            $mobile = $form->mobile_no;
+            
+            $this->sendEmail($form->email,$code_short);
+            $this->sendSMS($form,$code);
+
+            $f = Form::where('model','DebitCardRequest')->first();
+            $rids = RoleAndForm::where('form_id',$f->id)->pluck('role_id');
+            
+            foreach ($rids as $rid) {
+                $this->sendNotification($form,$rid,$form->branch);
+            }
+        }
+        return redirect()->route('gift_form')->with(['status'=>$status, 'msg'=>$msg, 'code'=>$code]);
     }
 }

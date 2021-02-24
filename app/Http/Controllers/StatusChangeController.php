@@ -14,6 +14,7 @@ use App\RoleAndForm;
 use App\PrematureWithdrawal;
 use App\Mail\FormStatusChanged;
 use App\INRRemittance;
+use App\DebitCardRequest;
 use App\Notifier;
 use Carbon\Carbon;
 use Auth;
@@ -70,6 +71,9 @@ class StatusChangeController extends Controller
         }
         elseif ($request->category == 'inr-remittance'||$request->category == 'inr-remittance-search') {
             $form = INRRemittance::findorfail($request->id);
+        }
+        elseif ($request->category == 'debit-card-request' || $request->category == 'debit-card-request-search') {
+            $form = DebitCardRequest::findorfail($request->id);
         }
         
         if($request->action == 'approve')
@@ -152,6 +156,13 @@ class StatusChangeController extends Controller
             elseif ($request->category == 'inr-remittance-search'){
                 $params = [$request->id,'search-show'];
                 $route = 'show_inr_remittance_form_path';
+            }
+            elseif ($request->category == 'debit-card-request'){
+                $route = 'debit_card_request_forms_path';
+            }
+            elseif ($request->category == 'debit-card-request-search'){
+                $params = [$request->id,'search-show'];
+                $route = 'show_debit_card_request_form_path';
             }
         }
 

@@ -1,0 +1,33 @@
+@font-face{
+	font-family: rw;
+	src:url('../fonts/Raleway-Regular.ttf');
+}
+@font-face{
+	font-family: cg;
+	src:url('../fonts/Century Gothic Regular.TTF');
+}
+ @page {
+  	size: auto;
+  	margin: 0;
+}
+@media print{
+	.navbar,.modal,.bnb-border-footer,.btn{
+		display: none;
+	}	
+	.text-bnb-b{
+		color: #26578c;
+	}
+	/*body{
+		font-family: cg;
+	}*/
+	.set-width{
+		width: 33% !important;
+	}
+	.no-mb{
+		margin-bottom: 0 !important;
+	}
+	.print{
+		display: inline-block;
+	}
+	.pagebreak { page-break-after: always; }
+}

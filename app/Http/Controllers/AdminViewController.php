@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\PrematureWithdrawal;
 use App\INRRemittance;
+use App\DebitCardRequest;
 use App\RoleAndForm;
 use App\User;
 use App\Gift;
@@ -52,6 +53,15 @@ class AdminViewController extends Controller
                                 return $query;
                             })
                         ->where('status','pending')->orderBy('id','desc')->take('5')->get();
+
+        $debitcards = DebitCardRequest::when($user, function($query, $user){
+                                if($user->role->role !="Administrator" && $user->role->role !="Monitor"){
+                                    $query->where('homebranch',$user->branch->branch_name);
+                                }
+                                return $query;
+                            })
+                        ->where('status','pending')->orderBy('id','desc')->take('5')->get();
+                        
         if($user->role->role == 'Administrator' || $user->role->role == 'Monitor')
         {
             $form_id = Form::pluck('id');
@@ -60,7 +70,7 @@ class AdminViewController extends Controller
             $form_id = $user->role->forms->pluck('form_id');               
         }
         $forms = Form::whereIn('id',$form_id)->get();
-    	return view('admin.dashboard',compact('user','active','forms','gifts','premature','remittance'));
+    	return view('admin.dashboard',compact('user','active','forms','gifts','premature','remittance','debitcards'));
     }
 
     public function getForms(){

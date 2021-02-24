@@ -211,6 +211,7 @@
 	border: 1px solid #BDBDBD;
 	padding: 10px;
 	border-radius: 5px;
+	width: 100%;
 }
 
 .file-container{
@@ -228,4 +229,7 @@
 .file-container .label{
 	font-family: cg;
 	padding: 5px;
+}
+.print{
+	display: none;
 }
