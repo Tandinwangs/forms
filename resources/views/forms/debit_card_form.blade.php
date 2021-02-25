@@ -23,8 +23,8 @@
 						<label for="CardType">Type of Debit Card :</label>
 						<select class="form-control" name="CardType" id="CardType">
 							<option value="">Choose the Debit Card Type</option>
-							<option value="Proprietary Card" {{old('CardType')=='Proprietary Card'?'selected':''}}>Proprietary Card</option>
-							<option value="VISA Card" {{old('CardType')=='VISA Card'?'selected':''}}>VISA Card</option>
+							<!-- <option value="Proprietary Card" {{old('CardType')=='Proprietary Card'?'selected':''}}>Proprietary Card</option> -->
+							<option value="VISA Debit Card" {{old('CardType')=='VISA Debit Card'?'selected':''}}>VISA Debit Card</option>
 							<option value="RuPay Card" {{old('CardType')=='RuPay Card' ? 'selected':''}}>RuPay Card</option>
 						</select>
 						@error('CardType')
