@@ -31,7 +31,12 @@ class StatusChangeController extends Controller
     // function to send sms
     protected function sendSMS($mobile,$code,$status,$reason = null){
         if ($status == 'approved'){
-            $msg = "Your form: $code has been approved by the bank. Thank you.";
+            if(substr($code,0,3) == 'DCR'){
+                $msg = "Dear Customer, Your debit card request has been approved and it can be collected after two working days.";
+            }
+            else{
+                $msg = "Your form: $code has been approved by the bank. Thank you.";
+            }
         }else{
             $msg = "Your form: $code has been Rejected by the Bank because $reason. Thank you";
         }
@@ -75,17 +80,16 @@ class StatusChangeController extends Controller
         elseif ($request->category == 'debit-card-request' || $request->category == 'debit-card-request-search') {
             $form = DebitCardRequest::findorfail($request->id);
         }
-        
         if($request->action == 'approve')
         {
             $form->status = 'approved';
             $form->action_date = Carbon::now();
             $form->user_id = Auth::id();
-            if(!blank($form->email)){
-                $this->sendEmail($form->email,$form->code,$form->status);
-            }
             if(!blank($form->mobile_no)){
                 $this->sendSMS($form->mobile_no,$form->code,$form->status);
+            }
+            if(!blank($form->email)){
+                $this->sendEmail($form->email,$form->code,$form->status);
             }
         }
         elseif($request->action == 'reject')

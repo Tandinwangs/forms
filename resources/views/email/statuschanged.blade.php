@@ -70,6 +70,9 @@
       <div class="body text-center">
         <p>Your form : {{$code}} submitted to the Bank has been :</p>
         <h1 class="text-blue"> {{$status}} </h1>
+        @if($status == 'approved' && substr($code,0,3) == 'DCR')
+          <p>and your debit card can be collected after two working days.</p>
+        @endif
         @if($status == 'rejected')
           <small>Because {{$reason}}</small>
         @endif

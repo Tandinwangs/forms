@@ -311,42 +311,48 @@ class FormsController extends Controller
             'ReasonForReplacement'=>'required_if:RequestFor,Replacement',
             'Agreement'=>'regex:/^agree$/',
         ]);
+
         $status = '0';
         $code = null;
         $msg = 'Debit Card Request Form could not be submitted. Please try again.';
-        $form = new DebitCardRequest;
-        $form->code = 'DCR/'.date_format(Carbon::now(),'Y/m/d/His');
-        $form->name = $request->Name;
-        $form->mobile_no = '975'.$request->MobileNumber;
-        $form->email = $request->Email;
-        $form->cid = $request->CID;
-        $form->branch = $request->Branch;
-        $form->account_number = $request->AccountNumber;
-        $form->reason = $request->Reason;
-        $form->account_type = $request->AccountType;
-        $form->nationality = $request->Nationality;
-        $form->dob = $request->DoB;
-        $form->address = $request->PresentAddress;
-        $form->debit_card_type = $request->CardType;
-        $form->request_for = $request->RequestFor;
-        $form->name_on_card = $request->NameOnCard;
-        $form->reason = $request->ReasonForReplacement;
-        $form->status = 'pending';
-        if($form->save()){
-            $status = '1';
-            $msg = 'Debit Card Request Form has been submitted successfully to the bank.';
-            $code_short = $form->code;
-            $code = "Form: $form->code has been submitted to the bank for processing. The form status will be notified via SMS & email.";
-            $mobile = $form->mobile_no;
-            
-            $this->sendEmail($form->email,$code_short);
-            $this->sendSMS($form,$code);
+        $check = DebitCardRequest::where(['account_number'=>$request->AccountNumber,'debit_card_type'=>$request->CardType,'request_for'=>$request->RequestFor,'status'=>'pending'])->first();
+        if(!blank($check)){
+            $msg = "Your Request has already been submitted to the Bank. The status will be notified to you via SMS.";
+        }
+        else{
+            $form = new DebitCardRequest;
+            $form->code = 'DCR/'.date_format(Carbon::now(),'Y/m/d/His');
+            $form->name = $request->Name;
+            $form->mobile_no = '975'.$request->MobileNumber;
+            $form->email = $request->Email;
+            $form->cid = $request->CID;
+            $form->branch = $request->Branch;
+            $form->account_number = $request->AccountNumber;
+            $form->reason = $request->Reason;
+            $form->account_type = $request->AccountType;
+            $form->nationality = $request->Nationality;
+            $form->dob = $request->DoB;
+            $form->address = $request->PresentAddress;
+            $form->debit_card_type = $request->CardType;
+            $form->request_for = $request->RequestFor;
+            $form->name_on_card = $request->NameOnCard;
+            $form->reason = $request->ReasonForReplacement;
+            $form->status = 'pending';
+            if($form->save()){
+                $status = '1';
+                $msg = 'Debit Card Request Form has been submitted successfully to the bank.';
+                $code_short = $form->code;
+                $code = "Form: $form->code has been submitted to the bank for processing. The form status will be notified via SMS & email.";
+                $mobile = $form->mobile_no;
+                // $this->sendEmail($form->email,$code_short);
+                $this->sendSMS($form,$code);
 
-            $f = Form::where('model','DebitCardRequest')->first();
-            $rids = RoleAndForm::where('form_id',$f->id)->pluck('role_id');
-            
-            foreach ($rids as $rid) {
-                $this->sendNotification($form,$rid,$form->branch);
+                $f = Form::where('model','DebitCardRequest')->first();
+                $rids = RoleAndForm::where('form_id',$f->id)->pluck('role_id');
+                
+                foreach ($rids as $rid) {
+                    $this->sendNotification($form,$rid,$form->branch);
+                }
             }
         }
         return redirect()->route('debit_card_form')->with(['status'=>$status, 'msg'=>$msg, 'code'=>$code]);
