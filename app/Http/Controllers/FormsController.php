@@ -208,34 +208,40 @@ class FormsController extends Controller
         $status = '0';
         $code = null;
         $msg = 'Premature Withdrawal Form could not be submitted. Please try again.';
-        $form = new PrematureWithdrawal;
-        $form->code = 'PWF/'.date_format(Carbon::now(),'Y/m/d/His');
-        $form->name = $request->Name;
-        $form->mobile_no = '975'.$request->MobileNumber;
-        $form->email = $request->Email;
-        $form->cid = $request->IdNumber;
-        $form->branch = $request->Branch;
-        $form->account_number = $request->AccountNumber;
-        $form->reason = $request->Reason;
-        $form->feedback = $request->Feedback;
-        $form->account_type = $request->AccountType;
-        $form->tdrd_account_number = $request->FdRdAccountNumber;
-        $form->status = 'pending';
-        if($form->save()){
-            $status = '1';
-            $msg = 'Premature Withdrawal Form has been submitted successfully to the bank.';
-            $code_short = $form->code;
-            $code = "Form: $form->code has been submitted to the bank for processing. The form status will be notified via SMS & email.";
-            $mobile = $form->mobile_no;
+        $check = PrematureWithdrawal::where(['tdrd_account_number'=>$request->FdRdAccountNumber,'status'=>'pending'])->first();
+        if(!blank($check)){
+            $msg = "Your Request has already been submitted to the Bank. The status will be notified to you via SMS.";
+        }
+        else{
+            $form = new PrematureWithdrawal;
+            $form->code = 'PWF/'.date_format(Carbon::now(),'Y/m/d/His');
+            $form->name = $request->Name;
+            $form->mobile_no = '975'.$request->MobileNumber;
+            $form->email = $request->Email;
+            $form->cid = $request->IdNumber;
+            $form->branch = $request->Branch;
+            $form->account_number = $request->AccountNumber;
+            $form->reason = $request->Reason;
+            $form->feedback = $request->Feedback;
+            $form->account_type = $request->AccountType;
+            $form->tdrd_account_number = $request->FdRdAccountNumber;
+            $form->status = 'pending';
+            if($form->save()){
+                $status = '1';
+                $msg = 'Premature Withdrawal Form has been submitted successfully to the bank.';
+                $code_short = $form->code;
+                $code = "Form: $form->code has been submitted to the bank for processing. The form status will be notified via SMS & email.";
+                $mobile = $form->mobile_no;
 
-            $this->sendEmail($form->email,$code_short);
-            $this->sendSMS($mobile,$code);
+                $this->sendEmail($form->email,$code_short);
+                $this->sendSMS($mobile,$code);
 
-            $f = Form::where('model','PrematureWithdrawal')->first();
-            $rids = RoleAndForm::where('form_id',$f->id)->pluck('role_id');
-            
-            foreach ($rids as $rid) {
-                $this->sendNotification($form,$rid,$form->branch);
+                $f = Form::where('model','PrematureWithdrawal')->first();
+                $rids = RoleAndForm::where('form_id',$f->id)->pluck('role_id');
+                
+                foreach ($rids as $rid) {
+                    $this->sendNotification($form,$rid,$form->branch);
+                }
             }
         }
         return redirect()->route('gift_form')->with(['status'=>$status, 'msg'=>$msg, 'code'=>$code]);
