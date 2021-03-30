@@ -351,7 +351,7 @@ class FormsController extends Controller
                 $code = "Form: $form->code has been submitted to the bank for processing. The form status will be notified via SMS & email.";
                 $mobile = $form->mobile_no;
                 // $this->sendEmail($form->email,$code_short);
-                $this->sendSMS($form,$code);
+                $this->sendSMS($mobile,$code);
 
                 $f = Form::where('model','DebitCardRequest')->first();
                 $rids = RoleAndForm::where('form_id',$f->id)->pluck('role_id');
