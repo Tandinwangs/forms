@@ -29,16 +29,21 @@ class StatusChangeController extends Controller
     }
 
     // function to send sms
-    protected function sendSMS($mobile,$code,$status,$reason = null){
-        if ($status == 'approved'){
-            if(substr($code,0,3) == 'DCR'){
-                $msg = "Dear Customer, Your debit card request has been approved and it can be collected after two working days.";
+    protected function sendSMS($form){
+        if ($form->status == 'approved'){
+            if(substr($form->code,0,3) == 'DCR'){
+                if($form->debit_card_type == 'VISA Debit Card' && $form->branch != 'Corporate Branch'){
+                    $msg = "Dear Customer, Your debit card request has been approved. Bank shall inform you once the card is ready.";
+                }
+                else{
+                    $msg = "Dear Customer, Your debit card request has been approved and it can be collected after two working days.";
+                }
             }
             else{
-                $msg = "Your form: $code has been approved by the bank. Thank you.";
+                $msg = "Your form: $form->code has been approved by the bank. Thank you.";
             }
         }else{
-            $msg = "Your form: $code has been Rejected by the Bank because $reason. Thank you";
+            $msg = "Your form: $form->code has been Rejected by the Bank because $form->reasonforrejection. Thank you";
         }
         $api = Notifier::first();
 
@@ -47,14 +52,14 @@ class StatusChangeController extends Controller
             'u'=>'everest',
             'h'=>'05265e9a544462b468b70ab663a4a4cf',
             'op'=>'pv',
-            'to'=>$mobile,
+            'to'=>$form->mobile_no,
             'msg'=>$msg,
         ]);
     }
     
     // function to send email
-    public function sendEmail($email,$code,$status,$reason = null){
-        Mail::to($email)->send(new FormStatusChanged($code,$status,$reason));
+    public function sendEmail($form){
+        Mail::to($form->email)->send(new FormStatusChanged($form));
     }
 
     public function sendNotification($details,$role,$branch){
@@ -86,10 +91,10 @@ class StatusChangeController extends Controller
             $form->action_date = Carbon::now();
             $form->user_id = Auth::id();
             if(!blank($form->mobile_no)){
-                $this->sendSMS($form->mobile_no,$form->code,$form->status);
+                $this->sendSMS($form);
             }
             if(!blank($form->email)){
-                $this->sendEmail($form->email,$form->code,$form->status);
+                $this->sendEmail($form);
             }
         }
         elseif($request->action == 'reject')
@@ -102,10 +107,10 @@ class StatusChangeController extends Controller
                 $form->user_id = Auth::id();
                 
                 if(!blank($form->email)){
-                    $this->sendEmail($form->email,$form->code,$form->status,$form->reasonforrejection);
+                    $this->sendEmail($form);
                 }
                 if(!blank($form->mobile_no)){
-                    $this->sendSMS($form->mobile_no,$form->code,$form->status,$form->reasonforrejection);
+                    $this->sendSMS($form);
                 }
             }
         }

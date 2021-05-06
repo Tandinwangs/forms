@@ -1,7 +1,7 @@
 Bhutan National Bank Limited
 
-Your form : {{$code}} submitted to the Bank has been : {{$status}} 
+Your form : {{$form->code}} submitted to the Bank has been : {{$form->status}} 
 
-@if($status == 'rejected')
-  Because {{$reason}}
+@if($form->status == 'rejected')
+  Because {{$form->reasonforrejection}}
 @endif

@@ -16,15 +16,11 @@ class FormStatusChanged extends Mailable
      *
      * @return void
      */
-    public $code;
-    public $status;
-    public $reason;
-    
-    public function __construct($code,$status,$reason = null)
+    public $form;
+
+    public function __construct($form)
     {
-        $this->code = $code;
-        $this->status = $status;
-        $this->reason = $reason;    
+        $this->form = $form;    
     }
 
     /**
@@ -35,7 +31,7 @@ class FormStatusChanged extends Mailable
     public function build()
     {
         return $this->from('system-mailer@bnb.bt')
-                    ->subject("Status for Form: $this->code")
+                    ->subject("Status for Form Submitted Online to Bhutan National Bank Limited")
                     ->view('email.statuschanged')
                     ->text('email.statuschanged_plain');
     }

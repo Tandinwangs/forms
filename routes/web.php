@@ -101,3 +101,10 @@ Auth::routes(['register'=>false,'reset'=>false,'verify'=>false]);
 
 // Route::get('/home', 'HomeController@index')->name('home');
 Route::delete('/remove-components', 'RemoveController@removeComponents')->name('remove_components_path')->middleware('role');
+
+// Account Statement Request Route
+Route::get('/account-statement', 'AccountStatementController@getForm')->name('account_statement_form_path');
+
+Route::post('/account-statement', 'AccountStatementController@verifyInfo');
+
+Route::get('/account-statement/otp', 'AccountStatementController@getOTPForm')->name('otp_form_path');

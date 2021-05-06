@@ -68,13 +68,17 @@
       </div>
       
       <div class="body text-center">
-        <p>Your form : {{$code}} submitted to the Bank has been :</p>
-        <h1 class="text-blue"> {{$status}} </h1>
-        @if($status == 'approved' && substr($code,0,3) == 'DCR')
-          <p>and your debit card can be collected after two working days.</p>
+        <p>Your form : {{$form->code}} submitted to the Bank has been :</p>
+        <h1 class="text-blue"> {{$form->status}} </h1>
+        @if($form->status == 'approved' && substr($form->code,0,3) == 'DCR')
+          @if($form->debit_card_type == 'VISA Debit Card' && $form->branch != 'Corporate Branch')
+            <p>Bank shall inform you once the card is ready.</p>
+          @else
+            <p>and your debit card can be collected after two working days.</p>
+          @endif
         @endif
-        @if($status == 'rejected')
-          <small>Because {{$reason}}</small>
+        @if($form->status == 'rejected')
+          <small>Because {{$form->reasonforrejection}}</small>
         @endif
       </div>
       
