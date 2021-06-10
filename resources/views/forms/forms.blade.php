@@ -16,7 +16,7 @@
 					</div>
 				@endforeach
 
-				<div class="col-md-6 mb-3">
+				<!-- <div class="col-md-6 mb-3">
 					<a href="https://forms.gle/BRGrMQz6Q3tqqrnW6" class="no-decoration">
 						<div class="form-container">
 							<h1>MoneyGram Claim Form</h1>
@@ -24,7 +24,7 @@
 							<h4>This online remittance claim form is brought to you by Bhutan National Bank Ltd.  and the facility is currently made available for BNB account holders only. </h4>
 						</div>
 					</a>
-				</div>
+				</div> -->
 			</div>
 		</div>
 	</div>
