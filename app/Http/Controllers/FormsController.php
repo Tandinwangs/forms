@@ -15,6 +15,7 @@ use App\DebitCardRequest;
 use App\RoleAndForm;
 use App\Notifier;
 use App\User;
+use App\MoneyGramClaim;
 
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Http;
@@ -362,5 +363,108 @@ class FormsController extends Controller
             }
         }
         return redirect()->route('debit_card_form')->with(['status'=>$status, 'msg'=>$msg, 'code'=>$code]);
+    }
+
+    public function getMoneyGramClaimForm(){
+        $branches = Branch::all();
+        return view('forms.money_gram_claim_form',compact('branches'));
+    }
+
+    public function submitMoneyGramClaimForm(Request $request){
+        $request->validate([
+            'MoneyGramReferenceNumber' => 'required|max:8',
+            'Title' => 'required',
+            'Name' => 'required',
+            'Occupation' => 'required',
+            'DateOfBirth' => 'required|date',
+            'CountryOfBirth' => 'required',
+            'CurrentAddress' => 'required',
+            'Dzongkhag' => 'required',
+            'PostalCode' => 'required',
+            'Country' => 'required',
+            'ContactNumber' => 'required|digits:8',
+            'Email' => 'required|email:rfc',
+            'CitizenshipIdentificationNumber' => 'required',
+            'relation' => 'required',
+            'BankName' => 'required',
+            'HomeBranch' => 'required',
+            'AccountNumber' => 'required|max:13',
+            'AccountHolderName' => 'required',
+            'SenderTitle' => 'required',
+            'SenderName' => 'required',
+            'RemittancePurpose' => 'required',
+            'Incentive' => 'required',
+            'Document'=>'required_if:Incentive,yes|file|mimes:pdf,png,jpg,jpeg,docx,doc|max:10240',
+            'Document2'=>'required_if:Incentive,yes|file|mimes:pdf,png,jpg,jpeg,docx,doc|max:10240',
+            'Agreement'=>'regex:/^agree$/',
+        ]);
+        $status = '0';
+        $code = null;
+        $msg = 'Money Gram Claim Form could not be submitted. Please try again.';
+        $d1 = $d2 = $d3 = null;
+        $date = date_format(now(),'Y-m-d');
+        $path = "storage/MoneyGram/$date";
+
+        $check = MoneyGramClaim::where('moneygram_reference_number',$request->MoneyGramReferenceNumber)->first();
+        if(!blank($check)){
+            $msg = "Your Request has already been submitted to the Bank. The status will be notified to you via SMS or email.";
+        }
+        else{
+            $form = new MoneyGramClaim;
+            $form->code = 'MGC/'.date_format(Carbon::now(),'Y/m/d/His');
+            $form->moneygram_reference_number = $request->MoneyGramReferenceNumber;
+            $form->title = $request->Title;
+            $form->name = $request->Name;
+            $form->occupation = $request->Occupation;
+            $form->date_of_birth = $request->DateOfBirth;
+            $form->country_of_birth = $request->CountryOfBirth;
+            $form->current_address = $request->CurrentAddress;
+            $form->dzongkhag = $request->Dzongkhag;
+            $form->postal_code = $request->PostalCode;
+            $form->country = $request->Country;
+            $form->mobile_no = '975'.$request->ContactNumber;
+            $form->email = $request->Email;
+            $form->cid = $request->CitizenshipIdentificationNumber;
+            $form->relation = $request->relation;
+            $form->bank_name = $request->BankName;
+            $form->branch = $request->HomeBranch;
+            $form->account_number = $request->AccountNumber;
+            $form->account_holder_name = $request->AccountHolderName;
+            $form->sender_title = $request->SenderTitle;
+            $form->sender_name = $request->SenderName;
+            $form->remittance_purpose = $request->RemittancePurpose;
+            $form->incentive = $request->Incentive;
+            if($form->incentive == 'yes'){
+                if(!blank($request->file('Document'))){
+                    $d1 = time().'-'.$request->file('Document')->getClientOriginalName();
+                    $request->file('Document')->storeAs("public/MoneyGram/$date",$d1);
+                }
+                if(!blank($request->file('Document2'))){
+                    $d2 = time().'-'.$request->file('Document2')->getClientOriginalName();
+                    $request->file('Document2')->storeAs("public/MoneyGram/$date",$d2);
+                }
+                $form->path = $path;
+                $form->document = $d1;
+                $form->document2 = $d2;
+            }
+            $form->status = 'pending';
+            if($form->save()){
+                $status = '1';
+                $msg = 'MoneyGram Claim Form has been submitted successfully to the bank.';
+                $code_short = $form->code;
+                $code = "Form: $form->code has been submitted to the bank for processing. The form status will be notified via SMS & email.";
+                $mobile = $form->mobile_no;
+                // $this->sendEmail($form->email,$code_short);
+                $this->sendSMS($mobile,$code);
+
+                $f = Form::where('model','MoneyGramClaim')->first();
+                $rids = RoleAndForm::where('form_id',$f->id)->pluck('role_id');
+                
+                foreach ($rids as $rid) {
+                    $this->sendNotification($form,$rid,$form->branch);
+                }
+            }
+        }
+        return redirect()->route('money_gram_claim_form')->with(['status'=>$status, 'msg'=>$msg, 'code'=>$code]);
     }
 }

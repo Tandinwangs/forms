@@ -33,7 +33,7 @@ class DebitCardRequestController extends Controller
         return view('admin.forms.debit_card_request_forms',compact('user','active','forms','pforms','form'));
     }
 
-     public function viewForm(Request $request){
+    public function viewForm(Request $request){
         $code = $request->code;
         $name = $request->name;
         $mobile =$request->mobile;

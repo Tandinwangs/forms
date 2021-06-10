@@ -32,6 +32,10 @@ Route::post('/forms/premature-withdrawal-form', 'FormsController@submitPremature
 Route::get('/forms/debit-card-form', 'FormsController@getDebitCardForm')->name('debit_card_form');
 Route::post('/forms/debit-card-form', 'FormsController@submitDebitCardForm');
 
+
+Route::get('/forms/money-gram-claim-form','FormsController@getMoneyGramClaimForm')->name('money_gram_claim_form');
+Route::post('/forms/money-gram-claim-form','FormsController@submitMoneyGramClaimForm')->name('submit_money_gram_claim_form');
+
 // admin routes
 Route::get('/dashboard', 'AdminViewController@getDashboard')->name('dashboard_path');
 Route::get('/BNBL-forms', 'AdminViewController@getForms')->name('forms_path');
@@ -61,6 +65,13 @@ Route::get('/BNBL-forms/debit-card-forms', 'DebitCardRequestController@getForms'
 Route::get('/BNBL-forms/debit-card-forms/{id}/{action}', 'DebitCardRequestController@viewForm')->name('show_debit_card_request_form_path');
 Route::get('/BNBL-forms/debit-card-forms/search', 'DebitCardRequestController@getSearchForm')->name('search_debit_card_request_form_path');
 Route::get('/BNBL-forms/debit-card-forms/search-results', 'DebitCardRequestController@searchForm')->name('search_debit_card_request_forms_path');
+
+
+// MoneyGram Claim Route
+Route::get('/BNBL-forms/money-gram-claim-forms', 'MoneyGramClaimController@getForms')->name('money_gram_claim_forms_path');
+Route::get('/BNBL-forms/money-gram-claim-forms/{id}/{action}', 'MoneyGramClaimController@viewForm')->name('show_money_gram_claim_form_path');
+Route::get('/BNBL-forms/money-gram-claim-forms/search', 'MoneyGramClaimController@getSearchForm')->name('search_money_gram_claim_form_path');
+Route::get('/BNBL-forms/money-gram-claim-forms/search-results', 'MoneyGramClaimController@searchForm')->name('search_money_gram_claim_forms_path');
 
 
 // Other Admin Routes

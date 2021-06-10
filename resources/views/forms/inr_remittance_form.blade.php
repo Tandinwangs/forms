@@ -76,7 +76,7 @@
 				<div class="row">	
 					<div class="col-md-4 mb-3">
 						<label for="Amount">Remittance Amount :</label>
-						<input type="amount" name="Amount" id="Amount" class="form-control" placeholder="Remittance Amount" required="required" autocomplete="off" value="{{old('Amount')}}">
+						<input type="text" name="Amount" id="Amount" class="form-control" placeholder="Remittance Amount" required="required" autocomplete="off" value="{{old('Amount')}}">
 						<small class="input-description">Please enter the amount to be remitted. There will be certain bank charges for the remittance, which will be added to the amount you enter, while debiting from your account.</small>
 						@error('Amount')
 							<br>

@@ -219,16 +219,17 @@
 	width: 100%;
 }
 .file-container .icon{
-	height: 35px;
-	width: 35px;
+	height: 40px;
+	width: 40px;
 	background: url('../images/file.png');
 	background-size: contain;
 	border-radius: 50%;
-	border:1px solid #26578c;
+	border:3px solid #26578c;
 }
 .file-container .label{
 	font-family: cg;
 	padding: 5px;
+	font-weight: bold;
 }
 .print{
 	display: none;

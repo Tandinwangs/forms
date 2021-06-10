@@ -5,6 +5,33 @@
 		<div class="container-flexible bnb-border mb-2 p-5 form-description-raleway">
 			<div class="row">
 				@foreach($forms as $fms)
+					@if($fms->model == 'MoneyGramClaim')
+						<div class="col-md-6 mb-5">
+							<h5 class="text-bnb-b"><b>Recently Submitted MoneyGram Claim Forms</b></h5>
+							@if(!blank($mgcf))
+								<table class="table table-striped table-bordered table-hover table-responsive-sm table-sm">
+									<thead class="bg-bnb">
+										<tr>
+											<th>Code</th>
+											<th>MoneyGram Ref. Number</th>
+											<th>Submitted On</th>
+										</tr>
+									</thead>
+									@foreach($mgcf as $g)
+										<tr>
+											<td><a href="{{route('show_money_gram_claim_form_path',[$g->id,'show'])}}">{{$g->code}}</a></td>
+											<td>{{$g->moneygram_reference_number}}</td>
+											<td>{{date_format(date_create($g->created_on),"d-M-Y")}}</td>
+										</tr>
+									@endforeach
+								</table>
+							@else
+								<div class="text-center">
+									<img src="{{asset('images/nrf.png')}}" style="max-height:200px; ">
+								</div>
+							@endif
+						</div>
+					@endif
 					@if($fms->model == 'Gift')
 						<div class="col-md-6 mb-5">
 							<h5 class="text-bnb-b"><b>Recently Submitted Gift Forms</b></h5>

@@ -15,6 +15,7 @@ use App\PrematureWithdrawal;
 use App\Mail\FormStatusChanged;
 use App\INRRemittance;
 use App\DebitCardRequest;
+use App\MoneyGramClaim;
 use App\Notifier;
 use Carbon\Carbon;
 use Auth;
@@ -85,6 +86,9 @@ class StatusChangeController extends Controller
         elseif ($request->category == 'debit-card-request' || $request->category == 'debit-card-request-search') {
             $form = DebitCardRequest::findorfail($request->id);
         }
+        elseif ($request->category == 'moneygram-claim' || $request->category == 'moneygram-claim-search') {
+            $form = MoneyGramClaim::findorfail($request->id);
+        }
         if($request->action == 'approve')
         {
             $form->status = 'approved';
@@ -129,6 +133,11 @@ class StatusChangeController extends Controller
                 $form->branch = $request->branch;
                 $f = Form::where('model','PrematureWithdrawal')->first();
             }
+            elseif($request->category == 'moneygram-claim')
+            {
+                $form->branch = $request->branch;
+                $f = Form::where('model','MoneyGramClaim')->first();
+            }
 
             $rids = RoleAndForm::where('form_id',$f->id)->pluck('role_id');
                 
@@ -172,6 +181,13 @@ class StatusChangeController extends Controller
             elseif ($request->category == 'debit-card-request-search'){
                 $params = [$request->id,'search-show'];
                 $route = 'show_debit_card_request_form_path';
+            }
+            elseif ($request->category == 'moneygram-claim'){
+                $route = 'money_gram_claim_forms_path';
+            }
+            elseif ($request->category == 'moneygram-claim-search'){
+                $params = [$request->id,'search-show'];
+                $route = 'show_money_gram_claim_form_path';
             }
         }
 
