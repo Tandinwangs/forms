@@ -398,7 +398,7 @@
 				<p>I understand that I am required to submit the required documents by uploading it or by email to remittance@bnb.bt within the next 10 days after submitting this form to claim the incentive.</p>
 
 				<p><b>
-					PLEASE ENSURE THAT THE EMAIL SUBJECT IS CORRWCTLY MENTIONED AS DETAILED ABOVE; OTHERWISE YOU MAY BE INELIGIBLE FOR THE INCENTIVE.
+					PLEASE ENSURE THAT THE EMAIL SUBJECT IS CORRECTLY MENTIONED AS DETAILED ABOVE; OTHERWISE YOU MAY BE INELIGIBLE FOR THE INCENTIVE.
 				</b></p>
 				<div class="row">
 					<div class="col-12 mb-3">
