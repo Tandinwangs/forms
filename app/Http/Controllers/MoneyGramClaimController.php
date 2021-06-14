@@ -27,8 +27,8 @@ class MoneyGramClaimController extends Controller
         }
         else
         {
-            $forms = MoneyGramClaim::where('status','pending')->where('homebranch',$user->branch->branch_name)->orderBy('id','desc')->simplePaginate(25);
-            $pforms = MoneyGramClaim::where('status','<>','pending')->where('homebranch',$user->branch->branch_name)->Paginate(25);
+            $forms = MoneyGramClaim::where('status','pending')->where('branch',$user->branch->branch_name)->orderBy('id','desc')->simplePaginate(25);
+            $pforms = MoneyGramClaim::where('status','<>','pending')->where('branch',$user->branch->branch_name)->Paginate(25);
         }
         $form = Form::where('model','MoneyGramClaim')->first();
         return view('admin.forms.money_gram_claim_forms',compact('user','active','forms','pforms','form'));
