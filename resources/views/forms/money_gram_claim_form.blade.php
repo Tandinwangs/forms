@@ -396,6 +396,10 @@
 			<div class="container-flexible bnb-border mb-2 p-5 form-description">
 				<h4 class="text-bnb-b">Confirmation about the claim of Incentive</h4>
 				<p>I understand that I am required to submit the required documents by uploading it or by email to remittance@bnb.bt within the next 10 days after submitting this form to claim the incentive.</p>
+
+				<p>
+					PLEASE ENSURE THAT THE EMAIL SUBJECT IS CORRWCTLY MENTIONED AS DETAILED ABOVE; OTHERWISE YOU MAY BE INELIGIBLE FOR THE INCENTIVE.
+				</p>
 				<div class="row">
 					<div class="col-12 mb-3">
 						<h5 class="text-bnb-b">Document Upload</h5>
