@@ -367,7 +367,7 @@
 					<li>Remittances to NGO/CSO and international organization fund transfers.</li>
 				</ol>
 				<p>
-					If you think you are eligible and plan to claim the incentive, please upload copies of the following listed documents (upload link below) or send them to kesdeki@bnb.bt by email, with the email subject as: "Incentive Claim on MoneyGram remittance no. [your MG reference number]" within 10 days of submitting this form:
+					If you think you are eligible and plan to claim the incentive, please upload copies of the following listed documents (upload link below) or send them to remittance@bnb.bt by email, with the email subject as: "Incentive Claim on MoneyGram remittance no. [your MG reference number]" within 10 days of submitting this form:
 					<ol>
 						<li>Copy of the senders' CID/ Passport; and</li>
 						<li>Senders' proof of residency abroad (it can be either of: a copy of his/her Visa/ Phone Bill/ electricity bill/ a letter from the nearest Bhutanese embassy/ mission/ consulate, etc)</li>
@@ -395,7 +395,7 @@
 		<div class="row">
 			<div class="container-flexible bnb-border mb-2 p-5 form-description">
 				<h4 class="text-bnb-b">Confirmation about the claim of Incentive</h4>
-				<p>I understand that I am required to submit the required documents by uploading it or by email to kesdeki@bnb.bt within the next 10 days after submitting this form to claim the incentive.</p>
+				<p>I understand that I am required to submit the required documents by uploading it or by email to remittance@bnb.bt within the next 10 days after submitting this form to claim the incentive.</p>
 				<div class="row">
 					<div class="col-12 mb-3">
 						<h5 class="text-bnb-b">Document Upload</h5>
