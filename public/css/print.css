@@ -11,7 +11,7 @@
   	margin: 0;
 }
 @media print{
-	.navbar,.modal,.bnb-border-footer,.btn,.inner-container,.form-description-raleway{
+	.no-print,.navbar,.modal,.bnb-border-footer,.btn,.inner-container,.form-description-raleway{
 		display: none;
 	}	
 	.mb-2,.mb-3,.mb-4,.mb-5,.form-title{
