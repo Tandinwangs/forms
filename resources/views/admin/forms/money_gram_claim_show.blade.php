@@ -47,11 +47,11 @@
 				</div>
 				<div class="col-md-4 set-width mb-3">
 					<label>Current Address :</label>
-					<div class="form-control">{{$sform->current_address}}</div>
+					<div class="form-control-custom">{{$sform->current_address}}</div>
 				</div>
 				<div class="col-md-4 set-width mb-3">
 					<label>Dzongkhag where you reside currently :</label>
-					<div class="form-control-custom">{{$sform->dzongkhag}}</div>
+					<div class="form-control">{{$sform->dzongkhag}}</div>
 				</div>
 				<div class="col-md-4 set-width mb-3">
 					<label>Postal Code :</label>
