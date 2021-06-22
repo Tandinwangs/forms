@@ -213,14 +213,9 @@
 								Mark as Pending
 							</a>
 						</div>
-						<div class="col-sm-3 mb-3">
-							<button onclick="window.print();return false;" class="btn btn-block btn-primary">
-								Print Form
-							</button>
-						</div>
 					@endif
 				@endif
-				<div class="col-sm-3 {{$sform->status != 'pending' ? 'offset-sm-3' : ''}} mb-3">
+				<div class="col-sm-3 {{$sform->status != 'pending' ? 'offset-sm-6' : ''}} mb-3">
 					@if($action == 'show')
 						<a href="{{route('money_gram_claim_forms_path')}}" class="btn btn-block btn-primary">
 							Back
@@ -231,8 +226,13 @@
 						</a>
 					@endif
 				</div>
-				<div class="col-sm-12 no-print">
+				<div class="col-sm-9 no-print">
 					<p><small class="input-description"><q>Approving | Declining</q> the Form will record your user name and date & time of the action.</small></p>
+				</div>
+				<div class="col-sm-3 mb-3">
+					<button onclick="window.print();return false;" class="btn btn-block btn-primary">
+						Print Form
+					</button>
 				</div>
 			</div>
 		</div>

@@ -406,7 +406,7 @@ class FormsController extends Controller
         $path = "storage/MoneyGram/$date";
 
         $check = MoneyGramClaim::where('moneygram_reference_number',$request->MoneyGramReferenceNumber)->first();
-        if(!blank($check)){
+        if($check->status != "rejected"){
             $msg = "Your Request has already been submitted to the Bank. The status will be notified to you via SMS or email.";
         }
         else{
