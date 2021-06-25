@@ -61,7 +61,7 @@
 					<div class="row mb-3">
 						<div class="col-12">
 							<span class="bnb-b-span">
-                                <small><strong> &nbsp;INRRemittance Form : {{$sform->code}} &nbsp; </strong></small>
+                                <small><strong> &nbsp;Premature Withdrawal Form : {{$sform->code}} &nbsp; </strong></small>
                             </span>
 						</div>
 						<div class="col-md-6 mb-4">
