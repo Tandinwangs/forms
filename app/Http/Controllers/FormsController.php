@@ -45,7 +45,9 @@ class FormsController extends Controller
     public function sendNotification($details,$role,$branch){
         $branch_id = Branch::where('branch_name',$branch)->pluck('id');
         $users = User::where('role_id',$role)->where('branch_id',$branch_id)->get();
-        Mail::to($users)->send(new Notified($details));
+        if(count($users) != 0){
+            Mail::to($users)->send(new Notified($details));
+        }
     }
 
     // Get Form Functions
