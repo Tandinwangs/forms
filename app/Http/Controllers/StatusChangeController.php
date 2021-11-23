@@ -66,7 +66,7 @@ class StatusChangeController extends Controller
     public function sendNotification($details,$role,$branch){
         $branch_id = Branch::where('branch_name',$branch)->pluck('id');
         $users = User::where('role_id',$role)->where('branch_id',$branch_id)->get();
-        Mail::to($users)->send(new Notified($details));
+        // Mail::to($users)->send(new Notified($details));
     }
     
     public function changeStatus(Request $request){
@@ -141,9 +141,9 @@ class StatusChangeController extends Controller
 
             $rids = RoleAndForm::where('form_id',$f->id)->pluck('role_id');
                 
-            foreach ($rids as $rid) {
-                $this->sendNotification($form,$rid,$request->branch);
-            }
+            // foreach ($rids as $rid) {
+            //     $this->sendNotification($form,$rid,$request->branch);
+            // }
         }
         else{
             $form->status = 'pending';
