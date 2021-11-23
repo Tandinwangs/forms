@@ -97,9 +97,9 @@ class StatusChangeController extends Controller
             if(!blank($form->mobile_no)){
                 $this->sendSMS($form);
             }
-            if(!blank($form->email)){
-                $this->sendEmail($form);
-            }
+            // if(!blank($form->email)){
+            //     $this->sendEmail($form);
+            // }
         }
         elseif($request->action == 'reject')
         {
@@ -110,9 +110,9 @@ class StatusChangeController extends Controller
                 $form->action_date = Carbon::now();
                 $form->user_id = Auth::id();
                 
-                if(!blank($form->email)){
-                    $this->sendEmail($form);
-                }
+                // if(!blank($form->email)){
+                //     $this->sendEmail($form);
+                // }
                 if(!blank($form->mobile_no)){
                     $this->sendSMS($form);
                 }
