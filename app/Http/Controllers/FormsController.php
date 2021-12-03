@@ -182,15 +182,15 @@ class FormsController extends Controller
             $code = "Form: $form->code has been submitted to the bank for processing. Total charges for the Remittance has amounted to Nu.$charges. Additional RTGS Charge(Nu.100) may or may not be applicable depending upon corresponding bank(s).The form status will be notified via SMS & email.";
             $mobile = $form->mobile_no;
             
-            // $this->sendEmail($form->email,$code_short);
+            $this->sendEmail($form->email,$code_short);
             $this->sendSMS($mobile,$code);
 
             $f = Form::where('model','INRRemittance')->first();
             $rids = RoleAndForm::where('form_id',$f->id)->pluck('role_id');
             
-            // foreach ($rids as $rid) {
-            //     $this->sendNotification($form,$rid,$form->homebranch);
-            // }
+            foreach ($rids as $rid) {
+                $this->sendNotification($form,$rid,$form->homebranch);
+            }
         }
         return redirect()->route('inr_remittance_form')->with(['status'=>$status, 'msg'=>$msg, 'code'=>$code]);
     }
@@ -236,15 +236,15 @@ class FormsController extends Controller
                 $code = "Form: $form->code has been submitted to the bank for processing. The form status will be notified via SMS & email.";
                 $mobile = $form->mobile_no;
 
-                // $this->sendEmail($form->email,$code_short);
+                $this->sendEmail($form->email,$code_short);
                 $this->sendSMS($mobile,$code);
 
                 $f = Form::where('model','PrematureWithdrawal')->first();
                 $rids = RoleAndForm::where('form_id',$f->id)->pluck('role_id');
                 
-                // foreach ($rids as $rid) {
-                //     $this->sendNotification($form,$rid,$form->branch);
-                // }
+                foreach ($rids as $rid) {
+                    $this->sendNotification($form,$rid,$form->branch);
+                }
             }
         }
         return redirect()->route('gift_form')->with(['status'=>$status, 'msg'=>$msg, 'code'=>$code]);
@@ -289,15 +289,15 @@ class FormsController extends Controller
             $code = "Form: $gift->code has been submitted to the bank for processing. The form status will be notified via SMS & email.";
             $mobile = $gift->mobile_no;
             
-            // $this->sendEmail($gift->email,$code_short);
+            $this->sendEmail($gift->email,$code_short);
             $this->sendSMS($mobile,$code);
 
             $f = Form::where('model','Gift')->first();
             $rids = RoleAndForm::where('form_id',$f->id)->pluck('role_id');
             
-            // foreach ($rids as $rid) {
-            //     $this->sendNotification($gift,$rid,$gift->branch);
-            // }
+            foreach ($rids as $rid) {
+                $this->sendNotification($gift,$rid,$gift->branch);
+            }
     	}
     	return redirect()->route('gift_form')->with(['status'=>$status, 'msg'=>$msg, 'code'=>$code]);
     }
@@ -353,15 +353,15 @@ class FormsController extends Controller
                 $code_short = $form->code;
                 $code = "Form: $form->code has been submitted to the bank for processing. The form status will be notified via SMS & email.";
                 $mobile = $form->mobile_no;
-                // $this->sendEmail($form->email,$code_short);
+                $this->sendEmail($form->email,$code_short);
                 $this->sendSMS($mobile,$code);
 
                 $f = Form::where('model','DebitCardRequest')->first();
                 $rids = RoleAndForm::where('form_id',$f->id)->pluck('role_id');
                 
-                // foreach ($rids as $rid) {
-                //     $this->sendNotification($form,$rid,$form->branch);
-                // }
+                foreach ($rids as $rid) {
+                    $this->sendNotification($form,$rid,$form->branch);
+                }
             }
         }
         return redirect()->route('debit_card_form')->with(['status'=>$status, 'msg'=>$msg, 'code'=>$code]);
@@ -456,15 +456,15 @@ class FormsController extends Controller
                 $code_short = $form->code;
                 $code = "Form: $form->code has been submitted to the bank for processing. The form status will be notified via SMS & email.";
                 $mobile = $form->mobile_no;
-                // $this->sendEmail($form->email,$code_short);
+                $this->sendEmail($form->email,$code_short);
                 $this->sendSMS($mobile,$code);
 
                 $f = Form::where('model','MoneyGramClaim')->first();
                 $rids = RoleAndForm::where('form_id',$f->id)->pluck('role_id');
                 
-                // foreach ($rids as $rid) {
-                //     $this->sendNotification($form,$rid,$form->branch);
-                // }
+                foreach ($rids as $rid) {
+                    $this->sendNotification($form,$rid,$form->branch);
+                }
             }
         }
         return redirect()->route('money_gram_claim_form')->with(['status'=>$status, 'msg'=>$msg, 'code'=>$code]);
