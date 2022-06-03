@@ -94,12 +94,12 @@ class StatusChangeController extends Controller
             $form->status = 'approved';
             $form->action_date = Carbon::now();
             $form->user_id = Auth::id();
-            if(!blank($form->mobile_no)){
-                $this->sendSMS($form);
-            }
-            if(!blank($form->email)){
-                $this->sendEmail($form);
-            }
+            // if(!blank($form->mobile_no)){
+            //     $this->sendSMS($form);
+            // }
+            // if(!blank($form->email)){
+            //     $this->sendEmail($form);
+            // }
         }
         elseif($request->action == 'reject')
         {

@@ -247,7 +247,7 @@ class FormsController extends Controller
                 }
             }
         }
-        return redirect()->route('gift_form')->with(['status'=>$status, 'msg'=>$msg, 'code'=>$code]);
+        return redirect()->route('premature_withdrawal_form')->with(['status'=>$status, 'msg'=>$msg, 'code'=>$code]);
         
     }
 
@@ -395,9 +395,9 @@ class FormsController extends Controller
             'SenderTitle' => 'required',
             'SenderName' => 'required',
             'RemittancePurpose' => 'required',
-            'Incentive' => 'required',
-            'Document'=>'required_if:Incentive,yes|file|mimes:pdf,png,jpg,jpeg,docx,doc|max:10240',
-            'Document2'=>'required_if:Incentive,yes|file|mimes:pdf,png,jpg,jpeg,docx,doc|max:10240',
+            // 'Incentive' => 'required',
+            // 'Document'=>'required_if:Incentive,yes|file|mimes:pdf,png,jpg,jpeg,docx,doc|max:10240',
+            // 'Document2'=>'required_if:Incentive,yes|file|mimes:pdf,png,jpg,jpeg,docx,doc|max:10240',
             'Agreement'=>'regex:/^agree$/',
         ]);
         $status = '0';
@@ -435,7 +435,7 @@ class FormsController extends Controller
             $form->sender_title = $request->SenderTitle;
             $form->sender_name = $request->SenderName;
             $form->remittance_purpose = $request->RemittancePurpose;
-            $form->incentive = $request->Incentive;
+            $form->incentive = 'no';//$request->Incentive;
             if($form->incentive == 'yes'){
                 if(!blank($request->file('Document'))){
                     $d1 = time().'-'.$request->file('Document')->getClientOriginalName();
