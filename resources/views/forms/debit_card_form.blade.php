@@ -13,8 +13,8 @@
 				The request shall be processed only after validating your request, by verifying in our systems the combination of your name, account number, mobile number, ID number and email ID. If required, you may be contacted to validate the request.
 			</p>
 
-			<p class="form-description-raleway" style="color:red">	
-				<small><b>RuPay cards are issued over the counter at any of our branches/ extension offices. If you are in Bhutan, please visit one of our branch/ extension offices to apply for & collect one- it will be faster than applying online.<b></small>	
+			<p class="form-description-raleway" style="color:white; background:#26578C; border-radius:10px;">	
+				<small>RuPay cards are issued over the counter at any of our branches/ extension offices. If you are in Bhutan, please visit one of our branch/ extension offices to apply for & collect one - it will be faster than applying online.</small>	
 			</p>
 		</div>		
 	</div>
