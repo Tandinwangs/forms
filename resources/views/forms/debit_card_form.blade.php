@@ -14,7 +14,7 @@
 			</p>
 
 			<p class="form-description-raleway" style="color:red">	
-				--RuPay cards are issued over the counter at any of our branches/ extension offices. If you are in Bhutan, please visit one of our branch/ extension offices to apply for & collect one- it will be faster than applying online.--	
+				<small><b>RuPay cards are issued over the counter at any of our branches/ extension offices. If you are in Bhutan, please visit one of our branch/ extension offices to apply for & collect one- it will be faster than applying online.<b></small>	
 			</p>
 		</div>		
 	</div>
