@@ -130,6 +130,10 @@
 	<div class="row">
 		<div class="container-flexible bnb-border mb-2 p-5 form-description">
 			<div class="row">
+				<div class="p-2 mb-5">
+					<h5 class="text-bnb-b"><b>Copy of CID Document Submitted:</b></h5>
+					<a href="{{asset($sform->path.'/'.$sform->cid_doc)}}" target="_blank">{{ substr($sform->cid_doc,11) }}</a>
+				</div>
 				@if($sform->incentive == "yes")
 					<div class="col-12 mb-3">
 						<h5 class="text-bnb-b"><b>Submitted Documents</b></h5>

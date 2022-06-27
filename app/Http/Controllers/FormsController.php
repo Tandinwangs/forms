@@ -395,6 +395,7 @@ class FormsController extends Controller
             'SenderTitle' => 'required',
             'SenderName' => 'required',
             'RemittancePurpose' => 'required',
+            'cid_doc'=>'required|file|mimes:pdf,png,jpg,jpeg,docx,doc|max:10240',
             // 'Incentive' => 'required',
             // 'Document'=>'required_if:Incentive,yes|file|mimes:pdf,png,jpg,jpeg,docx,doc|max:10240',
             // 'Document2'=>'required_if:Incentive,yes|file|mimes:pdf,png,jpg,jpeg,docx,doc|max:10240',
@@ -435,6 +436,13 @@ class FormsController extends Controller
             $form->sender_title = $request->SenderTitle;
             $form->sender_name = $request->SenderName;
             $form->remittance_purpose = $request->RemittancePurpose;
+            
+            $d3 = time().'-'.$request->file('cid_doc')->getClientOriginalName();
+            $request->file('cid_doc')->storeAs("public/MoneyGram/$date",$d3);
+            $form->cid_doc = $d3;
+
+            $form->path = $path;
+            
             $form->incentive = 'no';//$request->Incentive;
             if($form->incentive == 'yes'){
                 if(!blank($request->file('Document'))){
@@ -445,7 +453,6 @@ class FormsController extends Controller
                     $d2 = time().'-'.$request->file('Document2')->getClientOriginalName();
                     $request->file('Document2')->storeAs("public/MoneyGram/$date",$d2);
                 }
-                $form->path = $path;
                 $form->document = $d1;
                 $form->document2 = $d2;
             }

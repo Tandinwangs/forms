@@ -233,6 +233,16 @@
                             <br>
                         @enderror
 					</div>
+					<div class="col-md-4 mb-3">
+						<label for="cid_doc">Copy of CID:</label>
+						<input required="required" type="file" name="cid_doc" id="cid_doc" class="form-control">
+						@error('cid_doc')
+                            <span class="bnb-error m-auto">
+                                <small><strong>{{$message}}</strong></small>
+                            </span>
+                            <br>
+                        @enderror
+					</div>
 				</div>
 			</div>
 		</div>
