@@ -132,7 +132,10 @@
 			<div class="row">
 				<div class="p-2 mb-5">
 					<h5 class="text-bnb-b"><b>Copy of CID Document Submitted:</b></h5>
-					<a href="{{asset($sform->path.'/'.$sform->cid_doc)}}" target="_blank">{{ substr($sform->cid_doc,11) }}</a>
+					<a href="{{asset($sform->path.'/'.$sform->cid_doc)}}" target="_blank" class="btn btn-primary px-2">{{ substr($sform->cid_doc,11) }}</a>
+					@if(!blank($sform->additional_doc))
+						<a href="{{asset($sform->path.'/'.$sform->additional_doc)}}" target="_blank" class="btn btn-primary px-2">{{ substr($sform->additional_doc,11) }}</a>
+					@endif
 				</div>
 				@if($sform->incentive == "yes")
 					<div class="col-12 mb-3">

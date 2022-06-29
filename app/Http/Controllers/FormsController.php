@@ -396,6 +396,7 @@ class FormsController extends Controller
             'SenderName' => 'required',
             'RemittancePurpose' => 'required',
             'cid_doc'=>'required|file|mimes:pdf,png,jpg,jpeg,docx,doc|max:10240',
+            'additional_doc'=>'nullable|file|mimes:pdf,png,jpg,jpeg,docx,doc|max:10240',
             // 'Incentive' => 'required',
             // 'Document'=>'required_if:Incentive,yes|file|mimes:pdf,png,jpg,jpeg,docx,doc|max:10240',
             // 'Document2'=>'required_if:Incentive,yes|file|mimes:pdf,png,jpg,jpeg,docx,doc|max:10240',
@@ -404,7 +405,7 @@ class FormsController extends Controller
         $status = '0';
         $code = null;
         $msg = 'Money Gram Claim Form could not be submitted. Please try again.';
-        $d1 = $d2 = $d3 = null;
+        $d1 = $d2 = $d3 = $d4 = null;
         $date = date_format(now(),'Y-m-d');
         $path = "storage/MoneyGram/$date";
 
@@ -440,6 +441,9 @@ class FormsController extends Controller
             $d3 = time().'-'.$request->file('cid_doc')->getClientOriginalName();
             $request->file('cid_doc')->storeAs("public/MoneyGram/$date",$d3);
             $form->cid_doc = $d3;
+            $d4 = time().'-'.$request->file('additional_doc')->getClientOriginalName();
+            $request->file('additional_doc')->storeAs("public/MoneyGram/$date",$d4);
+            $form->additional_doc = $d4;
 
             $form->path = $path;
             

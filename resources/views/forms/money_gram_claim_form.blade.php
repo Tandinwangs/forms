@@ -15,6 +15,13 @@
 			<p class="form-description-raleway mb-3 text-justify">
 				<b>IF YOU DO NOT HAVE AN ACCOUNT AT BNBL, PLEASE VISIT THE BRANCH/EXTENSION OFFICE NEAREST TO YOU, TO CLAIM THE FUNDS RECEIVED. PLEASE CARRY YOUR CID WITH YOU.</b>
 			</p>
+			@if($errors->any())
+				<ul class="text-danger">
+					@foreach ($errors->all() as $error)
+						<li>{{ $error }}</li>
+					@endforeach
+				</ul>
+			@endif
 			{{-- <p class="form-description-raleway mb-3 text-justify">
 				Starting June 1 2021, INDIVIDUAL recipients of inward remittances are eligible to receive 1% incentive on the converted amount (BTN) provided you submit the required documents to the bank.  Remittances received  as
 				<ol type="i" class="text-left form-description">
@@ -235,8 +242,20 @@
 					</div>
 					<div class="col-md-4 mb-3">
 						<label for="cid_doc">Copy of CID:</label>
-						<input required="required" type="file" name="cid_doc" id="cid_doc" class="form-control">
+						<input required="required" type="file" name="cid_doc" id="cid_doc" class="">
 						@error('cid_doc')
+							<br>
+                            <span class="bnb-error m-auto">
+                                <small><strong>{{$message}}</strong></small>
+                            </span>
+                            <br>
+                        @enderror
+					</div>
+					<div class="col-md-4 mb-3">
+						<label for="additional_doc">Additional Document (Optional):</label>
+						<input type="file" name="additional_doc" id="additional_doc" class="form-control-file">
+						@error('additional_doc')
+							<br>
                             <span class="bnb-error m-auto">
                                 <small><strong>{{$message}}</strong></small>
                             </span>
