@@ -395,11 +395,11 @@ class FormsController extends Controller
             'SenderTitle' => 'required',
             'SenderName' => 'required',
             'RemittancePurpose' => 'required',
-            'cid_doc'=>'required|mimes:pdf,png,jpg,jpeg,docx,doc|max:10240',
-            'additional_doc'=>'nullable|mimes:pdf,png,jpg,jpeg,docx,doc|max:10240',
+            'cid_doc'=>'required|file|mimes:pdf,png,jpg,jpeg,docx,doc|max:10240',
+            'additional_doc'=>'nullable|file|mimes:pdf,png,jpg,jpeg,docx,doc|max:10240',
             'Incentive' => 'required',
-            'Document'=>'required_if:Incentive,yes|mimes:pdf,png,jpg,jpeg,docx,doc|max:10240',
-            'Document2'=>'required_if:Incentive,yes|mimes:pdf,png,jpg,jpeg,docx,doc|max:10240',
+            'Document'=>'required_if:Incentive,yes|file|mimes:pdf,png,jpg,jpeg,docx,doc|max:10240',
+            'Document2'=>'required_if:Incentive,yes|file|mimes:pdf,png,jpg,jpeg,docx,doc|max:10240',
             'Agreement'=>'regex:/^agree$/',
         ]);
         $status = '0';
@@ -447,7 +447,7 @@ class FormsController extends Controller
 
             $form->path = $path;
             
-            $form->incentive = 'no';//$request->Incentive;
+            $form->incentive = $request->Incentive;
             if($form->incentive == 'yes'){
                 if(!blank($request->file('Document'))){
                     $d1 = time().'-'.$request->file('Document')->getClientOriginalName();
