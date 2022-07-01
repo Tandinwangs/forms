@@ -22,19 +22,19 @@
 					@endforeach
 				</ul>
 			@endif
-			{{-- <p class="form-description-raleway mb-3 text-justify">
-				Starting June 1 2021, INDIVIDUAL recipients of inward remittances are eligible to receive 1% incentive on the converted amount (BTN) provided you submit the required documents to the bank.  Remittances received  as
+			<p class="form-description-raleway mb-3 text-justify">
+				Starting July 1, 2022, INDIVIDUAL recipients of inward remittances are eligible to receive 2% incentive on the converted amount (BTN) provided you submit the required documents to the bank.  Remittances received  as
 				<ol type="i" class="text-left form-description">
 					<li>Donations;</li>
 					<li>Foreign Direct Investment;</li>
 					<li>Receipts against  Trade and business activities; or</li>
 					<li>NGO/CSO and international organization fund transfers, are NOT eligible for the incentive.</li>
 				</ol>
-			</p> --}}
-			{{-- <p class="form-description-raleway mb-3 text-justify">
+			</p>
+			<p class="form-description-raleway mb-3 text-justify">
 				More details are provided in the subsequent paragraphs.
 			
-			</p> --}}
+			</p>
 		</div>		
 	</div>
 	<form  method="POST" action="{{route('submit_money_gram_claim_form')}}" enctype="multipart/form-data">
@@ -383,11 +383,11 @@
 			</div>
 		</div>
 
-		{{-- <div class="row">
+		<div class="row">
 			<div class="container-flexible bnb-border mb-2 p-5 form-description">
-				<h4 class="text-bnb-b">1% Incentive on Remittance</h4>
+				<h4 class="text-bnb-b">2% Incentive on Remittance</h4>
 				<p>
-					From 1st June 2021, you are eligible to claim 1% incentive on the amount received by you in BTN, provided the sender is a non-resident Bhutanese, the recipient is an INDIVIDUAL, and the money is NOT meant for the following purpose(s):
+					From 1st July 2022, you are eligible to claim 2% incentive on the amount received by you in BTN, provided the sender is a non-resident Bhutanese, the recipient is an INDIVIDUAL, and the money is NOT meant for the following purpose(s):
 				</p>
 				<ol type="i">
 					<li>As Donation;</li>
@@ -419,9 +419,9 @@
 					</div>
 				</div>
 			</div>
-		</div> --}}
+		</div>
 
-		{{-- <div class="row">
+		<div class="row">
 			<div class="container-flexible bnb-border mb-2 p-5 form-description">
 				<h4 class="text-bnb-b">Confirmation about the claim of Incentive</h4>
 				<p>I understand that I am required to submit the required documents by uploading it or by email to remittance@bnb.bt within the next 10 days after submitting this form to claim the incentive.</p>
@@ -471,7 +471,7 @@
 					</div>
 				</div>
 			</div>
-		</div> --}}
+		</div>
 
 		<div class="row">
 			<div class="container-flexible bnb-border mb-2 p-5 form-description">
