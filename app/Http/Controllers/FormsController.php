@@ -441,8 +441,10 @@ class FormsController extends Controller
             $d3 = time().'-'.$request->file('cid_doc')->getClientOriginalName();
             $request->file('cid_doc')->storeAs("public/MoneyGram/$date",$d3);
             $form->cid_doc = $d3;
-            $d4 = time().'-'.$request->file('additional_doc')->getClientOriginalName();
-            $request->file('additional_doc')->storeAs("public/MoneyGram/$date",$d4);
+            if(!blank($request->file('additional_doc'))){
+                $d4 = time().'-'.$request->file('additional_doc')->getClientOriginalName();
+                $request->file('additional_doc')->storeAs("public/MoneyGram/$date",$d4);
+            }
             $form->additional_doc = $d4;
 
             $form->path = $path;
