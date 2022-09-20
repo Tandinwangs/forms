@@ -211,7 +211,7 @@ class FormsController extends Controller
         $status = '0';
         $code = null;
         $msg = 'Premature Withdrawal Form could not be submitted. Please try again.';
-        $check = PrematureWithdrawal::where(['tdrd_account_number'=>$request->FdRdAccountNumber,'status'=>'rejected'])->first();
+        $check = PrematureWithdrawal::where('tdrd_account_number',$request->FdRdAccountNumber)->where('status','!=','rejected')->first();
         if(!blank($check)){
             $msg = "Your Request has already been submitted to the Bank. The status will be notified to you via SMS.";
         }
