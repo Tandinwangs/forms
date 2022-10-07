@@ -109,7 +109,7 @@
 						<select class="form-control" name="Branch" id="Branch">
 							<option value="">Choose</option>
 							@foreach($branches as $b)
-								<option {{ $b->branch_name == old('Branch') ? 'selected':'' }} {{$b->branch_name == "Corporate Branch" ? 'disabled' : ($b->branch_name == "Thimphu Branch" ? 'disabled':'')}}>{{$b->branch_name}}</option>
+								<option {{ $b->branch_name == old('Branch') ? 'selected':'' }}>{{$b->branch_name}}</option>
 							@endforeach
 						</select>
 						@error('Branch')
