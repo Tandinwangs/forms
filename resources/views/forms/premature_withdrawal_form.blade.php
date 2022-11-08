@@ -7,21 +7,21 @@
 	            <h4 class="bnb-error">{{ session('code') }}</h4>
 	        @endif
 			<p class="form-description-raleway mb-3 mt-5">
-				{{-- This facility is meant for holders of BNBL Fixed Deposit/ Fixed Deposit Plus/Recurring Deposit account holders only.
+				This facility is meant for holders of BNBL Fixed Deposit/ Fixed Deposit Plus/Recurring Deposit account holders only.
 				<br><br>
 				Your request shall be processed only after it is validated by our operations team, by cross-checking in our systems the combination of your name, account number, mobile number, ID number and email ID. If required, you may be contacted to validate the request. Upon validation, your request will be processed and the proceeds of your deposit, along with the applicable interest if any, shall be credited to your savings account. 
 				<br><br>
 				You must note that the interest payable for premature closures is re-calculated , and the rate used is 1% less that the rate applicable for the period the deposit has been maintained at the bank. Example: If you opened a deposit account for 5 years at 8% per annum, but you want to close it after 1 year, the interest you get will be calculated at 5% pa (rate for 1 year being 6% per annum).
 				<br><br>
-				The request shall be processed only after validating your request, by verifying in our systems the combination of your name, account number, mobile number, ID number and email ID. If required, you may be contacted to validate the request.  --}}
-				Please log in to MPay to close your Term Deposit prematurely.</p>
+				The request shall be processed only after validating your request, by verifying in our systems the combination of your name, account number, mobile number, ID number and email ID. If required, you may be contacted to validate the request. 
+				{{-- Please log in to MPay to close your Term Deposit prematurely.</p>
 				<p class="form-description-raleway">You can go to “Account > Premature FD/RD”.</p>
 
-				<img src="{{asset('images/tdrd.png')}}" alt="" style="max-height:500px ">
+				<img src="{{asset('images/tdrd.png')}}" alt="" style="max-height:500px "> --}}
 			</p>
 		</div>		
 	</div>
-	{{-- <form action="{{route('submit_premature_withdrawal_form')}}" method="POST">
+	<form action="{{route('submit_premature_withdrawal_form')}}" method="POST">
 		@csrf
 		<div class="row">
 			<div class="container-flexible bnb-border mb-2 p-5 form-description">
@@ -183,5 +183,5 @@
 				</div>
 			</div>		
 		</div>
-	</form> --}}
+	</form>
 @endsection
