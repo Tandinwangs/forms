@@ -383,7 +383,7 @@
 			</div>
 		</div>
 
-		<div class="row">
+		{{-- <div class="row">
 			<div class="container-flexible bnb-border mb-2 p-5 form-description">
 				<h4 class="text-bnb-b">2% Incentive on Remittance</h4>
 				<p>
@@ -471,7 +471,7 @@
 					</div>
 				</div>
 			</div>
-		</div>
+		</div> --}}
 
 		<div class="row">
 			<div class="container-flexible bnb-border mb-2 p-5 form-description">
