@@ -22,7 +22,7 @@
 					@endforeach
 				</ul>
 			@endif
-			<p class="form-description-raleway mb-3 text-justify">
+			{{-- <p class="form-description-raleway mb-3 text-justify">
 				Starting July 1, 2022, INDIVIDUAL recipients of inward remittances are eligible to receive 2% incentive on the converted amount (BTN) provided you submit the required documents to the bank.  Remittances received  as
 				<ol type="i" class="text-left form-description">
 					<li>Donations;</li>
@@ -34,7 +34,7 @@
 			<p class="form-description-raleway mb-3 text-justify">
 				More details are provided in the subsequent paragraphs.
 			
-			</p>
+			</p> --}}
 		</div>		
 	</div>
 	<form  method="POST" action="{{route('submit_money_gram_claim_form')}}" enctype="multipart/form-data">
