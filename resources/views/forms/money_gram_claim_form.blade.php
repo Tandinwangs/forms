@@ -22,8 +22,9 @@
 					@endforeach
 				</ul>
 			@endif
-			{{-- <p class="form-description-raleway mb-3 text-justify">
-				Starting July 1, 2022, INDIVIDUAL recipients of inward remittances are eligible to receive 2% incentive on the converted amount (BTN) provided you submit the required documents to the bank.  Remittances received  as
+			<p class="form-description-raleway mb-3 text-justify">
+				{{-- Starting July 1, 2022,  --}}
+				INDIVIDUAL recipients of inward remittances are eligible to receive 2% incentive on the converted amount (BTN) provided you submit the required documents to the bank.  Remittances received  as
 				<ol type="i" class="text-left form-description">
 					<li>Donations;</li>
 					<li>Foreign Direct Investment;</li>
@@ -34,7 +35,7 @@
 			<p class="form-description-raleway mb-3 text-justify">
 				More details are provided in the subsequent paragraphs.
 			
-			</p> --}}
+			</p>
 		</div>		
 	</div>
 	<form  method="POST" action="{{route('submit_money_gram_claim_form')}}" enctype="multipart/form-data">
@@ -383,7 +384,7 @@
 			</div>
 		</div>
 
-		{{-- <div class="row">
+		<div class="row">
 			<div class="container-flexible bnb-border mb-2 p-5 form-description">
 				<h4 class="text-bnb-b">2% Incentive on Remittance</h4>
 				<p>
@@ -435,7 +436,8 @@
 						<p class="form-description">
 							Supporting Documents should be uploaded here.
 							<p>
-                                <small>                              		Supporting Document is required to be uploaded and has to be in format: .pdf | .doc | .docx | .jpeg | .jpg | .png.                              		File Size is restricted to 10 MB. 
+                                <small>
+									Supporting Document is required to be uploaded and has to be in format: .pdf | .doc | .docx | .jpeg | .jpg | .png.                              		File Size is restricted to 10 MB. 
                             	</small>
                             </p>
 						</p>
@@ -471,7 +473,7 @@
 					</div>
 				</div>
 			</div>
-		</div> --}}
+		</div>
 
 		<div class="row">
 			<div class="container-flexible bnb-border mb-2 p-5 form-description">
