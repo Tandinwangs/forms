@@ -381,6 +381,7 @@ class FormsController extends Controller
             'DateOfBirth' => 'required|date',
             'CountryOfBirth' => 'required',
             'CurrentAddress' => 'required',
+            'PermanentAddress' => 'required',
             'Dzongkhag' => 'required',
             'PostalCode' => 'required',
             'Country' => 'required',
@@ -423,6 +424,7 @@ class FormsController extends Controller
             $form->date_of_birth = $request->DateOfBirth;
             $form->country_of_birth = $request->CountryOfBirth;
             $form->current_address = $request->CurrentAddress;
+            $form->permanent_address = $request->PermanentAddress;
             $form->dzongkhag = $request->Dzongkhag;
             $form->postal_code = $request->PostalCode;
             $form->country = $request->Country;

@@ -141,6 +141,18 @@
                         @enderror
 					</div>
 					<div class="col-md-4 mb-3">
+						<label for="PermanentAddress">Permanent Address:</label>
+						<input required="required" type="text" name="PermanentAddress" id="PermanentAddress" class="form-control"  value="{{old('PermanentAddress')}}" autocomplete="off">
+						<small class="input-description">Please provide your complete address here. You should include Street Number (if any), Street Name, Village, Geog, Dungkhag/Throm.</small>
+						@error('PermanentAddress')
+							<br>
+                            <span class="bnb-error m-auto">
+                                <small><strong>{{$message}}</strong></small>
+                            </span>
+                            <br>
+                        @enderror
+					</div>
+					<div class="col-md-4 mb-3">
 						<label for="Dzongkhag">Dzongkhag where you reside currently:</label>
 						<select required="required" name="Dzongkhag" id="Dzongkhag" class="form-control" >
 							<option value="">Select Dzongkhag</option>

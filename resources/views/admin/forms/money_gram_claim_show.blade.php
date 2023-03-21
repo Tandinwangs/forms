@@ -50,6 +50,10 @@
 					<div class="form-control-custom">{{$sform->current_address}}</div>
 				</div>
 				<div class="col-md-4 set-width mb-3">
+					<label>Permanent Address :</label>
+					<div class="form-control-custom">{{$sform->permanent_address}}</div>
+				</div>
+				<div class="col-md-4 set-width mb-3">
 					<label>Dzongkhag where you reside currently :</label>
 					<div class="form-control">{{$sform->dzongkhag}}</div>
 				</div>
