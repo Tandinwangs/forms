@@ -49,9 +49,20 @@
 					<label>Current Address :</label>
 					<div class="form-control-custom">{{$sform->current_address}}</div>
 				</div>
-				<div class="col-md-4 set-width mb-3">
-					<label>Permanent Address :</label>
-					<div class="form-control-custom">{{$sform->permanent_address}}</div>
+				<div class="row container-flexible mr-1 ml-1 border p-2">
+					<div class="col-md-4 set-width mb-3">
+						<label>Village :</label>
+						<div class="form-control-custom">{{$sform->permanent_village}}</div>
+					</div>
+					<div class="col-md-4 set-width mb-3">
+						<label>Gewog/Throm :</label>
+						<div class="form-control-custom">{{$sform->permanent_gewog}}</div>
+					</div>
+					<div class="col-md-4 set-width mb-3">
+						<label>Dzongkhag :</label>
+						<div class="form-control-custom">{{$sform->permanent_address}}</div>
+					</div>
+
 				</div>
 				<div class="col-md-4 set-width mb-3">
 					<label>Dzongkhag where you reside currently :</label>

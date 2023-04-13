@@ -140,17 +140,44 @@
                             <br>
                         @enderror
 					</div>
-					<div class="col-md-4 mb-3">
-						<label for="PermanentAddress">Permanent Address:</label>
-						<input required="required" type="text" name="PermanentAddress" id="PermanentAddress" class="form-control"  value="{{old('PermanentAddress')}}" autocomplete="off">
-						<small class="input-description">Please provide your complete address here. You should include Street Number (if any), Street Name, Village, Geog, Dungkhag/Throm.</small>
-						@error('PermanentAddress')
-							<br>
-                            <span class="bnb-error m-auto">
-                                <small><strong>{{$message}}</strong></small>
-                            </span>
-                            <br>
-                        @enderror
+					<div class="container ml-3 mr-3 p-3 mb-3 border row">
+						<div class="col-12">
+							<h6><b>Permanent Address</b></h6>
+							<p class="text-bnb-b"><small>Please fill in the following details completely in order to avoid rejection.</small></p>
+						</div>
+						<div class="col-md-4">
+							<label for="village">Village:</label>
+							<input required="required" type="text" name="village" id="village" class="form-control"  value="{{old('village')}}" autocomplete="off" placeholder="Your Village">
+							@error('village')
+								<br>
+								<span class="bnb-error m-auto">
+									<small><strong>{{$message}}</strong></small>
+								</span>
+								<br>
+							@enderror
+						</div>
+						<div class="col-md-4">
+							<label for="gewog">Gewog/Throm:</label>
+							<input required="required" type="text" name="gewog" id="gewog" class="form-control"  value="{{old('gewog')}}" autocomplete="off"  placeholder="Your Gewog/Throm">
+							@error('gewog')
+								<br>
+								<span class="bnb-error m-auto">
+									<small><strong>Gewog/Throm field is required.</strong></small>
+								</span>
+								<br>
+							@enderror
+						</div>
+						<div class="col-md-4">
+							<label for="PermanentDzongkhag">Dzongkhag:</label>
+							<input required="required" type="text" name="PermanentDzongkhag" id="PermanentDzongkhag" class="form-control"  value="{{old('PermanentDzongkhag')}}" autocomplete="off"  placeholder="Your Dzongkhag">
+							@error('PermanentDzongkhag')
+								<br>
+								<span class="bnb-error m-auto">
+									<small><strong>Dzongkhag is required.</strong></small>
+								</span>
+								<br>
+							@enderror
+						</div>
 					</div>
 					<div class="col-md-4 mb-3">
 						<label for="Dzongkhag">Dzongkhag where you reside currently:</label>
