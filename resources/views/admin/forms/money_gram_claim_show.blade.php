@@ -37,19 +37,18 @@
 					<label>Occupation :</label>
 					<div class="form-control">{{$sform->occupation}}</div>
 				</div>
-				<div class="col-md-4 set-width mb-3">
+				<div class="col-md-6 set-width mb-3">
 					<label>Date of Birth :</label>
 					<div class="form-control">{{date_format(date_create($sform->date_of_birth),"d F Y")}}</div>
 				</div>
-				<div class="col-md-4 set-width mb-3">
+				<div class="col-md-6 set-width mb-3">
 					<label>Country of Birth :</label>
 					<div class="form-control">{{$sform->country_of_birth}}</div>
 				</div>
-				<div class="col-md-4 set-width mb-3">
-					<label>Current Address :</label>
-					<div class="form-control-custom">{{$sform->current_address}}</div>
-				</div>
-				<div class="row container-flexible mr-1 ml-1 border p-2">
+				<div class="row container-flexible mr-1 ml-1 border p-2 mb-3">
+					<div class="col-12">
+						<h6><b>Permanent Address</b></h6>
+					</div>
 					<div class="col-md-4 set-width mb-3">
 						<label>Village :</label>
 						<div class="form-control-custom">{{$sform->permanent_village}}</div>
@@ -64,9 +63,18 @@
 					</div>
 
 				</div>
-				<div class="col-md-4 set-width mb-3">
-					<label>Dzongkhag where you reside currently :</label>
-					<div class="form-control">{{$sform->dzongkhag}}</div>
+				<div class="row container-flexible mr-1 ml-1 border p-2 mb-3">
+					<div class="col-12">
+						<h6><b>Present Address</b></h6>
+					</div>
+					<div class="col-md-6 set-width mb-3">
+						<label>Current Address :</label>
+						<div class="form-control-custom">{{$sform->current_address}}</div>
+					</div>
+					<div class="col-md-6 set-width mb-3">
+						<label>Dzongkhag :</label>
+						<div class="form-control">{{$sform->dzongkhag}}</div>
+					</div>
 				</div>
 				<div class="col-md-4 set-width mb-3">
 					<label>Postal Code :</label>

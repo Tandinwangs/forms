@@ -106,7 +106,7 @@
                             <br>
                         @enderror
 					</div>
-					<div class="col-md-4 mb-3">
+					<div class="col-md-6 mb-3">
 						<label for="DateOfBirth">Date of Birth:</label>
 						<input required="required" type="date" name="DateOfBirth" id="DateOfBirth" class="form-control"  value="{{old('DateOfBirth')}}" autocomplete="off">
 						<small class="input-description">Please enter your date of birth in the correct format.</small>
@@ -118,22 +118,10 @@
                             <br>
                         @enderror
 					</div>
-					<div class="col-md-4 mb-3">
+					<div class="col-md-6 mb-3">
 						<label for="CountryOfBirth">Country of Birth:</label>
 						<input required="required" type="text" name="CountryOfBirth" id="CountryOfBirth" class="form-control"  value="{{old('CountryOfBirth')}}" placeholder="Country of Birth" autocomplete="off">
 						@error('CountryOfBirth')
-                            <span class="bnb-error m-auto">
-                                <small><strong>{{$message}}</strong></small>
-                            </span>
-                            <br>
-                        @enderror
-					</div>
-					<div class="col-md-4 mb-3">
-						<label for="CurrentAddress">Current Address:</label>
-						<input required="required" type="text" name="CurrentAddress" id="CurrentAddress" class="form-control"  value="{{old('CurrentAddress')}}" autocomplete="off">
-						<small class="input-description">Please provide your complete address here. You should include Street Number (if any), Street Name, Village, Geog, Dungkhag/Throm.</small>
-						@error('CurrentAddress')
-							<br>
                             <span class="bnb-error m-auto">
                                 <small><strong>{{$message}}</strong></small>
                             </span>
@@ -179,37 +167,55 @@
 							@enderror
 						</div>
 					</div>
-					<div class="col-md-4 mb-3">
-						<label for="Dzongkhag">Dzongkhag where you reside currently:</label>
-						<select required="required" name="Dzongkhag" id="Dzongkhag" class="form-control" >
-							<option value="">Select Dzongkhag</option>
-							<option>Bumthang</option>
-							<option>Chhukha</option>
-							<option>Dagana</option>
-							<option>Gasa</option>
-							<option>Haa</option>
-							<option>Lhuentse</option>
-							<option>Mongar</option>
-							<option>Paro</option>
-							<option>Pema Gatshel</option>
-							<option>Punakha</option>
-							<option>Samdrup Jongkhar</option>
-							<option>Samtse</option>
-							<option>Sarpang</option>
-							<option>Thimphu</option>
-							<option>Trashigang</option>
-							<option>Trashi Yangtse</option>
-							<option>Trongsa</option>
-							<option>Tsirang</option>
-							<option>Wangdue Phodrang</option>
-							<option>Zhemgang</option>
-						</select>
-						@error('Dzongkhag')
-                            <span class="bnb-error m-auto">
-                                <small><strong>{{$message}}</strong></small>
-                            </span>
-                            <br>
-                        @enderror
+					<div class="container ml-3 mr-3 p-3 mb-3 border row">
+						<div class="col-12">
+							<h6><b>Present Address</b></h6>
+							<p class="text-bnb-b"><small>Please fill in the following details completely in order to avoid rejection.</small></p>
+						</div>
+						<div class="col-md-6">
+							<label for="CurrentAddress">Current Address:</label>
+							<input required="required" type="text" name="CurrentAddress" id="CurrentAddress" class="form-control"  value="{{old('CurrentAddress')}}" autocomplete="off">
+							<small class="input-description">Please provide your complete address here. You should include Street Number (if any), Street Name, Village, Geog, Dungkhag/Throm.</small>
+							@error('CurrentAddress')
+								<br>
+								<span class="bnb-error m-auto">
+									<small><strong>{{$message}}</strong></small>
+								</span>
+								<br>
+							@enderror
+						</div>
+						<div class="col-md-6 mb-3">
+							<label for="Dzongkhag">Dzongkhag where you reside currently:</label>
+							<select required="required" name="Dzongkhag" id="Dzongkhag" class="form-control" >
+								<option value="">Select Dzongkhag</option>
+								<option>Bumthang</option>
+								<option>Chhukha</option>
+								<option>Dagana</option>
+								<option>Gasa</option>
+								<option>Haa</option>
+								<option>Lhuentse</option>
+								<option>Mongar</option>
+								<option>Paro</option>
+								<option>Pema Gatshel</option>
+								<option>Punakha</option>
+								<option>Samdrup Jongkhar</option>
+								<option>Samtse</option>
+								<option>Sarpang</option>
+								<option>Thimphu</option>
+								<option>Trashigang</option>
+								<option>Trashi Yangtse</option>
+								<option>Trongsa</option>
+								<option>Tsirang</option>
+								<option>Wangdue Phodrang</option>
+								<option>Zhemgang</option>
+							</select>
+							@error('Dzongkhag')
+								<span class="bnb-error m-auto">
+									<small><strong>{{$message}}</strong></small>
+								</span>
+								<br>
+							@enderror
+						</div>
 					</div>
 					<div class="col-md-4 mb-3">
 						<label for="PostalCode">Postal Code:</label>
