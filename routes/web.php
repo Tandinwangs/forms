@@ -36,6 +36,10 @@ Route::post('/forms/debit-card-form', 'FormsController@submitDebitCardForm');
 Route::get('/forms/money-gram-claim-form','FormsController@getMoneyGramClaimForm')->name('money_gram_claim_form');
 Route::post('/forms/money-gram-claim-form','FormsController@submitMoneyGramClaimForm')->name('submit_money_gram_claim_form');
 
+// Share Holder Information Update routes
+Route::get('forms/search-share-holder-information', 'ShareHoldersController@getShareHolderInfo')->name('share_holder_information_form');
+Route::get('forms/share-holder-information-update-form', 'ShareHoldersController@searchShareHolderInfo')->name('search_share_holder_information');
+Route::post('forms/update-share-holder-information', 'ShareHoldersController@updateShareHolderInfo')->name('update_share_holder_information');
 // admin routes
 Route::get('/dashboard', 'AdminViewController@getDashboard')->name('dashboard_path');
 Route::get('/BNBL-forms', 'AdminViewController@getForms')->name('forms_path');

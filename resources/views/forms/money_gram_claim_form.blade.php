@@ -24,7 +24,7 @@
 			@endif
 			<p class="form-description-raleway mb-3 text-justify">
 				{{-- Starting July 1, 2022,  --}}
-				INDIVIDUAL recipients of inward remittances are eligible to receive 2% incentive on the converted amount (BTN) provided you submit the required documents to the bank.  Remittances received  as
+				INDIVIDUAL recipients of inward remittances are eligible to receive 10% incentive on the converted amount (BTN) provided you submit the required documents to the bank.  Remittances received  as
 				<ol type="i" class="text-left form-description">
 					<li>Donations;</li>
 					<li>Foreign Direct Investment;</li>
@@ -431,9 +431,9 @@
 
 		<div class="row">
 			<div class="container-flexible bnb-border mb-2 p-5 form-description">
-				<h4 class="text-bnb-b">2% Incentive on Remittance</h4>
+				<h4 class="text-bnb-b">10% Incentive on Remittance</h4>
 				<p>
-					From 1st July 2022, you are eligible to claim 2% incentive on the amount received by you in BTN, provided the sender is a non-resident Bhutanese, the recipient is an INDIVIDUAL, and the money is NOT meant for the following purpose(s):
+					From 14th June 2023, you are eligible to claim 10% incentive on the amount received by you in BTN, provided the sender is a non-resident Bhutanese, the recipient is an INDIVIDUAL, and the money is NOT meant for the following purpose(s):
 				</p>
 				<ol type="i">
 					<li>As Donation;</li>

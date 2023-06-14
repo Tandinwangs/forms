@@ -104,7 +104,7 @@
 		</div>
 	</div>
 
-	<div class="row pagebreak">
+	<div class="row">
 		<div class="container-flexible bnb-border mb-2 p-5 form-description">
 			<div class="row mb-3">
 				<div class="col-12">
@@ -144,7 +144,7 @@
 					<div class="form-control">{{$sform->remittance_purpose}}</div>
 				</div>
 				<div class="col-md-4 set-width mb-3">
-					<label>2% Incentive on Remittance :</label>
+					<label>10% Incentive on Remittance :</label>
 					<div class="form-control">{{$sform->incentive}}</div>
 				</div>
 			</div>
