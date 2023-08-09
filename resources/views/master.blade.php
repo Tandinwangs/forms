@@ -9,6 +9,10 @@
 	<link href="{{asset('/css/style.css')}}" rel="stylesheet" />
 	<link href="{{asset('/css/bootstrap.min.css')}}" rel="stylesheet" />
 	<link href="{{asset('/css/all.min.css')}}" rel="stylesheet" />
+	<link href="{{asset('css/font-awesome.css')}}" rel="stylesheet">
+	<link href="{{ asset('css/fontawesome-all.min.css') }}" rel="stylesheet">
+	
+
 </head>
 <body class="reed">
 	<div class="container p-2">

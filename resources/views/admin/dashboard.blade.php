@@ -32,6 +32,7 @@
 							@endif
 						</div>
 					@endif
+					
 					@if($fms->model == 'Gift')
 						<div class="col-md-6 mb-5">
 							<h5 class="text-bnb-b"><b>Recently Submitted Gift Forms</b></h5>
@@ -131,6 +132,34 @@
 										<tr>
 											<td><a href="{{route('show_debit_card_request_form_path',[$r->id,'show'])}}">{{$r->code}}</a></td>
 											<td>{{$r->name}}</td>
+											<td>{{date_format(date_create($r->created_on),"d-M-Y")}}</td>
+										</tr>
+									@endforeach
+								</table>
+							@else
+								<div class="text-center">
+									<img src="{{asset('images/nrf.png')}}" style="max-height:200px; ">
+								</div>
+							@endif
+						</div>
+					@endif
+
+					@if($fms->model == 'AccountDetailUpdate')
+						<div class="col-md-6 mb-5">
+							<h5 class="text-bnb-b"><b>Recently Submitted Account Detail Update Forms</b></h5>
+							@if(!blank($accountdetailupdate))
+								<table class="table table-striped table-bordered table-hover table-responsive-sm table-sm">
+									<thead class="bg-bnb">
+										<tr>
+											<th>Code</th>
+											<th>Branch/Extension</th>
+											<th>Submitted On</th>
+										</tr>
+									</thead>
+									@foreach($accountdetailupdate as $r)
+										<tr>
+											<td><a href="{{route('show_account_detail_update_form_path',[$r->id,'show'])}}">{{$r->code}}</a></td>
+											<td>{{$r->branch}}</td>
 											<td>{{date_format(date_create($r->created_on),"d-M-Y")}}</td>
 										</tr>
 									@endforeach

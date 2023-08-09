@@ -201,7 +201,7 @@
 				<div class="row mb-3">
 					<div class="inner-footer">
 						<h5 class="text-bnb-b"><b>Indemnity</b></h5>
-						<p class="form-description-raleway">I hereby declare that the information given above is true and correct and would like to request the Bank to update my above details in your system. I also hereby authorize the Bank to deduct any applicable charges related to the issuance of this card.</p>
+						<p class="form-description-raleway">I hereby declare that the information and the documents attached above is true and correct and would like to request the Bank to update my above details in your system. I also hereby authorize the Bank to deduct any applicable charges related to the issuance of this card.</p>
 						
 						<div class="row">
 							<div class="col-6 text-center">

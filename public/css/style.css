@@ -238,3 +238,27 @@
 .bnb-text-left{
 	text-align: left !important;
 }
+.column{
+	padding-top: 40px;
+   padding-right: 40px;
+   padding-bottom: 40px;
+   padding-left: 40px;
+
+   background-color: #f0ebdb;
+   bg-color-hover:#f0ebdb;
+   bg-size: cover;
+   border-radius: 20px 20px 20px 20px;
+   width-large: 50%;
+   margin-top-large: 0px;
+   spacing-right-large: 10px;
+   margin-bottom-large: 20px;
+   spacing-left-large: 10px;
+   width-medium: 50%;
+   order-medium: 0;
+   spacing-right-medium: 10px;
+   spacing-left-medium: 10px;
+   width-small: 100%;
+   order-small: 0;
+   spacing-right-small: 10px;
+   spacing-left-small: 10px;
+}

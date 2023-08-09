@@ -10,6 +10,7 @@
 	<link href="{{asset('/css/bootstrap.min.css')}}" rel="stylesheet" />
 	<link href="{{asset('/css/all.min.css')}}" rel="stylesheet" />
 	<link href="{{asset('/css/print.css')}}" rel="stylesheet" type="text/css" media="print" />
+	
 
 </head>
 <body class="reed">

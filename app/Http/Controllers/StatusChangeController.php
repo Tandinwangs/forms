@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Http;
@@ -16,6 +15,7 @@ use App\Mail\FormStatusChanged;
 use App\INRRemittance;
 use App\DebitCardRequest;
 use App\MoneyGramClaim;
+use App\AccountDetailUpdate;
 use App\Notifier;
 use Carbon\Carbon;
 use Auth;
@@ -41,10 +41,10 @@ class StatusChangeController extends Controller
                 }
             }
             else{
-                $msg = "Your form: $form->code has been approved by the bank. Thank you.";
+                $msg = "Your form: $form->code has been approved by the bank. Thank you!";
             }
         }else{
-            $msg = "Your form: $form->code has been Rejected by the Bank because $form->reasonforrejection. Thank you";
+            $msg = "Your form: $form->code has been Rejected by the Bank because $form->reasonforrejection. Thank you!";
         }
         $api = Notifier::first();
 
@@ -89,17 +89,20 @@ class StatusChangeController extends Controller
         elseif ($request->category == 'moneygram-claim' || $request->category == 'moneygram-claim-search') {
             $form = MoneyGramClaim::findorfail($request->id);
         }
+        elseif ($request->category == 'account-detail-update' || $request->category == 'account-detail-update-search') {
+            $form = AccountDetailUpdate::findorfail($request->id);
+        }
         if($request->action == 'approve')
         {
             $form->status = 'approved';
             $form->action_date = Carbon::now();
             $form->user_id = Auth::id();
-            // if(!blank($form->mobile_no)){
-            //     $this->sendSMS($form);
-            // }
-            // if(!blank($form->email)){
-            //     $this->sendEmail($form);
-            // }
+            if(!blank($form->mobile_no)){
+               $this->sendSMS($form);
+            }
+            if(!blank($form->email)){
+            $this->sendEmail($form);
+             }
         }
         elseif($request->action == 'reject')
         {
@@ -137,6 +140,11 @@ class StatusChangeController extends Controller
             {
                 $form->branch = $request->branch;
                 $f = Form::where('model','MoneyGramClaim')->first();
+            }
+            elseif($request->category == 'account-detail-update')
+            {
+                $form->branch = $request->branch;
+                $f = Form::where('model','AccountDetailUpdate')->first();
             }
 
             $rids = RoleAndForm::where('form_id',$f->id)->pluck('role_id');
@@ -189,6 +197,14 @@ class StatusChangeController extends Controller
                 $params = [$request->id,'search-show'];
                 $route = 'show_money_gram_claim_form_path';
             }
+            elseif ($request->category == 'account-detail-update'){
+                $route = 'account-detail-update_forms_path';
+            }
+            elseif ($request->category == 'account-detail-update-search'){
+                $params = [$request->id,'search-show'];
+                $route = 'show_account-detail-update_form_path';
+            }
+            
         }
 
     	return redirect()->route($route,$params)->with(['status'=>$status, 'msg'=>$msg]);
