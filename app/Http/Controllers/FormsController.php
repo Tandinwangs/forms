@@ -38,7 +38,7 @@ class FormsController extends Controller
     
     // function to send email
     public function sendEmail($email,$code_short){
-        Mail::to($email)->send(new FormSubmitted($code_short));
+       Mail::to($email)->send(new FormSubmitted($code_short));
     }
 
     public function sendNotification($details,$role,$branch){

@@ -198,7 +198,7 @@ class StatusChangeController extends Controller
                 $route = 'show_money_gram_claim_form_path';
             }
             elseif ($request->category == 'account-detail-update'){
-                $route = 'account-detail-update_forms_path';
+                $route = 'account_detail_update_forms_path';
             }
             elseif ($request->category == 'account-detail-update-search'){
                 $params = [$request->id,'search-show'];
