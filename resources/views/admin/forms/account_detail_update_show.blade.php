@@ -1,4 +1,4 @@
-@extends('master.adminmaster')
+@extends('master.adminmaster') 
 @section('content')
 	<div class="row">
 		<div class="container-flexible bnb-border mb-2 p-5 text-center no-mb">
