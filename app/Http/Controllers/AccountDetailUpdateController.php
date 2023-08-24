@@ -37,6 +37,7 @@ class AccountDetailUpdateController extends Controller
     public function viewForm(Request $request){
         $code = $request->code;
         $name = $request->name;
+        $cid = $request->cid;
         $active = 'f';
         $user = $this->authUser();
         $sform = AccountDetailUpdate::findorfail($request->id);
@@ -46,7 +47,7 @@ class AccountDetailUpdateController extends Controller
             return redirect()->route('dashboard_path')->with(['status'=>'1', 'msg'=>'You do not have Permission to view the requested application.']);
         }
         //return view('admin.forms.account_detail_update_show',compact('active','user','sform','form','action','name','account','mobile','cidnumber','code'));
-        return view('admin.forms.account_detail_update_show',compact('active','user','sform','form','action','name','code'));
+        return view('admin.forms.account_detail_update_show',compact('active','user','sform','form','action','name','code','cid'));
     }
 
     public function getSearchForm(){
@@ -59,7 +60,8 @@ class AccountDetailUpdateController extends Controller
     public function searchForm(Request $request){
         $code = $request->code;
         $name = $request->Name;
-        $form = Form::where('model','AccountDetailUp')->first();
+        $cid = $request->CID;
+        $form = Form::where('model','AccountDetailUpdate')->first();
         $user = $this->authUser();
         $active = 'f';
         $action = $request->action;
@@ -69,6 +71,9 @@ class AccountDetailUpdateController extends Controller
                 ->when($code, function ($query, $code) {
                     return $query->where('code','like','%'.$code.'%');
                 })
+                ->when($cid, function ($query, $cid) {
+                    return $query->where('cid','like','%'.$cid.'%');
+                })
                 ->when($user, function ($query, $user) {
                     if($user->role->role != 'Administrator' && $user->role->role != 'Monitor'){
                         $query->where('homebranch',$user->branch->branch_name);
@@ -76,6 +81,6 @@ class AccountDetailUpdateController extends Controller
                     return $query;
                 })
                 ->orderBy('id','desc')->get();
-        return view('admin.forms.account_detail_update_search', compact('forms','form','active','user','action','code','name'));
+        return view('admin.forms.account_detail_update_search', compact('forms','form','active','user','action','code','name','cid'));
     }
 }

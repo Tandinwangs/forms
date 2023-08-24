@@ -20,6 +20,7 @@
 				      		<th>#</th>
 				        	<th>Code</th>
 				        	<th>Name</th>
+							<th>CID</th>
 				        	<th>Mobile Number</th>
 				        	<th>Branch/Extension</th>
 				        	<th>Submitted On</th>
@@ -35,6 +36,7 @@
 						    	<td><small>{{++$i}}</small></td>
 						       	<td><small>{{$f->code}}</small></td>
 						       	<td>{{$f->name}}</td>
+								   <td>{{$f->cid}}</td>
 						       	<td>{{$f->mobile_no}}</td>
 								<td>{{$f->branch}}</td>
 	
@@ -66,6 +68,7 @@
 				      	<tr>
 				      		<th>#</th>
 				        	<th>Name</th>
+							<th>CID</th>
 				        	<th>Mobile Number</th>
 							<th>Branch/Extension</th>
 				        	<th>Status</th>
@@ -82,6 +85,7 @@
 						     <tr>
 						    	<td><small>{{++$i}}</small></td>
 						       	<td>{{$f->name}}</td>
+								   <td>{{$f->cid}}</td>
 						       	<td>{{$f->mobile_no}}</td>
 						       	<td>{{$f->branch}}</td>
 						       	<td><label class="badge {{$f->status == 'approved' ? 'bg-success' : 'bg-danger' }}" title="{{$f->reasonforrejection}}" data-toggle="tooltip">{{$f->status}}</label></td>

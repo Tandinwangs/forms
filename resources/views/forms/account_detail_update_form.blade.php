@@ -65,8 +65,20 @@
                @enderror
             </div>
             <div class="col-md-4 mb-3">
+						<label for="CitizenshipIdentificationNumber">Citizenship Identification Number:</label>
+						<input required="required" type="text" name="CID" id="CID" class="form-control" placeholder="Your ID Number"  value="{{old('CID')}}" autocomplete="off">
+						<small class="input-description">Please enter your CID/ Passport/ SRP number as registered with the bank.</small>
+						@error('CitizenshipIdentificationNumber')
+							<br>
+                            <span class="bnb-error m-auto">
+                                <small><strong>{{$message}}</strong></small>
+                            </span>
+                            <br>
+                        @enderror
+					</div>
+            <div class="col-md-4 mb-3">
                <label for="ContactNumber">Contact Number:</label>
-               <input required="required" type="text" name="ContactNumber" id="ContactNumber" class="form-control" placeholder="Your Contact Number"  value="{{old('ContactNumber')}}" autocomplete="off" maxlength="8" minlength="8">
+               <input required=" " type="text" name="ContactNumber" id="ContactNumber" class="form-control" placeholder="Your Contact Number"  value="{{old('ContactNumber')}}" autocomplete="off" maxlength="8" minlength="8">
                <small class="input-description">Please enter the mobile number registered with the bank.</small>
                @error('ContactNumber')
                <br>
@@ -78,7 +90,7 @@
             </div>
             <div class="col-md-4 mb-3">
                <label for="Email">Email Address:</label>
-               <input required="required" type="email" name="Email" id="Email" class="form-control" placeholder="Your Email ID"  autocomplete="off" value="{{old('Email')}}">
+               <input required=" " type="email" name="Email" id="Email" class="form-control" placeholder="Your Email ID"  autocomplete="off" value="{{old('Email')}}">
                @error('Email')
                <span class="bnb-error m-auto">
                <small><strong>{{$message}}</strong></small>
@@ -103,7 +115,7 @@
                <br>
                @enderror
             </div>
-            <div class="col-md-5 mb-3">
+            <div class="col-md-4 mb-3">
                <label for="doc_upload">Upload Here:</label>
                <input required="required" type="file" name="doc_upload" id="doc_upload" class="">
                <small class="input-description">Please attach all the necessary supporting documents along with the update form, compress them into a zip file, and upload the zip file here.</small>

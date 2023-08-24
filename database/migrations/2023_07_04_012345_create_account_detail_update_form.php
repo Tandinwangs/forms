@@ -17,6 +17,7 @@ class CreateAccountDetailUpdateForm extends Migration
             $table->id();
             $table->string('code')->unique();
             $table->string('name');
+            $table->string('cid');
             $table->string('mobile_no');
             $table->string('email');
             $table->string('branch');

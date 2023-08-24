@@ -23,6 +23,10 @@
 					<div class="form-control">{{$sform->title}}{{$sform->name}}</div>
 				</div>
 				<div class="col-md-4 set-width mb-3">
+					<label>Customer's CID :</label>
+					<div class="form-control">{{$sform->cid}}</div>
+				</div>
+				<div class="col-md-4 set-width mb-3">
 					<label>Bank Branch/Extension :</label>
 					<div class="form-control">{{$sform->branch}}</div>
 				</div>

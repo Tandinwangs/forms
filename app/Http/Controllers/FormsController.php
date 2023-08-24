@@ -496,6 +496,7 @@ class FormsController extends Controller
     public function submitAccountDetailUpdateForm(Request $request){
         $request->validate([
             'Name' => 'required',
+            'CID' => 'required',
             'ContactNumber' => 'required|digits:8',
             'Email' => 'required|email:rfc',
             'HomeBranch' => 'required',
@@ -515,6 +516,7 @@ class FormsController extends Controller
             $form = new AccountDetailUpdate;
             $form->code = 'ADU/'.date_format(Carbon::now(),'Y/m/d/His');
             $form->name = $request->Name;
+            $form->cid = $request->CID;
             $form->mobile_no = '975'.$request->ContactNumber;
             $form->email = $request->Email;
             $form->branch = $request->HomeBranch;

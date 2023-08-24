@@ -27,6 +27,10 @@
 							<label for="Name">Name :</label>
 							<input type="text" name="Name" id="Name" class="form-control" placeholder="Name">
 						</div>
+						<div class="col-md-4 mb-3">
+							<label for="Name">CID:</label>
+							<input type="text" name="CID" id="CID" class="form-control" placeholder="CID Number"  value="{{old('CID')}}" autocomplete="off">
+						</div>
 						
 					</div>
 					<div class="row">
@@ -46,11 +50,9 @@
 				      	<tr>
 				      		<th>#</th>
 				        	<th>Code</th>
-				        	
 				        	<th>Name</th>
+							<th>CID</th>
 				        	<th>Mobile Number</th>
-				        	
-				        	
 				        	<th>Status</th>
 				        	<th>Processed By</th>
 				        	<th>Action</th>
@@ -65,12 +67,13 @@
 						    	<td><small>{{++$i}}</small></td>
 						       	<td><small>{{$f->code}}</small></td>
 						       	<td>{{$f->name}}</td>
+								   <td>{{$f->cid}}</td>
 						       	<td>{{$f->mobile_no}}</td>
 						       	<td><span class="badge {{($f->status== 'approved' ? 'bg-success' : ($f->status == 'rejected' ? 'bg-danger' : 'bg-primary'))}}">{{$f->status}}</span></td>
 						       	<td><small><span class="span-bnb-b">{{!blank($f->user_id) ? $f->user->name : 'Not Processed'}}</span></small></td>
 						        <td class="text-center">
 						        	<div class="btn-group">
-						        		<a href="{{route('show_account_detail_update_form_path',[$f->id,'search-show','code'=>$code,'name'=>$name])}}" class="btn btn-primary btn-sm"><small>View</small></a>
+						        		<a href="{{route('show_account_detail_update_form_path',[$f->id,'search-show','code'=>$code,'name'=>$name,'cid'=>$cid])}}" class="btn btn-primary btn-sm"><small>View</small></a>
 						        		
 						        	</div>
 						        </td>

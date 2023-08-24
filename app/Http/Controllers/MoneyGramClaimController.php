@@ -61,8 +61,6 @@ class MoneyGramClaimController extends Controller
         $code = $request->code;
         $name = $request->Name;
         $moneygram_reference_number = $request->MoneyGramReferenceNumber;
-        
-
         $form = Form::where('model','MoneyGramClaim')->first();
         $user = $this->authUser();
         $active = 'f';
