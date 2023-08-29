@@ -60,7 +60,7 @@ class FormsController extends Controller
         return view('forms.premature_withdrawal_form',compact('branches'));
     }
     public function getAccountDetailUpdateForm(){
-        $branches = Branch::where('category','branch')->get();
+        $branches = Branch::all();
         return view('forms.account_detail_update_form',compact('branches'));
     }
 
