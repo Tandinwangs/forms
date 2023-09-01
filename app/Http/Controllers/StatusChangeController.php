@@ -37,7 +37,7 @@ class StatusChangeController extends Controller
                     $msg = "Dear Customer, Your debit card request has been approved. Bank shall inform you once the card is ready.";
                 }
                 else{
-                    $msg = "Dear Customer, Your debit card request has been approved and it can be collected after two working days.";
+                    $msg = "Dear Customer, Your debit card request has been approved and you will be notified via call or message when the card is ready to be collected";
                 }
             }
             else{

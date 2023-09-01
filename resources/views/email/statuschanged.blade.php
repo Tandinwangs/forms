@@ -74,7 +74,7 @@
           @if($form->debit_card_type == 'VISA Debit Card' && $form->branch != 'Corporate Branch')
             <p>Bank shall inform you once the card is ready.</p>
           @else
-            <p>and your debit card can be collected after two working days.</p>
+            <p>and you will be notified via call or message when the card is ready to be collected"</p>
           @endif
         @endif
         @if($form->status == 'rejected')
