@@ -103,7 +103,9 @@
                <select required="required" class="form-control" name="HomeBranch" id="HomeBranch" >
                   <option value="">Choose</option>
                   @foreach($branches as $b)
-                  <option {{$b->branch_name == old('HomeBranch') ? 'selected' : ''}}>{{$b->branch_name}}</option>
+                  @if($b->category == 'branch' || $b->category == 'extension')
+                        <option {{$b->branch_name == old('HomeBranch') ? 'selected' : ''}}>{{$b->branch_name}}</option>
+                  @endif
                   @endforeach
                </select>
                <small class="input-description">Please select the name of the branch/extension where you opened/have your account.</small>

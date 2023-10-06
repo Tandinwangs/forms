@@ -16,6 +16,7 @@ use App\Notifier;
 use App\User;
 use App\MoneyGramClaim;
 use App\AccountDetailUpdate;
+use App\NRBLoanApplication;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Mail;
@@ -63,7 +64,10 @@ class FormsController extends Controller
         $branches = Branch::all();
         return view('forms.account_detail_update_form',compact('branches'));
     }
-
+    public function getNRBLoanApplicationForm(){
+        $branches = Branch::all();
+        return view('forms.nrb_loan_application_form',compact('branches'));
+    }
 
     public function getINRRemittanceForm(){
     	$branches = Branch::where('category','branch')->get();
@@ -544,5 +548,56 @@ class FormsController extends Controller
             }
         }
         return redirect()->route('account_detail_update_form')->with(['status'=>$status, 'msg'=>$msg, 'code'=>$code]);
+    }
+    public function submitNRBLoanApplicationForm(Request $request){
+        $request->validate([
+            'Name' => 'required',
+            'CID' => 'required',
+            'Email' => 'required|email:rfc',
+            'HomeBranch' => 'required',
+            'doc_upload'=>'required|file|mimes:zip,rar,pdf,png,jpg,jpeg,docx,doc|max:10240',
+        ]);
+        $status = '0';
+        $code = null;
+        $msg = 'Online loan application for Bhutanese Living Abroad could not be submitted. Please try again.';
+        $d1 = $d2 = $d3 = $d4 = null;
+        $date = date_format(now(),'Y-m-d');
+        $path = "storage/NRBstorage/$date";
+        $check = NRBLoanApplication::where('code',$request->code)->first();
+        if(!blank($check) && $check->status != "rejected"){
+            $msg = "Your Request has already been submitted to the Bank. The status will be notified to you via SMS or email.";
+        }
+        else{
+            $form = new NRBLoanApplication;
+            $form->code = 'NRB/'.date_format(Carbon::now(),'Y/m/d/His');
+            $form->name = $request->Name;
+            $form->cid = $request->CID;
+            $form->mobile_no = '975'.$request->ContactNumber;
+            $form->email = $request->Email;
+            $form->branch = $request->HomeBranch;
+            $d3 = time().'-'.$request->file('doc_upload')->getClientOriginalName();
+            $request->file('doc_upload')->storeAs("public/NRBstorage/$date",$d3);
+            $form->doc_upload = $d3;
+            $form->path = $path;
+        
+            $form->status = 'pending';
+            if($form->save()){
+                $status = '1';
+                $msg = 'Account Detail Update Form has been submitted successfully to the bank.';
+                $code_short = $form->code;
+                $code = "Form: $form->code has been submitted to the bank for processing. The form status will be notified via SMS & email.";
+                $mobile = $form->mobile_no;
+                $this->sendEmail($form->email,$code_short);
+                $this->sendSMS($mobile,$code);
+
+                $f = Form::where('model','NRBLoanApplication')->first();
+                $rids = RoleAndForm::where('form_id',$f->id)->pluck('role_id');
+                
+                foreach ($rids as $rid) {
+                    $this->sendNotification($form,$rid,$form->branch);
+                }
+            }
+        }
+        return redirect()->route('nrb_loan_application_form')->with(['status'=>$status, 'msg'=>$msg, 'code'=>$code]);
     }
 }

@@ -171,6 +171,33 @@
 							@endif
 						</div>
 					@endif
+					@if($fms->model == 'NRBLoanApplication')
+						<div class="col-md-6 mb-5">
+							<h5 class="text-bnb-b"><b>Recently Submitted Online Loan Application Form</b></h5>
+							@if(!blank($nrbloanapplication))
+								<table class="table table-striped table-bordered table-hover table-responsive-sm table-sm">
+									<thead class="bg-bnb">
+										<tr>
+											<th>Code</th>
+											<th>Location</th>
+											<th>Submitted On</th>
+										</tr>
+									</thead>
+									@foreach($nrbloanapplication as $r)
+										<tr>
+											<td><a href="{{route('show_nrb_loan_application_form_path',[$r->id,'show'])}}">{{$r->code}}</a></td>
+											<td>{{$r->branch}}</td>
+											<td>{{date_format(date_create($r->created_on),"d-M-Y")}}</td>
+										</tr>
+									@endforeach
+								</table>
+							@else
+								<div class="text-center">
+									<img src="{{asset('images/nrf.png')}}" style="max-height:200px; ">
+								</div>
+							@endif
+						</div>
+					@endif
 				@endforeach
 			</div>
 		</div>

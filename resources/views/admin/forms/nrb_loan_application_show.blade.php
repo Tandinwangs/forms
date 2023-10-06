@@ -27,11 +27,7 @@
 					<div class="form-control">{{$sform->cid}}</div>
 				</div>
 				<div class="col-md-4 set-width mb-3">
-					<label for="Name">Mobile Number :</label>
-					<div class="form-control">{{$sform->mobile_no}}</div>
-				</div>
-				<div class="col-md-4 set-width mb-3">
-					<label>Bank Branch/Extension :</label>
+					<label>Location (Form submitted to) :</label>
 					<div class="form-control">{{$sform->branch}}</div>
 				</div>
 			</div>
@@ -82,23 +78,23 @@
 				@if($user->role->role != 'Monitor')
 					@if($sform->status == 'pending')
 						<div class="col-sm-3 mb-3">
-							<a href="#" class="btn btn-block btn-success" data-toggle="modal" data-target="#statusModal" data-id="{{ $sform->id }}" data-name="{{ $form->form }}" data-category="account-detail-update{{$action != 'show'?'-search':''}}" data-action="approve">
+							<a href="#" class="btn btn-block btn-success" data-toggle="modal" data-target="#statusModal" data-id="{{ $sform->id }}" data-name="{{ $form->form }}" data-category="nrb-loan-application{{$action != 'show'?'-search':''}}" data-action="approve">
 								Approve Request
 							</a>
 						</div>
 						<div class="col-sm-3 mb-3">
-							<a href="#" class="btn btn-block btn-danger" data-toggle="modal" data-target="#statusModal" data-id="{{ $sform->id }}" data-name="{{ $form->form }}" data-category="account-detail-update{{$action != 'show'?'-search':''}}" data-action="reject">
+							<a href="#" class="btn btn-block btn-danger" data-toggle="modal" data-target="#statusModal" data-id="{{ $sform->id }}" data-name="{{ $form->form }}" data-category="nrb-loan-application{{$action != 'show'?'-search':''}}" data-action="reject">
 								Decline Request
 							</a>
 						</div>
 						<div class="col-sm-3 mb-3">
-							<a href="#" class="btn btn-block btn-info" data-toggle="modal" data-target="#statusModal" data-id="{{ $sform->id }}" data-name="{{ $form->form }}" data-category="account-detail-update" data-action="change">
-								Transfer Branch
+							<a href="#" class="btn btn-block btn-info" data-toggle="modal" data-target="#statusModal" data-id="{{ $sform->id }}" data-name="{{ $form->form }}" data-category="nrb-loan-application" data-action="change-dz">
+								Transfer Loaction
 							</a>
 						</div>
 					@else
 						<div class="col-sm-3 mb-3">
-							<a href="#" class="btn btn-block btn-danger" data-toggle="modal" data-target="#statusModal" data-id="{{ $sform->id }}" data-name="{{ $form->form }}" data-category="account-detail-update{{$action != 'show'?'-search':''}}" data-action="pending">
+							<a href="#" class="btn btn-block btn-danger" data-toggle="modal" data-target="#statusModal" data-id="{{ $sform->id }}" data-name="{{ $form->form }}" data-category="nrb-loan-application{{$action != 'show'?'-search':''}}" data-action="pending">
 								Mark as Pending
 							</a>
 						</div>
@@ -106,7 +102,7 @@
 				@endif
 				<div class="col-sm-3 {{$sform->status != 'pending' ? 'offset-sm-6' : ''}} mb-3">
 					@if($action == 'show')
-						<a href="{{route('account_detail_update_forms_path')}}" class="btn btn-block btn-primary">
+						<a href="{{route('nrb_loan_application_forms_path')}}" class="btn btn-block btn-primary">
 							Back
 						</a>
 					@else

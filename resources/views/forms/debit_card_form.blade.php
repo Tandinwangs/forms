@@ -57,7 +57,9 @@
 						<select class="form-control" name="Branch" id="Branch">
 							<option value="">Location to Collect Your Card</option>
 							@foreach($branches as $b)
-								<option {{ $b->branch_name == old('Branch') ? 'selected':'' }}>{{$b->branch_name}}</option>
+							@if($b->category == 'branch' || $b->category == 'extension')
+									<option {{$b->branch_name == old('HomeBranch') ? 'selected' : ''}}>{{$b->branch_name}}</option>
+							@endif
 							@endforeach
 						</select>
 						@error('Branch')

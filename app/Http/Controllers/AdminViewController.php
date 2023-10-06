@@ -9,6 +9,7 @@ use App\DebitCardRequest;
 use App\RoleAndForm;
 use App\MoneyGramClaim;
 use App\AccountDetailUpdate;
+use App\NRBLoanApplication;
 use App\User;
 use App\Gift;
 use App\Form;
@@ -44,7 +45,14 @@ class AdminViewController extends Controller
                                 }
                                 return $query;
                             })
-                            ->where('status','pending')->orderBy('id','desc')->take('5')->get();                   
+                            ->where('status','pending')->orderBy('id','desc')->take('5')->get();   
+          $nrbloanapplication = NRBLoanApplication::when($user, function($query, $user){
+                                if($user->role->role !="Administrator" && $user->role->role !="Monitor"){
+                                    $query->where('branch',$user->branch->branch_name);
+                                }
+                                return $query;
+                            })
+                            ->where('status','pending')->orderBy('id','desc')->take('5')->get();                                                    
         $gifts = Gift::when($user, function($query, $user){
                                 if($user->role->role !="Administrator" && $user->role->role !="Monitor"){
                                     $query->where('branch',$user->branch->branch_name);
@@ -86,7 +94,7 @@ class AdminViewController extends Controller
             $form_id = $user->role->forms->pluck('form_id');               
         }
         $forms = Form::whereIn('id',$form_id)->get();
-    	return view('admin.dashboard',compact('user','active','forms','mgcf','gifts','premature','remittance','debitcards', 'accountdetailupdate'));
+    	return view('admin.dashboard',compact('user','active','forms','mgcf','gifts','premature','remittance','debitcards', 'accountdetailupdate', 'nrbloanapplication'));
     }
 
     public function getForms(){

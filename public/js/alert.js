@@ -56,6 +56,11 @@ $('#statusModal').on('show.bs.modal', function (event) {
         modal.find('.modal-body p').text('Are you sure you want to change the branch for the submitted '+name+'? Please select the branch from the dropdown menu.')
         modal.find('.modal-body #reject').html('<select class="form-control" name="branch" required="required"><option value="">Please Select the Branch</option><option>Corporate Branch</option><option>Thimphu Branch</option><option>Phuntsholing Branch</option><option>Samdrupjongkhar Branch</option><option>Trashigang Branch</option><option>Gelephu Branch</option><option>Paro Branch</option><option>Mongar Branch</option><option>Wangdue Branch</option><option>Bumthang Branch</option><option>Samtse Branch</option><option>Tsirang Branch</option></select>')
     }
+    else if(action == 'change-dz'){
+        modal.find('.modal-header h5').text('Confirmation for '+name+' Dzongkhag Change')
+        modal.find('.modal-body p').text('Are you sure you want to change the dzongkhag for the submitted '+name+'? Please select the branch from the dropdown menu.')
+        modal.find('.modal-body #reject').html('<select class="form-control" name="branch" required="required"><option value="">Please Select the Dzongkhag<option>Bumthang Dzongkhag</option><option>Chhukha Dzongkhag</option><option>Dagana Dzongkhag</option><option>Gasa Dzongkhag</option><option>Haa Dzongkhag</option><option>Lhuentse Dzongkhag</option><option>Mongar Dzongkhag</option><option>Paro Dzongkhag</option> <option>Pemagatshel Dzongkhag</option><option>Punakha Dzongkhag</option> <option>Samdrup Jongkhar Dzongkhag</option> <option>Samtse Dzongkhag</option><option>Sarpang Dzongkhag</option><option>Thimphu Dzongkhag</option> <option>Trashigang Dzongkhag</option>   <option>Trashiyangtse Dzongkhag</option> <option>Trongsa Dzongkhag</option><option>Tsirang Dzongkhag</option> <option>Wangdue Phodrang Dzongkhag</option><option>Zhemgang Dzongkhag</option></select>')
+    }
     else {
         modal.find('.modal-header h5').text('Mark '+name+' as Pending')
         modal.find('.modal-body p').text('Are you sure you want to mark the '+name+' as Pending?')

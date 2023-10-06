@@ -16,6 +16,7 @@ use App\INRRemittance;
 use App\DebitCardRequest;
 use App\MoneyGramClaim;
 use App\AccountDetailUpdate;
+use App\NRBLoanApplication;
 use App\Notifier;
 use Carbon\Carbon;
 use Auth;
@@ -92,6 +93,9 @@ class StatusChangeController extends Controller
         elseif ($request->category == 'account-detail-update' || $request->category == 'account-detail-update-search') {
             $form = AccountDetailUpdate::findorfail($request->id);
         }
+        elseif ($request->category == 'nrb-loan-application' || $request->category == 'nrb-loan-application-search') {
+            $form = NRBLoanApplication::findorfail($request->id);
+        }
         if($request->action == 'approve')
         {
             $form->status = 'approved';
@@ -121,7 +125,7 @@ class StatusChangeController extends Controller
                 }
             }
         }
-        elseif ($request->action == 'change' || $request->action == 'change-br') {
+        elseif ($request->action == 'change' || $request->action == 'change-br' ||  $request->action == 'change-dz') {
             if($request->category == 'inr-remittance'){
                 $form->homebranch = $request->branch;
                 $f = Form::where('model','INRRemittance')->first();
@@ -146,6 +150,12 @@ class StatusChangeController extends Controller
                 $form->branch = $request->branch;
                 $f = Form::where('model','AccountDetailUpdate')->first();
             }
+            elseif($request->category == 'nrb-loan-application')
+            {
+                $form->branch = $request->branch;
+                $f = Form::where('model','NRBLoanApplication')->first();
+            }
+
 
             $rids = RoleAndForm::where('form_id',$f->id)->pluck('role_id');
                 
@@ -202,7 +212,14 @@ class StatusChangeController extends Controller
             }
             elseif ($request->category == 'account-detail-update-search'){
                 $params = [$request->id,'search-show'];
-                $route = 'show_account-detail-update_form_path';
+                $route = 'show_account_detail_update_form_path';
+            }
+            elseif ($request->category == 'nrb-loan-application'){
+                $route = 'nrb_loan_application_forms_path';
+            }
+            elseif ($request->category == 'nrb-loan-application-search'){
+                $params = [$request->id,'search-show'];
+                $route = 'show_nrb_loan_application_form_path';
             }
             
         }
