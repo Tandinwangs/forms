@@ -73,7 +73,7 @@
         <p>Submitted On : {{date_format($details->created_at, 'd F Y')}}</p>  
         <br><br>
 
-        <p>Login to <a href="http://172.19.10.104/login">Form Management System</a> to see the details.</p>
+        <p>Login to <a href="https://formsuat.bnb.bt/login">Form Management System</a> to see the details.</p>
       
       </div>
       
