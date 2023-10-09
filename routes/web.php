@@ -39,8 +39,8 @@ Route::post('/forms/money-gram-claim-form','FormsController@submitMoneyGramClaim
 Route::get('/forms/account-detail-update-form','FormsController@getAccountDetailUpdateForm')->name('account_detail_update_form');
 Route::post('/forms/account-detail-update-form','FormsController@submitAccountDetailUpdateForm')->name('submit_account_detail_update_form');
 
-Route::get('/forms/nrb-loan-application-form','FormsController@getNRBLoanApplicationForm')->name('nrb_loan_application_form');
-Route::post('/forms/nrb-loan-application-form','FormsController@submitNRBLoanApplicationForm')->name('submit_nrb_loan_application_form');
+Route::get('/forms/bla-loan-application-form','FormsController@getNRBLoanApplicationForm')->name('nrb_loan_application_form');
+Route::post('/forms/bla-loan-application-form','FormsController@submitNRBLoanApplicationForm')->name('submit_nrb_loan_application_form');
 
 // Share Holder Information Update routes
 Route::get('forms/search-share-holder-information', 'ShareHoldersController@getShareHolderInfo')->name('share_holder_information_form');
@@ -90,10 +90,10 @@ Route::get('/BNBL-forms/account-detail-update-forms/search', 'AccountDetailUpdat
 Route::get('/BNBL-forms/account-detail-update-forms/search-results', 'AccountDetailUpdateController@searchForm')->name('search_account_detail_update_forms_path');
 
 // NRB Loan Application Form Route
-Route::get('/BNBL-forms/nrb-loan-application-forms', 'NRBLoanApplicationController@getForms')->name('nrb_loan_application_forms_path');
-Route::get('/BNBL-forms/nrb-loan-application-forms/{id}/{action}', 'NRBLoanApplicationController@viewForm')->name('show_nrb_loan_application_form_path');
-Route::get('/BNBL-forms/nrb-loan-application-forms/search', 'NRBLoanApplicationController@getSearchForm')->name('search_nrb_loan_application_form_path');
-Route::get('/BNBL-forms/nrb-loan-application-forms/search-results', 'NRBLoanApplicationController@searchForm')->name('search_nrb_loan_application_forms_path');
+Route::get('/BNBL-forms/bla-loan-application-forms', 'NRBLoanApplicationController@getForms')->name('nrb_loan_application_forms_path');
+Route::get('/BNBL-forms/bla-loan-application-forms/{id}/{action}', 'NRBLoanApplicationController@viewForm')->name('show_nrb_loan_application_form_path');
+Route::get('/BNBL-forms/bla-loan-application-forms/search', 'NRBLoanApplicationController@getSearchForm')->name('search_nrb_loan_application_form_path');
+Route::get('/BNBL-forms/bla-loan-application-forms/search-results', 'NRBLoanApplicationController@searchForm')->name('search_nrb_loan_application_forms_path');
 
 
 // Other Admin Routes

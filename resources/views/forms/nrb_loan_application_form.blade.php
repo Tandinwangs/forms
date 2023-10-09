@@ -124,10 +124,10 @@
             </div>
          
             <div class="col-md-4 mb-3">
-               <label for="doc_upload">Upload Here:</label>
-               <input required="required" type="file" name="doc_upload" id="doc_upload" class="">
+               <label for="bla_upload">Upload Here:</label>
+               <input required="required" type="file" name="bla_upload" id="bla_upload" class="">
                <small class="input-description">Please attach all necessary supporting <b>documents along with the form</b>, compress them into a zip file and upload the zip file here.</small>
-               @error('doc_upload')
+               @error('bla_upload')
                <br>
                <span class="bnb-error m-auto">
                <small><strong>{{$message}}</strong></small>

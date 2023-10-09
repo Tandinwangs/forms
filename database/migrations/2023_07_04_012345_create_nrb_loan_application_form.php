@@ -21,7 +21,7 @@ class CreateNRBLoanApplicationForm extends Migration
             $table->string('mobile_no');
             $table->string('email');
             $table->string('branch');
-            $table->string('doc_upload')->nullable();
+            $table->string('bla_upload')->nullable();
             $table->string('path')->nullable();
             $table->unsignedBigInteger('user_id')->nullable();
             $table->timestamp('action_date')->nullable();

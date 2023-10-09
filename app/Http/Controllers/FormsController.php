@@ -555,7 +555,7 @@ class FormsController extends Controller
             'CID' => 'required',
             'Email' => 'required|email:rfc',
             'HomeBranch' => 'required',
-            'doc_upload'=>'required|file|mimes:zip,rar,pdf,png,jpg,jpeg,docx,doc|max:10240',
+            'bla_upload'=>'required|file|mimes:zip,rar,pdf,png,jpg,jpeg,docx,doc|max:10240',
         ]);
         $status = '0';
         $code = null;
@@ -575,9 +575,9 @@ class FormsController extends Controller
             $form->mobile_no = '975'.$request->ContactNumber;
             $form->email = $request->Email;
             $form->branch = $request->HomeBranch;
-            $d3 = time().'-'.$request->file('doc_upload')->getClientOriginalName();
-            $request->file('doc_upload')->storeAs("public/NRBstorage/$date",$d3);
-            $form->doc_upload = $d3;
+            $d3 = time().'-'.$request->file('bla_upload')->getClientOriginalName();
+            $request->file('bla_upload')->storeAs("public/NRBstorage/$date",$d3);
+            $form->bla_upload = $d3;
             $form->path = $path;
         
             $form->status = 'pending';

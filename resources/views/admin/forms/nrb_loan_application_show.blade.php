@@ -38,7 +38,7 @@
 			<div class="row">
 				<div class="p-2 mb-5">
 					<h5 class="text-bnb-b"><b>Documents Submitted:</b></h5>
-					<a href="{{asset($sform->path.'/'.$sform->doc_upload)}}" target="_blank" class="btn btn-primary px-2">{{ substr($sform->doc_upload,11) }}</a>
+					<a href="{{asset($sform->path.'/'.$sform->bla_upload)}}" target="_blank" class="btn btn-primary px-2">{{ substr($sform->bla_upload,11) }}</a>
 				</div>
 			</div>
 
