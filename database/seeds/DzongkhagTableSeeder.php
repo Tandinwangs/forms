@@ -20,7 +20,7 @@ class DzongkhagTableSeeder extends Seeder
                 'category' => 'dzongkhag',
               ],
               [
-                'branch_code' => '1132020',
+                'branch_code' => '113200',
                 'branch_name' => 'djsa Dzongkhag',
                 'category' => 'dzongkhag',
               ]
