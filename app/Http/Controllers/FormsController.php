@@ -565,11 +565,11 @@ class FormsController extends Controller
         $path = "storage/NRBstorage/$date";
         $check = NRBLoanApplication::where('code',$request->code)->first();
         if(!blank($check) && $check->status != "rejected"){
-            $msg = "Your Request has already been submitted to the Bank. The status will be notified to you via SMS or email.";
+            $msg = "Your application has been submitted successfully. You will be contacted by the bank's officials for further processing.";
         }
         else{
             $form = new NRBLoanApplication;
-            $form->code = 'NRB/'.date_format(Carbon::now(),'Y/m/d/His');
+            $form->code = 'BLA/'.date_format(Carbon::now(),'Y/m/d/His');
             $form->name = $request->Name;
             $form->cid = $request->CID;
             $form->mobile_no = '975'.$request->ContactNumber;
@@ -583,9 +583,9 @@ class FormsController extends Controller
             $form->status = 'pending';
             if($form->save()){
                 $status = '1';
-                $msg = 'Account Detail Update Form has been submitted successfully to the bank.';
+                $msg = 'Online Loan Application Form has been submitted successfully to the bank.';
                 $code_short = $form->code;
-                $code = "Form: $form->code has been submitted to the bank for processing. The form status will be notified via SMS & email.";
+                $code = "Form: $form->code application has been submitted successfully. You will be contacted by the bank’s officials for further processing.";
                 $mobile = $form->mobile_no;
                 $this->sendEmail($form->email,$code_short);
                 $this->sendSMS($mobile,$code);

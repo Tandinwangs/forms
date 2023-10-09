@@ -2,9 +2,9 @@
 @section('content')
 <div class="row">
    <div class="container-flexible bnb-border mb-2 p-5 text-center">
-      <h3 class="form-title">Online Loan Aapplication For Bhutanese Living Abroad</h3>
+      <h3 class="form-title">Online Loan Application For Bhutanese Living Abroad</h3>
       <p class="form-description-raleway mb-3 text-justify">
-         Following forms are associated with updating your account details.          
+                 
       </p>
       @if(!blank(session('code')))
       <h4 class="bnb-error">{{ session('code') }}</h4>
@@ -114,7 +114,6 @@
                   <option {{$b->branch_name == old('HomeBranch') ? 'selected' : ''}}>{{$b->branch_name}}</option>
                   @endforeach
                </select>
-               <small class="input-description">Please select the name of the branch/extension where you opened/have your account.</small>
                @error('HomeBranch')
                <br>
                <span class="bnb-error m-auto">
@@ -206,7 +205,7 @@
                 "Zhemgang Dzongkhag"
             ];
             var chooseOption = document.createElement("option");
-            chooseOption.text = "Select Dzongkhag";
+            chooseOption.text = "Select Property Location";
             branchSelect.add(chooseOption);
 
             // Add the home loan branches as options
