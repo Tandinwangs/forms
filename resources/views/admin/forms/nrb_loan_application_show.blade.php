@@ -48,7 +48,7 @@
 					<div class="row mb-3">
 						<div class="col-12">
 							<span class="bnb-b-span">
-                                <small><strong> &nbsp;Account Detail Update Form : {{$sform->code}} &nbsp; </strong></small>
+                                <small><strong> &nbsp;Online Loan Application Form : {{$sform->code}} &nbsp; </strong></small>
                             </span>
 						</div>
 						<div class="col-md-6 mb-4">
@@ -89,7 +89,7 @@
 						</div>
 						<div class="col-sm-3 mb-3">
 							<a href="#" class="btn btn-block btn-info" data-toggle="modal" data-target="#statusModal" data-id="{{ $sform->id }}" data-name="{{ $form->form }}" data-category="nrb-loan-application" data-action="change-dz">
-								Transfer Loaction
+								Transfer Location
 							</a>
 						</div>
 					@else
