@@ -19,13 +19,13 @@
             </p>
          </div>
          <div class="col-md-6">
-            <div style="text-align:left;"><b><a style="font-weight:700; color:#003166;" target="_self" href="https://bnb.bt/wp-content/uploads/dld/FORMS/Update%20Account%20Details/CIUF%20-%20Corporate.pdf"><i class="fa-file-pdf fas button-icon-left" aria-hidden="true" style="padding: 8px; font-size:12px;"></i><span class="fusion-button-text" style="text-transform:uppercase; font-size:12px; font-weight:700;">Home Loan Application Form</span></a></b></div>
+            <div style="text-align:left;"><b><a style="font-weight:700; color:#003166;" target="_self" href="{{ asset('images/Home Loan Application Form.pdf') }}"><i class="fa-file-pdf fas button-icon-left" aria-hidden="true" style="padding: 8px; font-size:12px;"></i><span class="fusion-button-text" style="text-transform:uppercase; font-size:12px; font-weight:700;">Home Loan Application Form</span></a></b></div>
          </div>
          <div class="col-md-6">
-            <div style="text-align:left;"><a style="font-weight:700; color:#003166;" target="_self" href="https://bnb.bt/wp-content/uploads/dld/FORMS/Update%20Account%20Details/CIUF%20-%20Retail.pdf"><i class="fa-file-pdf fas button-icon-left" aria-hidden="true" style="padding: 8px; font-size:12px;"></i><span class="fusion-button-text" style="text-transform:uppercase; font-size:12px; font-weight:700;">Additional Loan Application Form</span></a></div>
+            <div style="text-align:left;"><a style="font-weight:700; color:#003166;" target="_self" href="{{ asset('images/Correspondent form.pdf') }}"><i class="fa-file-pdf fas button-icon-left" aria-hidden="true" style="padding: 8px; font-size:12px;"></i><span class="fusion-button-text" style="text-transform:uppercase; font-size:12px; font-weight:700;">Additional Loan Application Form</span></a></div>
          </div>
          <div class="col-md-6">
-            <div style="text-align:left;"><a style="font-weight:700; color:#003166;" target="_self" href="https://bnb.bt/wp-content/uploads/dld/FORMS/Update%20Account%20Details/Customer%20Signature%20Update%20Form.pdf"><i class="fa-file-pdf fas button-icon-left" aria-hidden="true" style="padding: 8px; font-size:12px;"></i><span class="fusion-button-text" style="text-transform:uppercase; font-size:12px; font-weight:700;">Payment Authorization Form</span></a></div>
+            <div style="text-align:left;"><a style="font-weight:700; color:#003166;" target="_self" href="{{ asset('images/Payment Authorization.pdf') }}"><i class="fa-file-pdf fas button-icon-left" aria-hidden="true" style="padding: 8px; font-size:12px;"></i><span class="fusion-button-text" style="text-transform:uppercase; font-size:12px; font-weight:700;">Payment Authorization Form</span></a></div>
          </div>
       </div>
       <p class="form-description-raleway mb-3 text-justify text-bnb-b" style="font-weight:600;">
@@ -33,7 +33,7 @@
       </p>
       <div class= "row column mb-3">
          <div class="col-md-6">
-            <div style="text-align:left;"><a style="font-weight:700; color:#003166;" target="_self" href="https://bnb.bt/wp-content/uploads/dld/FORMS/Update%20Account%20Details/Customer%20Signature%20Update%20Form.pdf"><i class="fa-file-pdf fas button-icon-left" aria-hidden="true" style="padding: 8px; font-size:12px;"></i><span class="fusion-button-text" style="text-transform:uppercase; font-size:12px; font-weight:700;">  LOAN AGAINST FIXED DEPOSIT</span></a></div>
+            <div style="text-align:left;"><a style="font-weight:700; color:#003166;" target="_self" href="{{ asset('images/Loan against FD Application Form.pdf') }}"><i class="fa-file-pdf fas button-icon-left" aria-hidden="true" style="padding: 8px; font-size:12px;"></i><span class="fusion-button-text" style="text-transform:uppercase; font-size:12px; font-weight:700;">  LOAN AGAINST FIXED DEPOSIT</span></a></div>
          </div>
       </div>
       <p class="form-description-raleway mb-3 text-justify" style="font-weight:600;">
