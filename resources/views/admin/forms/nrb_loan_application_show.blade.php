@@ -91,7 +91,7 @@
 							<a href="#" class="btn btn-block btn-info" data-toggle="modal" data-target="#statusModal" data-id="{{ $sform->id }}" data-name="{{ $form->form }}" data-category="nrb-loan-application" data-action="change-dz">
 								Transfer Location
 							</a>
-						</div>
+						</div> 
 					@else
 						<div class="col-sm-3 mb-3">
 							<a href="#" class="btn btn-block btn-danger" data-toggle="modal" data-target="#statusModal" data-id="{{ $sform->id }}" data-name="{{ $form->form }}" data-category="nrb-loan-application{{$action != 'show'?'-search':''}}" data-action="pending">
