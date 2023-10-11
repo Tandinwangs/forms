@@ -173,7 +173,7 @@
 					@endif
 					@if($fms->model == 'NRBLoanApplication')
 						<div class="col-md-6 mb-5">
-							<h5 class="text-bnb-b"><b>Recently Submitted Online Loan Application Form</b></h5>
+							<h5 class="text-bnb-b"><b>Recently Submitted Online Loan Application Form For BLA</b></h5>
 							@if(!blank($nrbloanapplication))
 								<table class="table table-striped table-bordered table-hover table-responsive-sm table-sm">
 									<thead class="bg-bnb">

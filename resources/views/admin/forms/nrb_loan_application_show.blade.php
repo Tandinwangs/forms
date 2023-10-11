@@ -48,7 +48,7 @@
 					<div class="row mb-3">
 						<div class="col-12">
 							<span class="bnb-b-span">
-                                <small><strong> &nbsp;Online Loan Application Form : {{$sform->code}} &nbsp; </strong></small>
+                                <small><strong> &nbsp;Online Loan Application Form For BLA : {{$sform->code}} &nbsp; </strong></small>
                             </span>
 						</div>
 						<div class="col-md-6 mb-4">
