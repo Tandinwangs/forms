@@ -13,9 +13,9 @@ class DatabaseSeeder extends Seeder
     {
         $this->call(BranchSeeder::class);
         $this->call(BranchTableSeeder::class);
-        $this->call(DzongkhagTableSeeder::class);
         $this->call(NotifierSeeder::class);
         $this->call(RoleSeeder::class);
         $this->call(UserSeeder::class);
+        $this->call(DzongkhagTableSeeder::class);
     }
 }

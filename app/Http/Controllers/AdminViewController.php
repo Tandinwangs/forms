@@ -24,10 +24,10 @@ class AdminViewController extends Controller
     {
         $this->middleware('auth');
     }
-    
-	public function authUser(){
-		return Auth::user();
-	} 
+
+        public function authUser(){
+                return Auth::user();
+        }
 
     public function getDashboard(){
         $user = $this->authUser();
@@ -45,14 +45,14 @@ class AdminViewController extends Controller
                                 }
                                 return $query;
                             })
-                            ->where('status','pending')->orderBy('id','desc')->take('5')->get();   
+                            ->where('status','pending')->orderBy('id','desc')->take('5')->get();
           $nrbloanapplication = NRBLoanApplication::when($user, function($query, $user){
                                 if($user->role->role !="Administrator" && $user->role->role !="Monitor"){
                                     $query->where('branch',$user->branch->branch_name);
                                 }
                                 return $query;
                             })
-                            ->where('status','pending')->orderBy('id','desc')->take('5')->get();                                                    
+                            ->where('status','pending')->orderBy('id','desc')->take('5')->get();
         $gifts = Gift::when($user, function($query, $user){
                                 if($user->role->role !="Administrator" && $user->role->role !="Monitor"){
                                     $query->where('branch',$user->branch->branch_name);
@@ -85,16 +85,16 @@ class AdminViewController extends Controller
                                 return $query;
                             })
                         ->where('status','pending')->orderBy('id','desc')->take('5')->get();
-                        
+
         if($user->role->role == 'Administrator' || $user->role->role == 'Monitor')
         {
             $form_id = Form::pluck('id');
         }
         else{
-            $form_id = $user->role->forms->pluck('form_id');               
+            $form_id = $user->role->forms->pluck('form_id');
         }
         $forms = Form::whereIn('id',$form_id)->get();
-    	return view('admin.dashboard',compact('user','active','forms','mgcf','gifts','premature','remittance','debitcards', 'accountdetailupdate', 'nrbloanapplication'));
+        return view('admin.dashboard',compact('user','active','forms','mgcf','gifts','premature','remittance','debitcards', 'accountdetailupdate', 'nrbloanapplication'));
     }
 
     public function getForms(){
@@ -105,35 +105,35 @@ class AdminViewController extends Controller
             $forms = Form::all();
         }
         else{
-            $forms = $user->role->forms;               
+            $forms = $user->role->forms;
         }
         return view('admin.forms',compact('user','active','forms'));
     }
 
     public function getRolesAndForms(){
-    	$active = 'raf';
-    	$user = $this->authUser();
+        $active = 'raf';
+        $user = $this->authUser();
         $rafs = Role::all();
         $lfs = RoleAndForm::distinct('form_id')->pluck('form_id');
         //$forms = Form::whereNotIn('id',$lfs)->get();
         $forms = Form::all();
-    	return view('admin.rolesandforms',compact('user','active','rafs','forms'));
+        return view('admin.rolesandforms',compact('user','active','rafs','forms'));
     }
 
     public function getUsers(){
-    	$active = 'u';
-    	$user = $this->authUser();
-    	$users = User::all();
-    	return view('admin.users',compact('user','users','active'));
+        $active = 'u';
+        $user = $this->authUser();
+        $users = User::all();
+        return view('admin.users',compact('user','users','active'));
     }
 
     public function getAddUserForm(){
-    	$active = 's';
-    	$user = $this->authUser();
+        $active = 's';
+        $user = $this->authUser();
         $roles = Role::all();
         $key = 'view';
         $branches = Branch::all();
-    	return view('admin.adduser',compact('user','active','roles','key','branches'));
+        return view('admin.adduser',compact('user','active','roles','key','branches'));
     }
 
     public function getEditUserForm(Request $request){
@@ -147,11 +147,11 @@ class AdminViewController extends Controller
     }
 
     public function getAddRoleForm(){
-    	$active = 's';
+        $active = 's';
         $key = 'view';
-    	$user = $this->authUser();
-    	$roles = Role::all();
-    	return view('admin.addrole',compact('user','active','roles','key'));
+        $user = $this->authUser();
+        $roles = Role::all();
+        return view('admin.addrole',compact('user','active','roles','key'));
     }
 
     public function getEditRoleForm(Request $request){
@@ -163,11 +163,11 @@ class AdminViewController extends Controller
     }
 
     public function getAddFormForm(){
-    	$active = 's';
+        $active = 's';
         $key = 'view';
-    	$user = $this->authUser();
+        $user = $this->authUser();
         $forms = Form::all();
-    	return view('admin.addform',compact('user','active','forms','key'));
+        return view('admin.addform',compact('user','active','forms','key'));
     }
 
     public function getEditFormForm(Request $request){
@@ -179,9 +179,9 @@ class AdminViewController extends Controller
     }
 
     public function getChangePasswordForm(Request $request){
-    	$active = "0";
-    	$user = $this->authUser();
-    	return view('admin.changepassword',compact('user','active'));
+        $active = "0";
+        $user = $this->authUser();
+        return view('admin.changepassword',compact('user','active'));
     }
 
     public function getNotifiers(){

@@ -13,32 +13,32 @@ class UserController extends Controller
     {
         $this->middleware('auth');
     }
-    
+
     public function addNewUser(Request $request){
-    	$request->validate([
-    		'name'=>'required|regex:/[a-zA-Z ]/',
-    		'username'=>'required|unique:users,username|regex:/[a-zA-Z0-9_]/',
-    		'email'=>'required|unique:users,email',
-    		'mobile'=>'required|unique:users,mobile',
-    		'password'=>'required|confirmed',
-    		'role'=>'required'
-    	]);
-    	$status = '0';
-    	$msg = "User could not be saved. Please try again";
-    	$user = new User;
-    	$user->name = $request->name;
-    	$user->username =$request->username;
-    	$user->email=$request->email;
-    	$user->mobile=$request->mobile;
-    	$user->password=bcrypt($request->password);
-    	$user->role_id=$request->role;
+        $request->validate([
+                'name'=>'required|regex:/[a-zA-Z ]/',
+                'username'=>'required|unique:users,username|regex:/[a-zA-Z0-9_]/',
+                'email'=>'required|unique:users,email',
+                'mobile'=>'required|unique:users,mobile',
+                'password'=>'required|confirmed',
+                'role'=>'required'
+        ]);
+        $status = '0';
+        $msg = "User could not be saved. Please try again";
+        $user = new User;
+        $user->name = $request->name;
+        $user->username =$request->username;
+        $user->email=$request->email;
+        $user->mobile=$request->mobile;
+        $user->password=bcrypt($request->password);
+        $user->role_id=$request->role;
         $user->branch_id=$request->branch;
-    	if($user->save())
-    	{
-    		$status='1';
-    		$msg='User has been added successfully.';
-    	}
-    	return redirect()->route('add_user_path')->with(['status'=>$status,'msg'=>$msg]);
+        if($user->save())
+        {
+                $status='1';
+                $msg='User has been added successfully.';
+        }
+        return redirect()->route('add_user_path')->with(['status'=>$status,'msg'=>$msg]);
     }
 
     public function updateUser(Request $request){
