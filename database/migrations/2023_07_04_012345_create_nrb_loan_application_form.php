@@ -14,7 +14,7 @@ class CreateNRBLoanApplicationForm extends Migration
     public function up()
     {
         Schema::create('nrb_loan_application', function (Blueprint $table) {
-            $table->id();
+            $table->id(); 
             $table->string('code')->unique();
             $table->string('name');
             $table->string('cid');
