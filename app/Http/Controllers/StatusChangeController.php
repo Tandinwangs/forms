@@ -125,7 +125,7 @@ class StatusChangeController extends Controller
                 }
             }
         }
-        elseif ($request->action == 'change' || $request->action == 'change-br' ||  $request->action == 'change-dz') {
+        elseif ($request->action == 'change' || $request->action == 'change-br') {
             if($request->category == 'inr-remittance'){
                 $form->homebranch = $request->branch;
                 $f = Form::where('model','INRRemittance')->first();

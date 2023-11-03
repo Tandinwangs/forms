@@ -183,29 +183,21 @@
         // Create and append new options based on the loan type
         if (loanType === "Home Loan") {
             var homeLoanBranches = [
-                "Bumthang Dzongkhag",
-                "Chhukha Dzongkhag",
-                "Dagana Dzongkhag",
-                "Gasa Dzongkhag",
-                "Haa Dzongkhag",
-                "Lhuentse Dzongkhag",
-                "Mongar Dzongkhag",
-                "Paro Dzongkhag",
-                "Pemagatshel Dzongkhag",
-                "Punakha Dzongkhag",
-                "Samdrup Jongkhar Dzongkhag",
-                "Samtse Dzongkhag",
-                "Sarpang Dzongkhag",
-                "Thimphu Dzongkhag",
-                "Trashigang Dzongkhag",
-                "Trashiyangtse Dzongkhag",
-                "Trongsa Dzongkhag",
-                "Tsirang Dzongkhag",
-                "Wangdue Phodrang Dzongkhag",
-                "Zhemgang Dzongkhag"
+            "Corporate Branch",
+            "Thimphu Branch",
+            "Phuntsholing Branch",
+            "Samdrupjongkhar Branch",
+            "Trashigang Branch",
+            "Gelephu Branch",
+            "Paro Branch",
+            "Mongar Branch",
+            "Wangdue Branch",
+            "Bumthang Branch",
+            "Samtse Branch",
+            "Tsirang Branch"
             ];
             var chooseOption = document.createElement("option");
-            chooseOption.text = "Select Property Location";
+            chooseOption.text = "Select Branch";
             branchSelect.add(chooseOption);
 
             // Add the home loan branches as options

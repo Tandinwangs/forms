@@ -88,8 +88,8 @@
 							</a>
 						</div>
 						<div class="col-sm-3 mb-3">
-							<a href="#" class="btn btn-block btn-info" data-toggle="modal" data-target="#statusModal" data-id="{{ $sform->id }}" data-name="{{ $form->form }}" data-category="nrb-loan-application" data-action="change-dz">
-								Transfer Location
+							<a href="#" class="btn btn-block btn-info" data-toggle="modal" data-target="#statusModal" data-id="{{ $sform->id }}" data-name="{{ $form->form }}" data-category="nrb-loan-application" data-action="change-br">
+								Transfer Branch
 							</a>
 						</div> 
 					@else
