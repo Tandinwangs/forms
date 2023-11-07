@@ -13,10 +13,10 @@ class BranchSeeder extends Seeder
     {
         DB::table('branches')->insert([
             [	'branch_code' => '999',
-            	'branch_name' => 'Corporate Branch'],
+            	'branch_name' => 'Corporate Branch (Near Handicraft Bazar)'],
       		 
       		[	'branch_code' => '000',
-      			'branch_name' => 'Thimphu Branch'],
+      			'branch_name' => 'Thimphu Branch (Bhutan Post office)'],
       		 
       		[	'branch_code' => '001',
       			'branch_name' => 'Phuntsholing Branch'],

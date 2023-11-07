@@ -183,8 +183,8 @@
         // Create and append new options based on the loan type
         if (loanType === "Home Loan") {
             var homeLoanBranches = [
-            "Corporate Branch",
-            "Thimphu Branch",
+            "Corporate Branch (Near Handicraft Bazar)",
+            "Thimphu Branch (Bhutan Post office)",
             "Phuntsholing Branch",
             "Samdrupjongkhar Branch",
             "Trashigang Branch",
@@ -209,8 +209,8 @@
         } else if (loanType === "Loan Against Fixed Deposit") {
          
         var fixedDepositBranches = [
-            "Corporate Branch",
-            "Thimphu Branch",
+            "Corporate Branch (Near Handicraft Bazar)",
+            "Thimphu Branch (Bhutan Post office)",
             "Phuntsholing Branch",
             "Samdrupjongkhar Branch",
             "Trashigang Branch",
