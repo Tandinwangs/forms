@@ -34,7 +34,7 @@ class StatusChangeController extends Controller
     protected function sendSMS($form){
         if ($form->status == 'approved'){
             if(substr($form->code,0,3) == 'DCR'){
-                if($form->debit_card_type == 'VISA Debit Card' && $form->branch != 'Corporate Branch (Near Handicraft Bazar)'){
+                if($form->debit_card_type == 'VISA Debit Card' && $form->branch != 'Corporate Branch (Near Handicraft Bazaar)'){
                     $msg = "Dear Customer, Your debit card request has been approved. Bank shall inform you once the card is ready.";
                 }
                 else{

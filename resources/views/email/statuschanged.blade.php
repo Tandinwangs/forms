@@ -71,7 +71,7 @@
         <p>Your form : {{$form->code}} submitted to the Bank has been :</p>
         <h1 class="text-blue"> {{$form->status}} </h1>
         @if($form->status == 'approved' && substr($form->code,0,3) == 'DCR')
-          @if($form->debit_card_type == 'VISA Debit Card' && $form->branch != 'Corporate Branch (Near Handicraft Bazar)')
+          @if($form->debit_card_type == 'VISA Debit Card' && $form->branch != 'Corporate Branch (Near Handicraft Bazaar)')
             <p>Bank shall inform you once the card is ready.</p>
           @else
             <p>and you will be notified via call or message when the card is ready to be collected"</p>
