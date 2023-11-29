@@ -19,10 +19,10 @@
             </p>
          </div>
          <div class="col-md-6">
-            <div style="text-align:left;"><b><a style="font-weight:700; color:#003166;" target="_self" href="{{ asset('images/Home Loan Application Form.pdf') }}"><i class="fa-file-pdf fas button-icon-left" aria-hidden="true" style="padding: 8px; font-size:12px;"></i><span class="fusion-button-text" style="text-transform:uppercase; font-size:12px; font-weight:700;">Home Loan Application Form</span></a></b></div>
+            <div style="text-align:left;"><b><a style="font-weight:700; color:#003166;" target="_self" href="{{ asset('images/Home Loan for BLAs Application Form.pdf') }}"><i class="fa-file-pdf fas button-icon-left" aria-hidden="true" style="padding: 8px; font-size:12px;"></i><span class="fusion-button-text" style="text-transform:uppercase; font-size:12px; font-weight:700;">Home Loan Application Form</span></a></b></div>
          </div>
          <div class="col-md-6">
-            <div style="text-align:left;"><a style="font-weight:700; color:#003166;" target="_self" href="{{ asset('images/Correspondent form.pdf') }}"><i class="fa-file-pdf fas button-icon-left" aria-hidden="true" style="padding: 8px; font-size:12px;"></i><span class="fusion-button-text" style="text-transform:uppercase; font-size:12px; font-weight:700;">Correspondent Form</span></a></div>
+            <div style="text-align:left;"><a style="font-weight:700; color:#003166;" target="_self" href="{{ asset('images/Correspondent undertaking.pdf') }}"><i class="fa-file-pdf fas button-icon-left" aria-hidden="true" style="padding: 8px; font-size:12px;"></i><span class="fusion-button-text" style="text-transform:uppercase; font-size:12px; font-weight:700;">Correspondent Form</span></a></div>
          </div>
          <div class="col-md-6">
             <div style="text-align:left;"><a style="font-weight:700; color:#003166;" target="_self" href="{{ asset('images/Payment Authorization.pdf') }}"><i class="fa-file-pdf fas button-icon-left" aria-hidden="true" style="padding: 8px; font-size:12px;"></i><span class="fusion-button-text" style="text-transform:uppercase; font-size:12px; font-weight:700;">Payment Authorization Form</span></a></div>

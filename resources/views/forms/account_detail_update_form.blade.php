@@ -39,6 +39,8 @@
                   <li>Customer Information Update Form (mentioned above)</li>
                   <li>CID copy/Passport copy </li>
                   <li>Proof of Residency (Any Bill paid copy/VISA copy/ STUDENT ID copy) (Applies only for abroad)</li>
+                  <li>License Copy (Applies only for CD Account Holder)</li>
+
                </ol>
             </div>
          </div>
@@ -49,8 +51,8 @@
    @csrf
    <div class="row">
       <div class="container-flexible bnb-border mb-2 p-5 form-description">
-         <h4 class="text-bnb-b">Document Upload</h4>
-         <p><small class="input-description">Please enter your bank details correctly</small></p>
+         <h4 class="text-bnb-b">Customer Information</h4>
+         <p><small class="input-description">Please enter your details correctly.</small></p>
          <div class="row">
             <div class="col-md-4 mb-3">
                <label for="Name">Your Name:</label>
@@ -117,23 +119,69 @@
                <br>
                @enderror
             </div>
-            <div class="col-md-4 mb-3">
-               <label for="doc_upload">Upload Here:</label>
-               <input required="required" type="file" name="doc_upload" id="doc_upload" class="">
-               <small class="input-description">Please attach all the necessary supporting documents along with the update form, compress them into a zip file, and upload the zip file here.</small>
-               @error('doc_upload')
-               <br>
-               <span class="bnb-error m-auto">
-               <small><strong>{{$message}}</strong></small>
-               </span>
-               <br>
-               @enderror
-            </div>
          </div>
         
       </div>
    </div>
+   <div class="row">
+   <div class="container-flexible bnb-border mb-2 p-5 form-description">
+      <h4 class="text-bnb-b">Document Upload</h4>
+      <p><small class="input-description">Upload all your required documents here.</small></p>
+      <div class="row">
+         
+         <div class="col-md-3 mb-2">
+            <label for="doc_upload">Update Form:</label>
+            <input required="required" type="file" name="doc_upload" id="doc_upload" class="">
+            <small class="input-description">Upload your Update Form Here!</small>
+            @error('doc_upload')
+            <br>
+            <span class="bnb-error m-auto">
+            <small><strong>{{$message}}</strong></small>
+            </span>
+            <br>
+            @enderror
+         </div>
+         <div class="col-md-3 mb-2">
+            <label for="doc_upload_2">CID:</label>
+            <input required="required" type="file" name="doc_upload_2" id="doc_upload_2" class="">
+            <small class="input-description">Upload CID Copy Here!</small>
+            @error('doc_upload_2')
+            <br>
+            <span class="bnb-error m-auto">
+            <small><strong>{{$message}}</strong></small>
+            </span>
+            <br>
+            @enderror
+         </div>
+         <div class="col-md-3 mb-3">
+            <label for="doc_upload_3">Proof of Residency:</label>
+            <input type="file" name="doc_upload_3" id="doc_upload_3" class="">
+            <small class="input-description">Proof of Residency (Any Bill paid copy/VISA copy/ STUDENT ID copy) (Applies only for Bhutanese Living Abroad)</small>
+            @error('doc_upload_3')
+            <br>
+            <span class="bnb-error m-auto">
+            <small><strong>{{$message}}</strong></small>
+            </span>
+            <br>
+            @enderror
+         </div>
+         <div class="col-md-3 mb-3">
+            <label for="doc_upload_4">License Copy:</label>
+            <input type="file" name="doc_upload_4" id="doc_upload_4" class="">
+            <small class="input-description">Upload your License copy (Applies only for CD Account Holder)</small>
+            @error('doc_upload_4')
+            <br>
+            <span class="bnb-error m-auto">
+            <small><strong>{{$message}}</strong></small>
+            </span>
+            <br>
+            @enderror
+         </div>
+      </div>
+   </div>
+</div>
 
+   
    <div class="row">
 			<div class="container-flexible bnb-border mb-2 p-5 form-description">
 				<div class="row mb-3">

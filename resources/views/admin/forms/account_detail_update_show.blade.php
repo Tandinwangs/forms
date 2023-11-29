@@ -41,12 +41,31 @@
 		<div class="container-flexible bnb-border mb-2 p-5 form-description">
 			<div class="row">
 				<div class="p-2 mb-5">
-					<h5 class="text-bnb-b"><b>Documents Submitted:</b></h5>
-					<a href="{{asset($sform->path.'/'.$sform->doc_upload)}}" target="_blank" class="btn btn-primary px-2">{{ substr($sform->doc_upload,11) }}</a>
+				<h5 class="text-bnb-b"><b>Documents Submitted:</b></h5>
+                    
+					<!-- Display links for the submitted documents -->
+					@if($sform->doc_upload)
+						<a href="{{ asset($sform->path.'/'.$sform->doc_upload) }}" target="_blank" class="btn btn-primary px-2">
+							{{ $sform->doc_upload }}
+						</a>
+					@endif
+					<!-- Check and display links for other uploaded documents -->
+					@if($sform->doc_upload_2)
+						<a href="{{ asset($sform->path.'/'.$sform->doc_upload_2) }}" target="_blank" class="btn btn-primary px-2">{{ $sform->doc_upload_2 }}</a>
+					@endif
+
+
+					@if($sform->doc_upload_3)
+						<a href="{{ asset($sform->path.'/'.$sform->doc_upload_3) }}" target="_blank" class="btn btn-primary px-2">{{ $sform->doc_upload_3 }}</a>
+					@endif
+
+
+					@if($sform->doc_upload_4)
+						<a href="{{ asset($sform->path.'/'.$sform->doc_upload_4) }}" target="_blank" class="btn btn-primary px-2">{{ $sform->doc_upload_4 }}</a>
+					@endif
+
 				</div>
 			</div>
-
-
 			@if($sform->status != 'pending')
 				<div class="inner-container">
 					<div class="row mb-3">

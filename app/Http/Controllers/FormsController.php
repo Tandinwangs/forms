@@ -497,58 +497,100 @@ class FormsController extends Controller
         return redirect()->route('money_gram_claim_form')->with(['status'=>$status, 'msg'=>$msg, 'code'=>$code]);
     }
 
-    public function submitAccountDetailUpdateForm(Request $request){
-        $request->validate([
-            'Name' => 'required',
-            'CID' => 'required',
-            'ContactNumber' => 'required|digits:8',
-            'Email' => 'required|email:rfc',
-            'HomeBranch' => 'required',
-            'doc_upload'=>'required|file|mimes:zip,rar,pdf,png,jpg,jpeg,docx,doc|max:10240',
-        ]);
-        $status = '0';
-        $code = null;
-        $msg = 'Account Detail Update Form could not be submitted. Please try again.';
-        $d1 = $d2 = $d3 = $d4 = null;
-        $date = date_format(now(),'Y-m-d');
-        $path = "storage/AccountUpdate/$date";
-        $check = AccountDetailUpdate::where('code',$request->code)->first();
-        if(!blank($check) && $check->status != "rejected"){
-            $msg = "Your Request has already been submitted to the Bank. The status will be notified to you via SMS or email.";
-        }
-        else{
-            $form = new AccountDetailUpdate;
-            $form->code = 'ADU/'.date_format(Carbon::now(),'Y/m/d/His');
-            $form->name = $request->Name;
-            $form->cid = $request->CID;
-            $form->mobile_no = '975'.$request->ContactNumber;
-            $form->email = $request->Email;
-            $form->branch = $request->HomeBranch;
-            $d3 = time().'-'.$request->file('doc_upload')->getClientOriginalName();
-            $request->file('doc_upload')->storeAs("public/AccountUpdate/$date",$d3);
-            $form->doc_upload = $d3;
-            $form->path = $path;
-        
-            $form->status = 'pending';
-            if($form->save()){
-                $status = '1';
-                $msg = 'Account Detail Update Form has been submitted successfully to the bank.';
-                $code_short = $form->code;
-                $code = "Form: $form->code has been submitted to the bank for processing. The form status will be notified via SMS & email.";
-                $mobile = $form->mobile_no;
-                $this->sendEmail($form->email,$code_short);
-                $this->sendSMS($mobile,$code);
+    public function submitAccountDetailUpdateForm(Request $request)
+{
+    $request->validate([
+        'Name' => 'required',
+        'CID' => 'required',
+        'ContactNumber' => 'required|digits:8',
+        'Email' => 'required|email:rfc',
+        'HomeBranch' => 'required',
+        'doc_upload' => 'required|file|mimes:zip,rar,pdf,png,jpg,jpeg,docx,doc|max:10240',
+        'doc_upload_2' => 'required|file|mimes:zip,rar,pdf,png,jpg,jpeg,docx,doc|max:10240',
+        'doc_upload_3' => 'file|mimes:zip,rar,pdf,png,jpg,jpeg,docx,doc|max:10240',
+        'doc_upload_4' => 'file|mimes:zip,rar,pdf,png,jpg,jpeg,docx,doc|max:10240',
+    ]);
 
-                $f = Form::where('model','AccountDetailUpdate')->first();
-                $rids = RoleAndForm::where('form_id',$f->id)->pluck('role_id');
-                
-                foreach ($rids as $rid) {
-                    $this->sendNotification($form,$rid,$form->branch);
+
+    $status = '0';
+    $code = null;
+    $msg = 'Account Detail Update Form could not be submitted. Please try again.';
+    $date = date_format(now(), 'Y-m-d');
+    $path = "storage/AccountUpdate/$date";
+
+
+    $check = AccountDetailUpdate::where('code', $request->code)->first();
+    if (!blank($check) && $check->status != "rejected") {
+        $msg = "Your Request has already been submitted to the Bank. The status will be notified to you via SMS or email.";
+    } else {
+        $form = new AccountDetailUpdate;
+        $form->code = 'ADU/' . date_format(Carbon::now(), 'Y/m/d/His');
+        $form->name = $request->Name;
+        $form->cid = $request->CID;
+        $form->mobile_no = '975' . $request->ContactNumber;
+        $form->email = $request->Email;
+        $form->branch = $request->HomeBranch;
+       
+        // Handling multiple file uploads
+        $fileInputs = ['doc_upload', 'doc_upload_2', 'doc_upload_3', 'doc_upload_4'];
+
+
+        foreach ($fileInputs as $key => $inputName) {
+            if ($request->hasFile($inputName)) {
+                $fileName = $request->file($inputName)->getClientOriginalName();
+                $filePath = "public/AccountUpdate/$date/$fileName"; // Define the file path
+       
+                // Assign file names with extension to respective variables in the form object based on $inputName
+                switch ($inputName) {
+                    case 'doc_upload':
+                        $form->doc_upload = $fileName;
+                        break;
+                    case 'doc_upload_2':
+                        $form->doc_upload_2 = $fileName;
+                        break;
+                    case 'doc_upload_3':
+                        $form->doc_upload_3 = $fileName;
+                        break;
+                    case 'doc_upload_4':
+                        $form->doc_upload_4 = $fileName;
+                        break;
+                    default:
+                        break;
                 }
+       
+                // Store the file in the defined path
+                $request->file($inputName)->storeAs("public/AccountUpdate/$date", $fileName);
+            }
+        }        
+       
+
+
+        $form->path = $path;
+        $form->status = 'pending';
+       
+        if ($form->save()) {
+            $status = '1';
+            $msg = 'Account Detail Update Form has been submitted successfully to the bank.';
+            $code_short = $form->code;
+            $code = "Form: $form->code has been submitted to the bank for processing. The form status will be notified via SMS & email.";
+            $mobile = $form->mobile_no;
+            $this->sendEmail($form->email, $code_short);
+            $this->sendSMS($mobile, $code);
+
+
+            $f = Form::where('model', 'AccountDetailUpdate')->first();
+            $rids = RoleAndForm::where('form_id', $f->id)->pluck('role_id');
+           
+            foreach ($rids as $rid) {
+                $this->sendNotification($form, $rid, $form->branch);
             }
         }
-        return redirect()->route('account_detail_update_form')->with(['status'=>$status, 'msg'=>$msg, 'code'=>$code]);
     }
+
+
+    return redirect()->route('account_detail_update_form')->with(['status' => $status, 'msg' => $msg, 'code' => $code]);
+}
+
     public function submitNRBLoanApplicationForm(Request $request){
         $request->validate([
             'Name' => 'required',
