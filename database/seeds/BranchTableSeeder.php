@@ -142,6 +142,11 @@ class BranchTableSeeder extends Seeder
 			          'branch_name' => 'Dagapela Extension',
 			          'category' => 'extension',
 			        ],
+					[
+						'branch_code' => '000', 
+						'branch_name' => 'Australia',
+						'category' => 'country',
+					],
 					
         ]);
     }

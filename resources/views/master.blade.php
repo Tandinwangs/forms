@@ -11,21 +11,19 @@
 	<link href="{{asset('/css/all.min.css')}}" rel="stylesheet" />
 	<link href="{{asset('css/font-awesome.css')}}" rel="stylesheet">
 	<link href="{{ asset('css/fontawesome-all.min.css') }}" rel="stylesheet">
-	
-
 </head>
 <body class="reed">
 	<div class="container p-2">
 		<div class="row">
 			<div class="container-flexible flex-center bnb-border-header mb-2">
-				<img src="{{asset('/images/header.png')}}" class="p-2" style="max-width: 100%;">
+				<img src="{{asset('/images/header.png')}}" class="p-2" style="max-width:30%;">
 			</div>		
 		</div>
 		
 		@yield('content')
 
 		<div class="row">
-			<div class="container-flexible bnb-border-footer p-5 text-center">
+			<div class="container-flexible bnb-border-footer p-1 text-center">
 				<h4 class="form-footer">Your Relationship Bank</h4>
 			</div>		
 		</div>
@@ -34,4 +32,5 @@
 	<!-- <script src="{{ asset('js/jquery.min.js') }}"></script>
   	<script src="{{ asset('js/popper.min.js') }}"></script> -->
 </body>
+
 </html>

@@ -16,6 +16,9 @@
 	background-image: url('../images/BNB-Pattern3.jpg');
 	background-size: cover;
 	background-attachment: fixed;
+	font-size: 11px;
+	color: #222;
+	font-weight: 600;
 }
 
 .container-flexible{
@@ -23,8 +26,8 @@
 	width: 100%;
 	background: #fff;
 	overflow: hidden;
-	margin-right: 10px;
-	margin-left: 10px;
+	margin-right: auto;
+	margin-left: auto;
 }
 .flex-center {
     align-items: center;
@@ -33,21 +36,27 @@
 }
 .bnb-border-header{
 	border:0px;
-	border-top:12px solid #26578c;
+	border-top:5px solid #26578c;
 	border-radius: 10px;
+	border-bottom-left-radius: 0px;
+	border-bottom-right-radius: 0px;
 }
 .bnb-border-footer{
 	border:0px;
 	border-bottom:5px solid #f9b233;
 	border-radius: 10px;
+
 }
 .bnb-border{
 	border:0px;
 	border-radius: 10px;
+	border-top-left-radius: 0px;
+	border-top-right-radius: 0px;
 }
 .form-title{
 	font-family: cg;
 	font-weight: bold;
+	font-size: medium;
 }
 .form-description{
 	font-family: cg;
@@ -57,6 +66,11 @@
 }
 .form-footer{
 	font-family: ananda;
+	
+}
+
+.bnb-border-footer h4{
+font-size: 1rem !important;
 }
 .btn-primary{
 	background-color: #26578c !important;
@@ -239,26 +253,29 @@
 	text-align: left !important;
 }
 .column{
-	padding-top: 40px;
-   padding-right: 40px;
-   padding-bottom: 40px;
-   padding-left: 40px;
-
+	padding: 10px;
    background-color: #f0ebdb;
    bg-color-hover:#f0ebdb;
-   bg-size: cover;
    border-radius: 20px 20px 20px 20px;
    width-large: 50%;
-   margin-top-large: 0px;
-   spacing-right-large: 10px;
-   margin-bottom-large: 20px;
-   spacing-left-large: 10px;
-   width-medium: 50%;
-   order-medium: 0;
-   spacing-right-medium: 10px;
-   spacing-left-medium: 10px;
-   width-small: 100%;
-   order-small: 0;
-   spacing-right-small: 10px;
-   spacing-left-small: 10px;
+   display: flex; /* or display: grid; */
+	justify-content: left; /* Aligns items horizontally */
+
+   
 }
+
+
+.form-control {
+    font-size: 11px !important; 
+    padding:  0.2rem 0.5rem !important;	
+	
+}
+#agree {
+	height: 16px; /* Set the height of the radio button */
+  }
+  #disagree {
+	height: 16px; /* Set the height of the radio button */
+  }
+  .btn {
+	font-size: 12px !important;
+  }

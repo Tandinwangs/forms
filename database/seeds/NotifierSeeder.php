@@ -12,7 +12,7 @@ class NotifierSeeder extends Seeder
     public function run()
     {
         DB::table('notifiers')->insert([
-            'sms_api'=>'https://login.bnb.bt/playsms/index.php'
+            'sms_api'=>'http://172.19.250.43/index.php?'
         ]);
     }
 }

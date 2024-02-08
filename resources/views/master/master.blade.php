@@ -17,8 +17,8 @@
 <body class="reed">
 	<div class="container p-2">
 		<div class="row">
-			<div class="container-flexible flex-center bnb-border-header mb-2">
-				<img src="{{asset('/images/header.png')}}" class="p-2" style="max-width: 100%;">
+			<div class="container-flexible flex-center bnb-border-header mb-0">
+				<img src="{{asset('/images/header.png')}}" class="p-2" style="max-width: 30%;">
 			</div>		
 		</div>
 		@if(session('status')=="1")
@@ -37,7 +37,7 @@
 		@yield('content')
 
 		<div class="row">
-			<div class="container-flexible bnb-border-footer p-5 text-center">
+			<div class="container-flexible bnb-border-footer p-3 text-center">
 				<h4 class="form-footer">Your Relationship Bank</h4>
 				<small class="form-description-raleway"><b class="text-bnb-b">Copyright &copy; All Rights Reserved</b></small>
 			</div>		

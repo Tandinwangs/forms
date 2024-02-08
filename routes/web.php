@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -30,7 +29,7 @@ Route::get('/forms/premature-withdrawal-form', 'FormsController@getPrematureWith
 Route::post('/forms/premature-withdrawal-form', 'FormsController@submitPrematureWithdrawalForm')->name('submit_premature_withdrawal_form');
 
 Route::get('/forms/debit-card-form', 'FormsController@getDebitCardForm')->name('debit_card_form');
-Route::post('/forms/debit-card-form', 'FormsController@submitDebitCardForm');
+Route::post('/forms/debit-card-form', 'FormsController@submitDebitCardForm')->name('submit_debit_card_form');
 
 
 Route::get('/forms/money-gram-claim-form','FormsController@getMoneyGramClaimForm')->name('money_gram_claim_form');
@@ -41,6 +40,13 @@ Route::post('/forms/account-detail-update-form','FormsController@submitAccountDe
 
 Route::get('/forms/bla-loan-application-form','FormsController@getNRBLoanApplicationForm')->name('nrb_loan_application_form');
 Route::post('/forms/bla-loan-application-form','FormsController@submitNRBLoanApplicationForm')->name('submit_nrb_loan_application_form');
+
+// Forms
+// Route::get('/forms/account_detail_update_retail','AccountDetailUpdateFormController@retail')->name('account_detail_update_retail');
+// Route::get('/forms/account_detail_update_corporate','AccountDetailUpdateFormController@corporate')->name('account_detail_update_corporate');
+// Route::get('/forms/account_detail_update_signature','AccountDetailUpdateFormController@signature')->name('account_detail_update_signature');
+// Route::get('/forms/account_detail_update_mobile-email','AccountDetailUpdateFormController@mobile_email')->name('account_detail_update_mobile_email');
+
 
 // Share Holder Information Update routes
 Route::get('forms/search-share-holder-information', 'ShareHoldersController@getShareHolderInfo')->name('share_holder_information_form');

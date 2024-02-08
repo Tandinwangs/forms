@@ -29,8 +29,8 @@ class FormsController extends Controller
 
         Http::get($api->sms_api,[
             'app'=>'ws',
-            'u'=>'everest',
-            'h'=>'05265e9a544462b468b70ab663a4a4cf',
+            'u'=>'fcubs',
+            'h'=>'76e1783f30bfed92feabdc9e57ee76de',
             'op'=>'pv',
             'to'=>$mobile,
             'msg'=>$code,
@@ -85,7 +85,8 @@ class FormsController extends Controller
 
     public function getDebitCardForm(){
         $branches = Branch::all();
-        return view('forms.debit_card_form',compact('branches'));
+        return view('forms.debit_card_form', compact('branches'));
+
     }
 
 
@@ -315,7 +316,7 @@ class FormsController extends Controller
             'Name'=>'required',
             'CID'=>'required',
             'Nationality'=>'required',
-            'MobileNumber'=>'required|digits:8',
+            'MobileNumber' => 'required|digits_between:8,9',
             'Email'=>'required',
             'DoB'=>'required',
             'PresentAddress'=>'required',
@@ -340,7 +341,12 @@ class FormsController extends Controller
             $form = new DebitCardRequest;
             $form->code = 'DCR/'.date_format(Carbon::now(),'Y/m/d/His');
             $form->name = $request->Name;
-            $form->mobile_no = '975'.$request->MobileNumber;
+            $branch = $request->Branch;
+            if ($branch === 'Australia') {
+                $form->mobile_no = '61' . $request->MobileNumber;
+            } else {
+                $form->mobile_no = '975' . $request->MobileNumber;
+            }
             $form->email = $request->Email;
             $form->cid = $request->CID;
             $form->branch = $request->Branch;
