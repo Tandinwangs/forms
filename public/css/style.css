@@ -36,14 +36,21 @@
 }
 .bnb-border-header{
 	border:0px;
-	border-top:5px solid #26578c;
+	border-top:5px solid #252D60;
 	border-radius: 10px;
 	border-bottom-left-radius: 0px;
 	border-bottom-right-radius: 0px;
 }
+.bnb-border-header-admin{
+	border:0px;
+	border-top:5px solid #252D60;
+	border-radius: 10px;
+	border-bottom-left-radius: 10px;
+	border-bottom-right-radius: 10px;
+}
 .bnb-border-footer{
 	border:0px;
-	border-bottom:5px solid #f9b233;
+	border-bottom:5px solid #252D60;
 	border-radius: 10px;
 
 }
@@ -52,6 +59,12 @@
 	border-radius: 10px;
 	border-top-left-radius: 0px;
 	border-top-right-radius: 0px;
+}
+.bnb-border-admin{
+	border:0px;
+	border-radius: 10px;
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
 }
 .form-title{
 	font-family: cg;
@@ -80,7 +93,7 @@ font-size: 1rem !important;
 }
 
 .text-bnb-b{
-	color: #26578c;
+	color: #252D60;
 }
 
 .navdesign{
@@ -218,7 +231,7 @@ font-size: 1rem !important;
 
 .inner-footer{
 	font-family: rw;
-	border-top:2px solid #f9b233;
+	border-top:2px solid #dbdbdb;
 	padding: 5px;
 }
 .form-control-custom{
@@ -279,3 +292,8 @@ font-size: 1rem !important;
   .btn {
 	font-size: 12px !important;
   }
+ .form-describe{
+	color:#ffffff; 
+	background:#252D60; 
+	border-radius:5px;
+ }

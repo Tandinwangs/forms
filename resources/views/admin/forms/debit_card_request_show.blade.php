@@ -1,14 +1,14 @@
 @extends('master.adminmaster')
 @section('content')
 	<div class="row">
-		<div class="container-flexible bnb-border mb-2 p-5 text-center no-mb">
+		<div class="container-flexible bnb-border-admin mb-2 p-5 text-center no-mb">
 			<h3 class="form-title">{{$form->form}}</h3>
 			<p class="form-description-raleway mb-3">{{$form->description}}</p>
 		
 		</div>		
 	</div>
 	<div class="row">
-		<div class="container-flexible bnb-border mb-2 p-5 form-description">
+		<div class="container-flexible bnb-border-admin mb-2 p-3 form-description">
 			
 			<div class="row mb-4">
 				<div class="col-12">
@@ -172,7 +172,7 @@
 	</div>
 	<div class="pagebreak"></div>
 	<div class="print">
-		<div class="container-flexible bnb-border mb-2 p-5 text-center no-mb">
+		<div class="container-flexible bnb-border-admin mb-2 p-5 text-center no-mb">
 			<h5 class="text-bnb-b"><b>Terms and conditions governing the Issue and Usage of BNB Debit Card</b></h5>
 			<ol class="text-left">
 				<li>Cards, usable at all the Bank terminals, are issued to individual saving and current account holders. However, cards issued to current accounts shall be disabled if the account is converted into an overdraft account/and or has more than one authorized signature.</li>

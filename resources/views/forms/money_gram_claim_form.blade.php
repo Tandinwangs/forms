@@ -420,7 +420,7 @@
                @enderror
             </div>
          </div>
-         <h6 class="text-bnb-b">10% Incentive on Remittance</h6>
+         <!-- <h6 class="text-bnb-b">10% Incentive on Remittance</h6>
          <p>
             You may be eligible to claim 10% incentive as per the RMA’s Incentives
             for inward remittances, 2023, on the amount received by you in BTN, provided the sender is a non-resident Bhutanese, the recipient is an INDIVIDUAL, and the money is NOT meant for the following purpose(s):
@@ -500,7 +500,7 @@
                <label for="Document2">Document 2:</label>
                <input type="file" name="Document2" id="Document2" class="form-control-file">
             </div>
-         </div>
+         </div> -->
          <div class="row">
             <div class="col-12 mb-3">
                <div class="inner-footer">

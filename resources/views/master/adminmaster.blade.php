@@ -16,8 +16,8 @@
 <body class="reed">
 	<div class="container p-2">
 		<div class="row">
-			<div class="container-flexible flex-center bnb-border-header mb-2">
-				<img src="{{asset('/images/header.png')}}" class="p-2" style="max-width: 50%;">
+			<div class="container-flexible flex-center bnb-border-header-admin mb-2">
+				<img src="{{asset('/images/headerNew.png')}}" class="p-2" style="max-width: 50%;">
 			</div>		
 		</div>
 		<nav class="navbar navbar-expand-sm navdesign sticky-top mb-2">

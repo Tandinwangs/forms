@@ -16,7 +16,7 @@
 	<div class="container p-2">
 		<div class="row">
 			<div class="container-flexible flex-center bnb-border-header mb-2">
-				<img src="{{asset('/images/header.png')}}" class="p-2" style="max-width:30%;">
+				<img src="{{asset('/images/headerNew.png')}}" class="p-2" style="max-width:40%;">
 			</div>		
 		</div>
 		

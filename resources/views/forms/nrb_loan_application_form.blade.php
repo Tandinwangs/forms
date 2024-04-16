@@ -31,7 +31,7 @@
                </div>
             </div>
          </div>
-         <div class= "row mb-1">
+         <div class= "row mb-1 p-3">
          <p class="form-description-raleway mb-3 text-justify" style="font-weight:600;">
        NOTE: Please note that the documents requried are listed in the forms. All your documents should be attested by the Bhutanese Embassy / other recognized overseas Bhutanese associations.
       </p>

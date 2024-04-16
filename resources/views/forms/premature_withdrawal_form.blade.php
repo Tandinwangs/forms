@@ -18,7 +18,7 @@
 				Please log in to MPay to close your Term Deposit prematurely.</p>
 				<p class="form-description-raleway">You can go to “Account > Premature FD/RD”.</p>
 
-				<img src="{{asset('images/tdrd.png')}}" alt="" style="max-height:500px ">
+				<img src="{{asset('images/accounts.png')}}" alt="" style="max-height:500px ">
 			</p>
 		</div>		
 	</div>

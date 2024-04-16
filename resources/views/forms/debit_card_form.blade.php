@@ -12,7 +12,7 @@
             <p class="form-description-raleway mb-3 text-center">
                I would like to request BNB to kindly issue me a new ATM/Debit Card against my following account number maintained with your bank. The request shall be processed only after validating your request, by verifying in our systems the combination of your name, account number, mobile number, ID number and email ID. If required, you may be contacted to validate the request.
             </p>
-            <p class="form-description-raleway" style="color:white; background:#26578C; border: 2px solid #26578C; border-radius:5px;">	
+            <p class="form-description-raleway form-describe">	
                RuPay cards are available for immediate issuance at our branches and extension offices. If you're in Bhutan, we recommend visiting our nearest locations for a faster application and collection process.
             </p>
          </div>
@@ -143,7 +143,7 @@
             </div>
             <div class="col-md-3 mb-2">
                <label for="Email">Your Email ID:</label>
-               <input type="text" name="Email" id="Email" class="form-control" autocomplete="off" placeholder="Your Email ID" value="{{old('Email')}}">
+               <input type="email" name="Email" id="Email" class="form-control" autocomplete="off" placeholder="Your Email ID" value="{{old('Email')}}">
                @error('Email')
                <span class="bnb-error">
                <small><strong>{{ $message }}</strong></small>

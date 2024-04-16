@@ -4,7 +4,7 @@
    @csrf
    <div class="row">
       <div class="container-flexible bnb-border mb-1 px-5 py-1 form-description">
-         <div class="container-flexible mb-1 p-2 text-center">
+         <div class="container-flexible mb-2 text-center">
             <h3 class="form-title">Account Detail Update</h3>
             @if(!blank(session('code')))
             <h4 class="bnb-error">{{ session('code') }}</h4>

@@ -143,7 +143,7 @@ class BranchTableSeeder extends Seeder
 			          'category' => 'extension',
 			        ],
 					[
-						'branch_code' => '000', 
+						'branch_code' => '1234', 
 						'branch_name' => 'Australia',
 						'category' => 'country',
 					],

@@ -1,14 +1,14 @@
 @extends('master.adminmaster') 
 @section('content')
 	<div class="row">
-		<div class="container-flexible bnb-border mb-2 p-5 text-center no-mb">
+		<div class="container-flexible bnb-border-admin mb-2 p-5 text-center no-mb">
 			<h3 class="form-title">{{$form->form}}</h3>
 			<p class="form-description-raleway mb-3">{{$form->description}}</p>
 		
 		</div>		
 	</div>
 	<div class="row">
-		<div class="container-flexible bnb-border mb-2 p-5 form-description">
+		<div class="container-flexible bnb-border-admin mb-2 p-5 form-description">
 
 			<div class="row">
 				<div class="col-12">
@@ -34,7 +34,7 @@
 		</div>
 	</div>
 	<div class="row">
-		<div class="container-flexible bnb-border mb-2 p-5 form-description">
+		<div class="container-flexible bnb-border-admin mb-2 p-5 form-description">
 			<div class="row">
 				<div class="p-2 mb-5">
 					<h5 class="text-bnb-b"><b>Documents Submitted:</b></h5>
