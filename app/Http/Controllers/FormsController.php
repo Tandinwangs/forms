@@ -327,8 +327,10 @@ class FormsController extends Controller
             'AccountNumber'=>'required',
             'AccountType'=>'required',
             'ReasonForReplacement'=>'required_if:RequestFor,Replacement',
+            'AuthorizeAccount' => 'required|digits:9',
             'Agreement'=>'regex:/^agree$/',
         ]);
+
 
         $status = '0';
         $code = null;
@@ -361,6 +363,8 @@ class FormsController extends Controller
             $form->name_on_card = $request->NameOnCard;
             $form->reason = $request->ReasonForReplacement;
             $form->status = 'pending';
+            $form->authorize_account = $request->AuthorizeAccount;
+            // dd($request->AuthorizeAccount);
             if($form->save()){
                 $status = '1';
                 $msg = 'Debit Card Request Form has been submitted successfully to the bank.';

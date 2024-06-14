@@ -46,6 +46,14 @@
 					<label for="Name">Present Address :</label>
 					<div class="form-control-custom">{{$sform->address}}</div>
 				</div>
+				<div class="col-md-4 set-width mb-3">
+					<label for="Name">Authorize Account :</label>
+					@if(isset($sform->authorize_account))
+						<div class="form-control">{{ $sform->authorize_account }}</div>
+					@else
+						<div class="form-control">NA</div>
+					@endif
+				</div>
 				<div class="col-12">
 				<hr>
 				</div>
